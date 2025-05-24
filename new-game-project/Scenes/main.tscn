@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds4qmjjl75eu3"]
+[gd_scene load_steps=3 format=3 uid="uid://ds4qmjjl75eu3"]
 
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player_1.tscn" id="2_bo1nx"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +17,6 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("1_jjgbg")
 theme_override_font_sizes/font_size = 71
 text = "hi team :>"
+
+[node name="Player 1" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(278, 208)
