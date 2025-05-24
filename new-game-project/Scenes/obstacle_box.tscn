@@ -4,11 +4,6 @@
 
 [node name="ObstacleBox" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_iqg88")
-
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,3 +20,9 @@ pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.688595, 0.688595, 0.688595, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(1.99, 1.99)
+shape = SubResource("RectangleShape2D_iqg88")

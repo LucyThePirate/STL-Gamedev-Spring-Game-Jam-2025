@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds4qmjjl75eu3"]
+[gd_scene load_steps=5 format=3 uid="uid://ds4qmjjl75eu3"]
 
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://q7uddcbmnklw" path="res://Scenes/obstacle_box.tscn" id="4_jjvhh"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,9 +21,16 @@ theme_override_font_sizes/font_size = 71
 text = "hi team :>"
 
 [node name="Player 1" parent="." instance=ExtResource("2_bo1nx")]
-position = Vector2(278, 208)
+position = Vector2(191, 329)
 
 [node name="Player 2" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(959, 343)
 player_id = 2
 
 [node name="Camera2D" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(576, 324)
+
+[node name="ObstacleBox" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(580, 400)
+rotation = 1.5708
+scale = Vector2(5.32251, 1)
