@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds4qmjjl75eu3"]
+[gd_scene load_steps=4 format=3 uid="uid://ds4qmjjl75eu3"]
 
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player_1.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_8gbba"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,3 +21,8 @@ text = "hi team :>"
 
 [node name="Player 1" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(278, 208)
+
+[node name="Player 2" parent="." instance=ExtResource("2_bo1nx")]
+player_id = 2
+
+[node name="Camera2D" parent="." instance=ExtResource("3_8gbba")]
