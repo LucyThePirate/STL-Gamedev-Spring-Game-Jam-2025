@@ -20,6 +20,6 @@ shape = SubResource("CircleShape2D_6ff1n")
 position = Vector2(32, 0)
 
 [node name="ShotTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
