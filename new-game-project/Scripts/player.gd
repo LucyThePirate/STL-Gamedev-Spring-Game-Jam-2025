@@ -6,8 +6,8 @@ extends CharacterBody2D
 @onready var bullet_spawn_pos: Marker2D = $BulletSpawnPosition
 @onready var shot_timer: Timer = $ShotTimer
 
-const SPEED = 300.0
-const ACCEL = 2.0
+const SPEED = 230.0
+const ACCEL = 20.0
 
 var input: Vector2
 var move_direction: Vector2 = Vector2.ZERO
