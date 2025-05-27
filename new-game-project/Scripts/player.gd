@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var player_id = 1
 
-@onready var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
-@onready var bullet_spawn_pos: Marker2D = $BulletSpawnPosition
+@export var bullet_scene: PackedScene
+
+#@onready var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
+@onready var bullet_spawn_pos: Marker2D = $Sprite2D/BulletSpawnPosition
 @onready var shot_timer: Timer = $ShotTimer
+@onready var visual: Node2D = $PlayerVisual
 
 const SPEED = 230.0
 const ACCEL = 20.0
@@ -16,11 +21,14 @@ var is_shooting: bool = false
 var is_shot_cooling: bool = false
 
 
+func _ready() -> void:
+	visual.initialize(self)
+
+
 func _physics_process(delta: float) -> void:
 	if !is_shooting and move_direction != Vector2.ZERO:
 		facing_direction = move_direction.normalized()
-
-		rotation = facing_direction.angle()
+		$Sprite2D.rotation = facing_direction.angle()
 
 	if Input.is_action_pressed("Shoot P%s" % [player_id]):
 		if !is_shooting:
@@ -40,6 +48,7 @@ func get_input():
 		- Input.get_action_strength("Move P%s Up" % [player_id])
 	)
 	move_direction = input.normalized()
+	
 	return input.normalized()
 
 
