@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
-[ext_resource type="PackedScene" uid="uid://ds4qmjjl75eu3" path="res://Scenes/main.tscn" id="2_48xlc"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://b2dj4v65tlilj" path="res://Scenes/prototype_map.tscn" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
 
 [sub_resource type="Gradient" id="Gradient_ce3w2"]
@@ -61,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
 ls_buttons = ExtResource("3_1ehe0")
-first_level = ExtResource("2_48xlc")
+prototype_map = ExtResource("3_ce3w2")
 game_manager = ExtResource("4_ce3w2")
 
 [node name="TempBackground" type="ColorRect" parent="."]
@@ -228,13 +228,13 @@ layout_mode = 2
 size_flags_vertical = 0
 selected = 2
 item_count = 5
-popup/item_0/text = "10 seconds"
+popup/item_0/text = "5 seconds"
 popup/item_0/id = 0
-popup/item_1/text = "30 seconds"
+popup/item_1/text = "10 seconds"
 popup/item_1/id = 1
-popup/item_2/text = "1 minute"
+popup/item_2/text = "30 seconds"
 popup/item_2/id = 2
-popup/item_3/text = "2 minutes"
+popup/item_3/text = "1 minute"
 popup/item_3/id = 3
 popup/item_4/text = "5 minutes"
 popup/item_4/id = 4

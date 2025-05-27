@@ -7,10 +7,6 @@
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
 
-[node name="Player 1" parent="." instance=ExtResource("2_e5fcp")]
-
-[node name="Player 2" parent="." instance=ExtResource("2_e5fcp")]
-
 [node name="Camera2D" parent="." instance=ExtResource("3_sq00h")]
 position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
@@ -18,5 +14,70 @@ zoom = Vector2(1.09, 1.09)
 [node name="RoundTimer" type="Timer" parent="."]
 
 [node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="UI" type="Control" parent="."]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 500.0
+offset_top = 53.695
+offset_right = 648.0
+offset_bottom = 76.695
+grow_horizontal = 2
+pivot_offset = Vector2(74, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="RoundNumberLabel" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Round: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.71
+
+[node name="TimeLeftLabel" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Time Left: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player 1" parent="." instance=ExtResource("2_e5fcp")]
+
+[node name="Player 2" parent="." instance=ExtResource("2_e5fcp")]
+player_id = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "5"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]

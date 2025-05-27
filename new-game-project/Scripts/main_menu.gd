@@ -1,7 +1,7 @@
 extends Control
 
 @export var ls_buttons: Resource
-@export var first_level: PackedScene
+@export var prototype_map: PackedScene
 @export var game_manager: PackedScene
 
 @onready var main_menu: Control = $MainMenu
@@ -25,11 +25,11 @@ func _ready() -> void:
 	main_menu.show()
 	level_select.hide()
 	controls.hide()
-	level_1_button.set_meta("level_path", first_level)
-	round_length_selector.set_item_metadata(0, 10)
-	round_length_selector.set_item_metadata(1, 30)
-	round_length_selector.set_item_metadata(2, 60)
-	round_length_selector.set_item_metadata(3, 120)
+	level_1_button.set_meta("level_path", prototype_map)
+	round_length_selector.set_item_metadata(0, 5)
+	round_length_selector.set_item_metadata(1, 10)
+	round_length_selector.set_item_metadata(2, 30)
+	round_length_selector.set_item_metadata(3, 60)
 	round_length_selector.set_item_metadata(4, 300)
 	#level 2 meta
 	#level 3 meta
@@ -77,7 +77,7 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_round_length_selector_item_selected(index: int) -> void:
-	selected_round_length = index
+	selected_round_length = round_length_selector.get_item_metadata(index)
 
 
 func _on_spin_box_value_changed(value: float) -> void:
