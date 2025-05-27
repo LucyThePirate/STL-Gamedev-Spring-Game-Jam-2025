@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ds4qmjjl75eu3"]
 
-[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://scenes/player.tscn" id="2_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://scenes/camera_2d.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://q7uddcbmnklw" path="res://scenes/obstacle_box.tscn" id="4_jjvhh"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://q7uddcbmnklw" path="res://Scenes/obstacle_box.tscn" id="4_jjvhh"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,22 +23,6 @@ scale = Vector2(26.0094, 13.7616)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.515867, 0.515867, 0.515867, 1)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 75.4821
-offset_top = 62.8099
-offset_right = 376.482
-offset_bottom = 157.81
-scale = Vector2(0.378431, 0.378431)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.509804)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 11
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("1_jjgbg")
-theme_override_font_sizes/font_size = 59
-text = "hi team :>"
 
 [node name="Controls" type="Label" parent="."]
 offset_left = 75.1058
@@ -66,6 +50,7 @@ player_id = 2
 
 [node name="Camera2D" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(576, 324)
+zoom = Vector2(1.09, 1.09)
 
 [node name="Obstacles" type="Node" parent="."]
 
