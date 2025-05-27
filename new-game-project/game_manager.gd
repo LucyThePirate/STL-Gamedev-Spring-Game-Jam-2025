@@ -33,7 +33,6 @@ func setup_game():
 func load_map():
 	var current_map = map.instantiate()
 	get_tree().current_scene.add_child(current_map)
-	print(num_of_rounds)
 
 
 func start_round():

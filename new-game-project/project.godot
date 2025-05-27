@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spring Game Jam 2025"
-run/main_scene="uid://ds4qmjjl75eu3"
+run/main_scene="uid://b0p5grjmpkj1u"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

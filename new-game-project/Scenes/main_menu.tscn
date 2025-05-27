@@ -183,7 +183,7 @@ texture_pressed = SubResource("GradientTexture2D_opfnp")
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level2"]
 layout_mode = 2
-text = "Hospital Helipad"
+text = "N/A"
 
 [node name="Level3" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -197,7 +197,7 @@ texture_pressed = SubResource("GradientTexture2D_yhxw7")
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level3"]
 layout_mode = 2
-text = "Elevator"
+text = "N/A"
 
 [node name="RoundAmount" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
 layout_mode = 2

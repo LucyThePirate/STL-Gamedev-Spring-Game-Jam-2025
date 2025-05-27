@@ -67,7 +67,6 @@ func _on_controls_button_pressed() -> void:
 
 
 func _on_controls_back_button_pressed() -> void:
-	print("Anything?")
 	controls.hide()
 	main_menu.show()
 
