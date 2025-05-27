@@ -25,10 +25,10 @@ size_flags_vertical = 4
 color = Color(0.515867, 0.515867, 0.515867, 1)
 
 [node name="Controls" type="Label" parent="."]
-offset_left = 75.1058
-offset_top = 103.828
-offset_right = 376.106
-offset_bottom = 198.828
+offset_left = 82.0
+offset_top = 75.0
+offset_right = 615.0
+offset_bottom = 170.0
 scale = Vector2(0.378431, 0.378431)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.509804)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -39,7 +39,8 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("1_jjgbg")
 theme_override_font_sizes/font_size = 36
 text = "Player 1: WASD to move, V to shoot
-Player 2: IJKL to move, / to shoot"
+Player 2: IJKL to move, / to shoot
+"
 
 [node name="Player 1" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(138, 183)
