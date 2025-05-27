@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
+signal damaged(health_left)
+signal died
+
 @export var player_id = 1
 
 @export var bullet_scene: PackedScene
@@ -11,8 +14,13 @@ class_name Player
 @onready var shot_timer: Timer = $ShotTimer
 @onready var visual: Node2D = $PlayerVisual
 
+var max_health = 100.0
+var health = max_health
+
 const SPEED = 230.0
 const ACCEL = 20.0
+enum States { IDLE, DEAD }
+var state = States.IDLE
 
 var input: Vector2
 var move_direction: Vector2 = Vector2.ZERO
@@ -48,20 +56,21 @@ func get_input():
 		- Input.get_action_strength("Move P%s Up" % [player_id])
 	)
 	move_direction = input.normalized()
-	
+
 	return input.normalized()
 
 
 func _process(delta: float) -> void:
+	if state == States.DEAD:
+		return
+
 	var playerInput = get_input()
-
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
-
 	move_and_slide()
 
 
 func shoot():
-	if not is_shot_cooling:
+	if not is_shot_cooling and state == States.IDLE:
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
@@ -72,3 +81,14 @@ func shoot():
 
 func _on_shot_timer_timeout() -> void:
 	is_shot_cooling = false
+
+
+func get_hit(damage):
+	if state == States.DEAD:
+		return
+	health -= damage
+	if health > 0:
+		damaged.emit(health)
+	else:
+		state = States.DEAD
+		died.emit()

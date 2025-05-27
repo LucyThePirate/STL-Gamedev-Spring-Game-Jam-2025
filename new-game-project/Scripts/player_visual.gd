@@ -10,13 +10,13 @@ var is_visual_flipped: bool = false
 
 func initialize(player: Player):
 	player_parent = player
+	# Swap texture to bluejay if player 2
 	if player_parent.player_id == 2:
 		for child in find_children_in_group(self, "PolygonTexture", true):
 			child.texture = player_2_texture
-
-
-func _ready() -> void:
-	pass
+	# Connect with player's signals for damage/death animation
+	player_parent.damaged.connect(_on_player_damaged)
+	player_parent.died.connect(_on_player_died)
 
 
 func _process(delta: float) -> void:
@@ -39,6 +39,20 @@ func _process(delta: float) -> void:
 	else:
 		animation_tree.set("parameters/RunSpeed/scale", 0.0)
 		animation_tree.set("parameters/Run/add_amount", 0.0)
+
+
+func _on_player_damaged(health_remaining):
+	print("hit! Health left:", health_remaining)
+	animation_tree.set("parameters/Damaged/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func _on_player_died():
+	print("died!")
+	animation_tree.set("parameters/Die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func _pause_animations():
+	animation_tree.set("parameters/DieTimeScale/scale", 0.0)
 
 
 # Credit to this function goes to tknockaert from: https://forum.godotengine.org/t/is-there-a-way-to-get-any-offspring-that-belongs-in-a-certain-group-directly/14265/4
