@@ -33,8 +33,9 @@ func _process(delta: float) -> void:
 
 	# Running
 	if player_parent.velocity.length() > 0.1:
-		animation_tree.set("parameters/RunSpeed/scale", 1.0)
-		animation_tree.set("parameters/Run/add_amount", 1.0)
+		var speed = player_parent.velocity.length() / player_parent.SPEED
+		animation_tree.set("parameters/RunSpeed/scale", speed)
+		animation_tree.set("parameters/Run/add_amount", speed)
 	else:
 		animation_tree.set("parameters/RunSpeed/scale", 0.0)
 		animation_tree.set("parameters/Run/add_amount", 0.0)

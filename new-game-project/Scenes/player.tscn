@@ -28,7 +28,7 @@ shape = SubResource("CircleShape2D_6ff1n")
 wait_time = 0.1
 
 [node name="PlayerVisual" parent="." instance=ExtResource("4_vgqql")]
-position = Vector2(2, -12)
+position = Vector2(2, -4)
 scale = Vector2(0.100338, 0.100338)
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
