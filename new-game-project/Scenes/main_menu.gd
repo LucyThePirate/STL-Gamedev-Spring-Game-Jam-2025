@@ -2,14 +2,19 @@ extends Control
 
 @export var ls_buttons: Resource
 @export var first_level: PackedScene
+@export var game_manager: PackedScene
 
 @onready var main_menu: Control = $MainMenu
 @onready var level_select: Control = $LevelSelect
 @onready var controls: Control = $Controls
 @onready
 var level_1_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level1/Level1Button
+@onready
+var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector
 
-var selected_level
+var selected_map
+var selected_round_length: int = 60
+var selected_num_of_rounds: int = 3
 
 
 func _process(delta: float) -> void:
@@ -21,6 +26,11 @@ func _ready() -> void:
 	level_select.hide()
 	controls.hide()
 	level_1_button.set_meta("level_path", first_level)
+	round_length_selector.set_item_metadata(0, 10)
+	round_length_selector.set_item_metadata(1, 30)
+	round_length_selector.set_item_metadata(2, 60)
+	round_length_selector.set_item_metadata(3, 120)
+	round_length_selector.set_item_metadata(4, 300)
 	#level 2 meta
 	#level 3 meta
 
@@ -37,12 +47,15 @@ func _on_level_select_back_button_pressed() -> void:
 
 
 func handle_level_selection():
-	selected_level = ls_buttons.get_pressed_button()
+	selected_map = ls_buttons.get_pressed_button()
 
 
 func _on_start_button_pressed() -> void:
-	if selected_level:
-		get_tree().change_scene_to_packed(selected_level.get_meta("level_path"))
+	if selected_map:
+		Globals.selected_map = selected_map.get_meta("level_path")
+		Globals.selected_round_length = selected_round_length
+		Globals.selected_num_of_rounds = selected_num_of_rounds
+		get_tree().change_scene_to_packed(game_manager)
 	else:
 		pass
 
@@ -62,3 +75,11 @@ func _on_controls_back_button_pressed() -> void:
 #QUIT
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_round_length_selector_item_selected(index: int) -> void:
+	selected_round_length = index
+
+
+func _on_spin_box_value_changed(value: float) -> void:
+	selected_num_of_rounds = value

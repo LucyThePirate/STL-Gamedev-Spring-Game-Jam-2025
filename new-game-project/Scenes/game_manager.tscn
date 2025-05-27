@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3k43mtbqb03q"]
+
+[ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://game_manager.gd" id="1_oj352"]
+[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_oj352")
+
+[node name="Player 1" parent="." instance=ExtResource("2_e5fcp")]
+
+[node name="Player 2" parent="." instance=ExtResource("2_e5fcp")]
+
+[node name="Camera2D" parent="." instance=ExtResource("3_sq00h")]
+position = Vector2(576, 324)
+zoom = Vector2(1.09, 1.09)
+
+[node name="RoundTimer" type="Timer" parent="."]
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
