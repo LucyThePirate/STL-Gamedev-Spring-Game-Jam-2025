@@ -13,6 +13,9 @@ extends Node2D
 @onready var player_1: Player = $"Player 1"
 @onready var player_2: Player = $"Player 2"
 
+@onready var replayer: Node2D = $Replayer
+
+
 var waiting_for_map: bool = true
 var round_length: int
 var num_of_rounds: int
@@ -22,7 +25,7 @@ var player2_spawn_pos: Vector2
 
 var is_counting_down: bool = false
 var is_round_running: bool = true
-
+		
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
@@ -73,13 +76,19 @@ func setup_round_timer():
 func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
+	
+
+	
 
 
 #END ROUND
 
 
 func end_round():
-	pass
+	#stop recording and playback
+	replayer.recording = false
+	replayer.record()
+	replayer.play()
 
 
 func end_game():
@@ -90,3 +99,9 @@ func _on_countdown_timer_timeout() -> void:
 	initial_countdown_label.hide()
 	round_timer.start()
 	is_round_running = true
+		#begin recording
+	replayer.recording = true
+	replayer.record()
+
+func _on_round_timer_timeout() -> void:
+	end_round()

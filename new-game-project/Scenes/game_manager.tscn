@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3k43mtbqb03q"]
+[gd_scene load_steps=5 format=3 uid="uid://3k43mtbqb03q"]
 
 [ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
+[ext_resource type="PackedScene" uid="uid://ds5l4vmy1gxlv" path="res://Scenes/replayer.tscn" id="4_mmt5l"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
@@ -12,6 +13,7 @@ position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
 
 [node name="RoundTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -63,6 +65,9 @@ vertical_alignment = 1
 [node name="Player 2" parent="." instance=ExtResource("2_e5fcp")]
 player_id = 2
 
+[node name="Replayer" parent="." node_paths=PackedStringArray("recorded_objects") instance=ExtResource("4_mmt5l")]
+recorded_objects = [NodePath("../Player 1"), NodePath("../Player 2")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
@@ -80,4 +85,5 @@ theme_override_font_sizes/font_size = 40
 text = "5"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
