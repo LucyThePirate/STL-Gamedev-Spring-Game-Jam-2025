@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds4qmjjl75eu3"]
+[gd_scene load_steps=6 format=3 uid="uid://ds4qmjjl75eu3"]
 
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://q7uddcbmnklw" path="res://Scenes/obstacle_box.tscn" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://bd33rudvrpluj" path="res://Scripts/camera_zoom.gd" id="4_kry3j"]
 
 [node name="Main" type="Node2D"]
 
@@ -52,6 +53,9 @@ player_id = 2
 [node name="Camera2D" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
+script = ExtResource("4_kry3j")
+object1 = NodePath("../Player 1")
+object2 = NodePath("../Player 2")
 
 [node name="Obstacles" type="Node" parent="."]
 
