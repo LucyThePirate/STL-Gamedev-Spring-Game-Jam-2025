@@ -13,8 +13,8 @@ func _process(delta) -> void:
 	self.global_position = (player1.global_position + player2.global_position) * 0.5
 
 	var zoom_factor1 = abs(player2.global_position.x-player1.global_position.x)/(1152-100)
-	var zoom_factor2 = abs(player2.global_position.y-player1.global_position.y)/(648-10)
+	var zoom_factor2 = abs(player2.global_position.y-player1.global_position.y)/(648-100)
 	var zoom_factor = max(min((2 - zoom_factor1), (2 - zoom_factor2)), 1)
-	print(zoom_factor)
+	#print(zoom_factor)
 
 	self.zoom = Vector2(zoom_factor, zoom_factor)
