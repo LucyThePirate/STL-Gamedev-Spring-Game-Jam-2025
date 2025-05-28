@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://3k43mtbqb03q"]
+[gd_scene load_steps=6 format=3 uid="uid://3k43mtbqb03q"]
 
 [ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
-[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="3_fgdfb"]
+[ext_resource type="Script" uid="uid://bd33rudvrpluj" path="res://Scripts/camera_zoom.gd" id="3_fgdfb"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_fgdfb"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
 player_scene = ExtResource("2_e5fcp")
 
-[node name="Camera2D" parent="." instance=ExtResource("3_sq00h")]
+[node name="Camera2D" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("3_sq00h")]
 position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
+script = ExtResource("3_fgdfb")
+gameManager = NodePath("..")
 
 [node name="RoundTimer" type="Timer" parent="."]
 one_shot = true
@@ -53,7 +56,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 21
 text = "Round: "
 horizontal_alignment = 1
@@ -70,7 +73,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 21
 text = "Time Left: "
 horizontal_alignment = 1
@@ -94,7 +97,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 21
 text = "This is where the round results will go, like \"Cardinals win!\""
 horizontal_alignment = 1
