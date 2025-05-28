@@ -10,11 +10,10 @@ extends Node2D
 @onready var round_number_label: Label = $UI/HBoxContainer/RoundNumberLabel
 @onready var time_left_label: Label = $UI/HBoxContainer/TimeLeftLabel
 
-@onready var player_1: Player = $"Player 1"
-@onready var player_2: Player = $"Player 2"
+@onready var end_of_round_timer: Timer = $EndOfRoundTimer
+@onready var end_of_round_results: Label = $CanvasLayer/CenterContainer/RoundResults
 
-@onready var replayer: Node2D = $Replayer
-
+@export var player_scene: PackedScene
 
 var waiting_for_map: bool = true
 var round_length: int
@@ -22,11 +21,12 @@ var num_of_rounds: int
 var current_round: int
 var player1_spawn_pos: Vector2
 var player2_spawn_pos: Vector2
-var ghost_count: Array
 
 var is_counting_down: bool = false
 var is_round_running: bool = true
-		
+
+var dead_players := []
+
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 
 	initial_countdown_label.text = String.num(initial_countdown_timer.time_left, 0)
 	time_left_label.text = "Time remaining: " + String.num(round_timer.time_left, 0)
-	round_number_label.text = "Round: " + String.num(num_of_rounds, 0)
+	round_number_label.text = "Round: " + String.num(current_round, 0)
 
 
 #LOAD IN ASSETS
@@ -61,21 +61,21 @@ func load_map():
 	get_tree().current_scene.add_child(current_map)
 	player1_spawn_pos = current_map.get_node("Player1Spawn").global_position
 	player2_spawn_pos = current_map.get_node("Player2Spawn").global_position
-	spawn_players()
-	count_ghosts()
 
 
 func spawn_players():
+	var player_1 = player_scene.instantiate() as Player
+	var player_2 = player_scene.instantiate() as Player
+	player_1.name = "P1 R" + str(current_round)
+	player_2.name = "P2 R" + str(current_round)
+	player_2.player_id = 2
+	player_1.died.connect(_on_player_died)
+	player_2.died.connect(_on_player_died)
+	add_child(player_1)
+	add_child(player_2)
 	player_1.global_position = player1_spawn_pos
 	player_2.global_position = player2_spawn_pos
-	
-func count_ghosts():
-	ghost_count.clear()
-	for n in self.get_children():
-		if n is Player:
-			ghost_count.append(n)
-	print(ghost_count.size())
-	
+
 
 #SETUP TIMERS
 func setup_round_timer():
@@ -85,32 +85,53 @@ func setup_round_timer():
 func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
-	
-
-	
+	spawn_players()
 
 
 #END ROUND
-
-
 func end_round():
-	#stop recording and playback
-	replayer.recording = false
-	replayer.record()
-	replayer.play()
+	if is_round_running:
+		is_round_running = false
+		if dead_players.size() == 0 or dead_players.size() == 2:
+			end_of_round_results.text = "A tie!"
+		elif 1 in dead_players:
+			end_of_round_results.text = "Blue Jays Win!"
+		elif 2 in dead_players:
+			end_of_round_results.text = "Cardinals Win!"
+		else:
+			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
+		# turn previous round's players into ghosts
+		get_tree().call_group("player", "end_round")
+		current_round += 1
+		if current_round > num_of_rounds:
+			end_game()
+		else:
+			end_of_round_timer.start()
+			end_of_round_results.show()
 
 
 func end_game():
-	pass
+	rotation = PI
+
+
+func _on_player_died(player_id):
+	round_timer.stop()
+	dead_players.append(player_id)
+	end_round()
 
 
 func _on_countdown_timer_timeout() -> void:
 	initial_countdown_label.hide()
+	end_of_round_results.hide()
 	round_timer.start()
+	dead_players = []
 	is_round_running = true
-		#begin recording
-	replayer.recording = true
-	replayer.record()
+	get_tree().call_group("player", "start_round")
+
 
 func _on_round_timer_timeout() -> void:
 	end_round()
+
+
+func _on_end_of_round_timer_timeout() -> void:
+	start_countdown()
