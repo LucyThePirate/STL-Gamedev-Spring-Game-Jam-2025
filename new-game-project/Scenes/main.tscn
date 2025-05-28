@@ -54,8 +54,6 @@ player_id = 2
 position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
 script = ExtResource("4_kry3j")
-object1 = NodePath("../Player 1")
-object2 = NodePath("../Player 2")
 
 [node name="Obstacles" type="Node" parent="."]
 

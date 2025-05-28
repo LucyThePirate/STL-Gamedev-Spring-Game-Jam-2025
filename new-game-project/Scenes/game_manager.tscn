@@ -9,12 +9,11 @@
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
 
-[node name="Camera2D" parent="." instance=ExtResource("3_sq00h")]
+[node name="Camera2D" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("3_sq00h")]
 position = Vector2(576, 324)
 zoom = Vector2(1.09, 1.09)
 script = ExtResource("3_fgdfb")
-object1 = NodePath("../Player 1")
-object2 = NodePath("../Player 2")
+gameManager = NodePath("..")
 
 [node name="RoundTimer" type="Timer" parent="."]
 one_shot = true

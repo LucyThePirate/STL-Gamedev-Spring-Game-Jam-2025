@@ -22,6 +22,7 @@ var num_of_rounds: int
 var current_round: int
 var player1_spawn_pos: Vector2
 var player2_spawn_pos: Vector2
+var ghost_count: Array
 
 var is_counting_down: bool = false
 var is_round_running: bool = true
@@ -61,12 +62,20 @@ func load_map():
 	player1_spawn_pos = current_map.get_node("Player1Spawn").global_position
 	player2_spawn_pos = current_map.get_node("Player2Spawn").global_position
 	spawn_players()
+	count_ghosts()
 
 
 func spawn_players():
 	player_1.global_position = player1_spawn_pos
 	player_2.global_position = player2_spawn_pos
-
+	
+func count_ghosts():
+	ghost_count.clear()
+	for n in self.get_children():
+		if n is Player:
+			ghost_count.append(n)
+	print(ghost_count.size())
+	
 
 #SETUP TIMERS
 func setup_round_timer():
