@@ -51,6 +51,11 @@ func _on_player_died():
 	animation_tree.set("parameters/Die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
+func make_me_spooky():
+	for child in find_children_in_group(self, "PolygonTexture", true):
+		child.self_modulate = Color8(255, 255, 255, 114)
+
+
 func _pause_animations():
 	animation_tree.set("parameters/DieTimeScale/scale", 0.0)
 

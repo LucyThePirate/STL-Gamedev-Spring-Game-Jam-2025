@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlaljyl5f6dcs"]
+[gd_scene load_steps=7 format=3 uid="uid://dlaljyl5f6dcs"]
 
 [ext_resource type="Script" uid="uid://c8c125djpobfs" path="res://Scripts/player.gd" id="1_bgcco"]
 [ext_resource type="PackedScene" uid="uid://cfqn3f82e5yoj" path="res://Scenes/bullet.tscn" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c26uonwkmnyhm" path="res://icon.svg" id="2_7lbki"]
 [ext_resource type="PackedScene" uid="uid://c8kh3conableh" path="res://Scenes/player_visual.tscn" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://ds5l4vmy1gxlv" path="res://Scenes/replayer.tscn" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ff1n"]
 
@@ -30,5 +31,8 @@ wait_time = 0.1
 [node name="PlayerVisual" parent="." instance=ExtResource("4_vgqql")]
 position = Vector2(2, -4)
 scale = Vector2(0.100338, 0.100338)
+
+[node name="Replayer" parent="." node_paths=PackedStringArray("recorded_objects") instance=ExtResource("5_fkybt")]
+recorded_objects = [NodePath("..")]
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

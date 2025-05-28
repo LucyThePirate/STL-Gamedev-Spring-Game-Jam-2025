@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="3_fgdfb"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
-[ext_resource type="PackedScene" uid="uid://ds5l4vmy1gxlv" path="res://Scenes/replayer.tscn" id="4_mmt5l"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
+player_scene = ExtResource("2_e5fcp")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_sq00h")]
 position = Vector2(576, 324)
@@ -17,6 +18,10 @@ one_shot = true
 
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[node name="EndOfRoundTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
@@ -43,7 +48,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="RoundNumberLabel" type="Label" parent="UI/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_font_sizes/font_size = 21
 text = "Round: "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -55,18 +66,15 @@ size_flags_stretch_ratio = 7.71
 
 [node name="TimeLeftLabel" type="Label" parent="UI/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_font_sizes/font_size = 21
 text = "Time Left: "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Player 1" parent="." instance=ExtResource("2_e5fcp")]
-
-[node name="Player 2" parent="." instance=ExtResource("2_e5fcp")]
-player_id = 2
-
-[node name="Replayer" parent="." node_paths=PackedStringArray("recorded_objects") instance=ExtResource("4_mmt5l")]
-recorded_objects = [NodePath("../Player 1"), NodePath("../Player 2")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -79,6 +87,19 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="RoundResults" type="Label" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fgdfb")
+theme_override_font_sizes/font_size = 21
+text = "This is where the round results will go, like \"Cardinals win!\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CountdownLabel" type="Label" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -87,3 +108,4 @@ text = "5"
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="EndOfRoundTimer" to="." method="_on_end_of_round_timer_timeout"]
