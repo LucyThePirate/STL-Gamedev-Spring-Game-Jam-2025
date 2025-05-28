@@ -25,6 +25,8 @@ var player2_spawn_pos: Vector2
 var is_counting_down: bool = false
 var is_round_running: bool = true
 
+var dead_players := []
+
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
@@ -62,11 +64,13 @@ func load_map():
 
 
 func spawn_players():
-	var player_1 = player_scene.instantiate()
-	var player_2 = player_scene.instantiate()
+	var player_1 = player_scene.instantiate() as Player
+	var player_2 = player_scene.instantiate() as Player
 	player_1.name = "P1 R" + str(current_round)
 	player_2.name = "P2 R" + str(current_round)
 	player_2.player_id = 2
+	player_1.died.connect(_on_player_died)
+	player_2.died.connect(_on_player_died)
 	add_child(player_1)
 	add_child(player_2)
 	player_1.global_position = player1_spawn_pos
@@ -85,27 +89,42 @@ func start_countdown():
 
 
 #END ROUND
-
-
 func end_round():
-	# turn previous round's players into ghosts
-	get_tree().call_group("player", "end_round")
-	current_round += 1
-	if current_round > num_of_rounds:
-		end_game()
-	else:
-		end_of_round_timer.start()
-		end_of_round_results.show()
+	if is_round_running:
+		is_round_running = false
+		if dead_players.size() == 0 or dead_players.size() == 2:
+			end_of_round_results.text = "A tie!"
+		elif 1 in dead_players:
+			end_of_round_results.text = "Blue Jays Win!"
+		elif 2 in dead_players:
+			end_of_round_results.text = "Cardinals Win!"
+		else:
+			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
+		# turn previous round's players into ghosts
+		get_tree().call_group("player", "end_round")
+		current_round += 1
+		if current_round > num_of_rounds:
+			end_game()
+		else:
+			end_of_round_timer.start()
+			end_of_round_results.show()
 
 
 func end_game():
 	rotation = PI
 
 
+func _on_player_died(player_id):
+	round_timer.stop()
+	dead_players.append(player_id)
+	end_round()
+
+
 func _on_countdown_timer_timeout() -> void:
 	initial_countdown_label.hide()
 	end_of_round_results.hide()
 	round_timer.start()
+	dead_players = []
 	is_round_running = true
 	get_tree().call_group("player", "start_round")
 

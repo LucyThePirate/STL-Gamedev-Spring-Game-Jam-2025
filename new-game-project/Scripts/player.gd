@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal damaged(health_left)
-signal died
+signal died(player_id)
 
 @export var player_id = 1
 
@@ -37,16 +37,24 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !is_shooting and move_direction != Vector2.ZERO:
-		facing_direction = move_direction.normalized()
-		$Sprite2D.rotation = facing_direction.angle()
+	if state == States.IDLE or state == States.ROUND_START:
+		if !is_shooting and move_direction != Vector2.ZERO:
+			facing_direction = move_direction.normalized()
+			$Sprite2D.rotation = facing_direction.angle()
 
-	if Input.is_action_pressed("Shoot P%s" % [player_id]):
-		if !is_shooting:
-			is_shooting = true
-		shoot()
-	else:
-		is_shooting = false
+		if Input.is_action_pressed("Shoot P%s" % [player_id]):
+			if !is_shooting:
+				is_shooting = true
+			shoot()
+		else:
+			is_shooting = false
+
+		var playerInput = get_input()
+		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+		move_and_slide()
+	elif state == States.GHOST:
+		if is_shooting:
+			shoot()
 
 
 func get_input():
@@ -63,15 +71,17 @@ func get_input():
 	return input.normalized()
 
 
-func _process(delta: float) -> void:
-	if state == States.IDLE or state == States.ROUND_START:
-		var playerInput = get_input()
-		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
-		move_and_slide()
+func get_facing_direction() -> Vector2:
+	return facing_direction
+
+
+func set_facing_direction(direction: Vector2):
+	facing_direction = direction
+	$Sprite2D.rotation = direction.angle()
 
 
 func shoot():
-	if not is_shot_cooling and state == States.IDLE:
+	if not is_shot_cooling and state != States.DEAD:
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
@@ -92,7 +102,7 @@ func get_hit(damage):
 		damaged.emit(health)
 	else:
 		state = States.DEAD
-		died.emit()
+		died.emit(player_id)
 
 
 func start_round():
@@ -118,3 +128,4 @@ func end_round():
 		# stop recording and playback
 		replayer.recording = false
 		replayer.record()
+		is_shooting = false

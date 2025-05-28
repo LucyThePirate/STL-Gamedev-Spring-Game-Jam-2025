@@ -22,7 +22,12 @@ func record():
 		if ro == 0:
 			recording_data[frames] = {}
 		var cur_obj = recorded_objects[ro]
-		recording_data[frames][cur_obj.name] = {"position": cur_obj.global_position}
+		recording_data[frames][cur_obj.name] = {
+			"position": cur_obj.global_position,
+			"rotation": cur_obj.get_facing_direction(),
+			"velocity": cur_obj.velocity,
+			"is_shooting": cur_obj.is_shooting
+		}
 	frames += 1
 
 	delay.start()
@@ -34,12 +39,19 @@ func play():
 		for ro in recorded_objects:  #NOT calling the size of the the array, but the objects themselves
 			if f == 0:
 				ro.global_position = recording_data[f][ro.name]["position"]
+				ro.set_facing_direction(recording_data[f][ro.name]["rotation"])
+				ro.velocity = recording_data[f][ro.name]["velocity"]
+				ro.is_shooting = recording_data[f][ro.name]["is_shooting"]
 				#print(recording_data)
 			else:  #if not initial frame, transition smoothly to intended position
 				var tween = create_tween()
 				tween.tween_property(
 					ro, "global_position", recording_data[f][ro.name]["position"], 0.1
 				)
+				ro.set_facing_direction(recording_data[f][ro.name]["rotation"])
+				ro.velocity = recording_data[f][ro.name]["velocity"]
+				ro.is_shooting = recording_data[f][ro.name]["is_shooting"]
+				#ro.velocity = ro.global_position - recording_data[f][ro.name]["position"]
 		await get_tree().create_timer(0.1).timeout  #let tween finish before moving on to next frame
 
 	#frames = 0
