@@ -1844,7 +1844,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999827, 0.999827)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513

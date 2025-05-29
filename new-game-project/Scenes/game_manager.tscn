@@ -105,6 +105,13 @@ vertical_alignment = 1
 
 [node name="CountdownLabel" type="Label" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 40
 text = "5"
 

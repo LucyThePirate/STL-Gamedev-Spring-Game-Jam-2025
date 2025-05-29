@@ -18,7 +18,7 @@ extends Node2D
 var waiting_for_map: bool = true
 var round_length: int
 var num_of_rounds: int
-var current_round: int
+var current_round: int = 1
 var player1_spawn_pos: Vector2
 var player2_spawn_pos: Vector2
 var ghost_count: Array
@@ -62,14 +62,14 @@ func load_map():
 	get_tree().current_scene.add_child(current_map)
 	player1_spawn_pos = current_map.get_node("Player1Spawn").global_position
 	player2_spawn_pos = current_map.get_node("Player2Spawn").global_position
-	
+
+
 func count_ghosts():
 	ghost_count.clear()
 	for n in self.get_children():
 		if n is Player:
 			ghost_count.append(n)
-	print(ghost_count.size())
-
+	#print(ghost_count.size())
 
 
 func spawn_players():
@@ -95,7 +95,7 @@ func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
 	spawn_players()
-	count_ghosts()
+	#count_ghosts()
 
 
 #END ROUND
