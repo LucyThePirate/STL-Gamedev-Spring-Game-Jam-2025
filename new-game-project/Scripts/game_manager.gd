@@ -11,7 +11,7 @@ extends Node2D
 @onready var time_left_label: Label = $UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
-@onready var end_of_round_results: Label = $CanvasLayer/CenterContainer/RoundResults
+@onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/RoundResults
 
 @export var player_scene: PackedScene
 
@@ -27,6 +27,7 @@ var is_counting_down: bool = false
 var is_round_running: bool = true
 
 var dead_players := []
+var scores := {"Cardinals": 0, "Blue Jays": 0}
 
 
 func _ready() -> void:
@@ -106,22 +107,30 @@ func end_round():
 			end_of_round_results.text = "A tie!"
 		elif 1 in dead_players:
 			end_of_round_results.text = "Blue Jays Win!"
+			scores["Blue Jays"] += 1
 		elif 2 in dead_players:
 			end_of_round_results.text = "Cardinals Win!"
+			scores["Cardinals"] += 1
 		else:
 			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
 		# turn previous round's players into ghosts
 		get_tree().call_group("player", "end_round")
 		current_round += 1
+		end_of_round_results.show()
 		if current_round > num_of_rounds:
 			end_game()
 		else:
 			end_of_round_timer.start()
-			end_of_round_results.show()
 
 
 func end_game():
-	rotation = PI
+	round_number_label.hide()
+	time_left_label.hide()
+	end_of_round_results.text = (
+		"[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]And that's game![/rainbow][/wave]\nScores:\n[color=CRIMSON]Cardinals: %s[/color]\n[color=ROYAL_BLUE]Blue Jays: %s[/color]"
+		% [scores["Cardinals"], scores["Blue Jays"]]
+	)
+	end_of_round_results.show()
 
 
 func _on_player_died(player_id):

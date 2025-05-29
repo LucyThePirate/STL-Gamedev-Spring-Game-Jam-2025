@@ -53,7 +53,10 @@ func play():
 				ro.is_shooting = recording_data[f][ro.name]["is_shooting"]
 				#ro.velocity = ro.global_position - recording_data[f][ro.name]["position"]
 		await get_tree().create_timer(0.1).timeout  #let tween finish before moving on to next frame
-
+	for ro in recorded_objects:
+		# Turn off shooting/movement at end of recording
+		ro.is_shooting = false
+		ro.velocity = Vector2.ZERO
 	#frames = 0
 	#THIS RESETS THE RECORDING DATA - need some way to save it for our game
 	#recording_data = {}

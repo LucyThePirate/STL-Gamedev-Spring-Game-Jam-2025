@@ -46,8 +46,8 @@ func _on_player_damaged(health_remaining):
 	animation_tree.set("parameters/Damaged/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
-func _on_player_died():
-	print("died!")
+func _on_player_died(player_id):
+	print(player_id, "died!")
 	animation_tree.set("parameters/Die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 

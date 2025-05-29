@@ -81,7 +81,7 @@ func set_facing_direction(direction: Vector2):
 
 
 func shoot():
-	if not is_shot_cooling and state != States.DEAD:
+	if not is_shot_cooling and state in [States.IDLE, States.GHOST]:
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
@@ -124,7 +124,7 @@ func end_round():
 		state = States.GHOST
 		visual.make_me_spooky()
 		add_to_group("ghost")
-		$CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)
 		# stop recording and playback
 		replayer.recording = false
 		replayer.record()
