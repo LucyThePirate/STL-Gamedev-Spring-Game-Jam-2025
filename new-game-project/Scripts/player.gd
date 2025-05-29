@@ -85,8 +85,7 @@ func shoot():
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
-		bullet.global_position = bullet_spawn_pos.global_position
-		bullet.setup(facing_direction)
+		bullet.fire(self, bullet_spawn_pos.global_position)
 		get_tree().current_scene.add_child(bullet)
 
 

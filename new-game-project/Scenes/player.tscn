@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlaljyl5f6dcs"]
 
 [ext_resource type="Script" uid="uid://c8c125djpobfs" path="res://Scripts/player.gd" id="1_bgcco"]
-[ext_resource type="PackedScene" uid="uid://cfqn3f82e5yoj" path="res://Scenes/bullet.tscn" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c26uonwkmnyhm" path="res://icon.svg" id="2_7lbki"]
+[ext_resource type="PackedScene" uid="uid://dsqnkao5geyne" path="res://Scenes/laser.tscn" id="2_fkybt"]
 [ext_resource type="PackedScene" uid="uid://c8kh3conableh" path="res://Scenes/player_visual.tscn" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://ds5l4vmy1gxlv" path="res://Scenes/replayer.tscn" id="5_fkybt"]
 
@@ -10,7 +10,7 @@
 
 [node name="Player 1" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_bgcco")
-bullet_scene = ExtResource("2_6t5aa")
+bullet_scene = ExtResource("2_fkybt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
