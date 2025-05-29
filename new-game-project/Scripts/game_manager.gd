@@ -7,8 +7,8 @@ extends Node2D
 @onready var initial_countdown_timer: Timer = $CountdownTimer
 @onready var initial_countdown_label: Label = $CanvasLayer/CenterContainer/CountdownLabel
 
-@onready var round_number_label: Label = $UI/HBoxContainer/RoundNumberLabel
-@onready var time_left_label: Label = $UI/HBoxContainer/TimeLeftLabel
+@onready var round_number_label: Label = $CanvasLayer/UI/HBoxContainer/RoundNumberLabel
+@onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
 @onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/RoundResults
@@ -96,7 +96,7 @@ func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
 	spawn_players()
-	#count_ghosts()
+	count_ghosts()
 
 
 #END ROUND
