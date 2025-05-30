@@ -1,10 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://3k43mtbqb03q"]
+[gd_scene load_steps=17 format=3 uid="uid://3k43mtbqb03q"]
 
 [ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
 [ext_resource type="Script" uid="uid://bd33rudvrpluj" path="res://Scripts/camera_zoom.gd" id="3_fgdfb"]
 [ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_fgdfb"]
+[ext_resource type="AudioStream" uid="uid://cl2ly08hsbguv" path="res://Assets/SFX/Announcer_Countdown_01.wav" id="6_71d4j"]
+[ext_resource type="AudioStream" uid="uid://xmfoqxu10qkt" path="res://Assets/SFX/Announcer_RedKills_01.wav" id="6_e6ru4"]
+[ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="7_efn8y"]
+[ext_resource type="AudioStream" uid="uid://b210kqrnf8ex5" path="res://Assets/SFX/Announcer_Kill_01.wav" id="7_sm5re"]
+[ext_resource type="AudioStream" uid="uid://sbosv8cbcfj4" path="res://Assets/SFX/Announcer_Kill_02.wav" id="8_hjqsb"]
+[ext_resource type="AudioStream" uid="uid://d3nn1bv5udngl" path="res://Assets/SFX/Announcer_Kill_03.wav" id="9_y8n5u"]
+[ext_resource type="AudioStream" uid="uid://h2tnn63h4uw5" path="res://Assets/SFX/Announcer_Tie_01.wav" id="12_5tjy5"]
+[ext_resource type="AudioStream" uid="uid://cu5pkxhwd5svg" path="res://Assets/SFX/Announcer_BlueKills_01.wav" id="13_iu5vk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_88ybb"]
+streams_count = 4
+stream_0/stream = ExtResource("6_e6ru4")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("7_sm5re")
+stream_2/stream = ExtResource("8_hjqsb")
+stream_3/stream = ExtResource("9_y8n5u")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i4mau"]
+streams_count = 2
+stream_0/stream = ExtResource("6_71d4j")
+stream_1/stream = ExtResource("7_efn8y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iav25"]
+streams_count = 4
+stream_0/stream = ExtResource("7_sm5re")
+stream_1/stream = ExtResource("8_hjqsb")
+stream_2/stream = ExtResource("9_y8n5u")
+stream_3/stream = ExtResource("13_iu5vk")
+stream_3/weight = 2.0
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_oj352")
@@ -118,6 +147,20 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 40
 text = "5"
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="AnnouncerRedKills" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_88ybb")
+
+[node name="AnnouncerCountdown" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_i4mau")
+
+[node name="AnnouncerTie" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_5tjy5")
+
+[node name="AnnouncerBlueKills" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_iav25")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
