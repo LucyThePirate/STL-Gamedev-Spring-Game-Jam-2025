@@ -12,7 +12,8 @@ extends Node2D
 @onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
-@onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
+@onready
+var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
 @onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
 
 @export var player_scene: PackedScene
@@ -98,6 +99,7 @@ func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
 	spawn_players()
+	get_tree().call_group("player", "start_countdown")
 	count_ghosts()
 
 
@@ -157,6 +159,7 @@ func _on_round_timer_timeout() -> void:
 
 func _on_end_of_round_timer_timeout() -> void:
 	start_countdown()
+
 
 func _on_new_game_button_pressed() -> void:
 	print("newgame loading")

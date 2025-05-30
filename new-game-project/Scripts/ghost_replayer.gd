@@ -33,6 +33,10 @@ func record():
 	delay.start()
 
 
+func get_start_position() -> Vector2:
+	return recording_data[0][recorded_objects[0].name]["position"]
+
+
 func play():
 	for f in frames:
 		#var tween = create_tween()

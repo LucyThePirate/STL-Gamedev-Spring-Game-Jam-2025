@@ -82,6 +82,9 @@ func set_facing_direction(direction: Vector2):
 
 func shoot():
 	if not is_shot_cooling and state in [States.IDLE, States.GHOST]:
+		if state == States.GHOST and visual.is_ghost_spawn_visible():
+			# Round hasn't started yet, don't let ghost player shoot
+			return
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
@@ -104,17 +107,25 @@ func get_hit(damage):
 		died.emit(player_id)
 
 
+func start_countdown():
+	if state == States.ROUND_START:
+		replayer.recording = true
+		replayer.record()
+	if state == States.GHOST:
+		#visual.set_ghost_spawn_position(replayer.get_start_position())
+		visual.set_ghost_spawn_visible(true)
+		replayer.play()
+
+
 func start_round():
 	# Called by game_manager when the countdown timer is up
 	if state == States.ROUND_START:
 		state = States.IDLE
 		# begin recording
-		replayer.recording = true
-		replayer.record()
 	if state == States.GHOST:
 		played_count += 1
 		#print(name, "Has played:", played_count)
-		replayer.play()
+		visual.set_ghost_spawn_visible(false)
 
 
 func end_round():

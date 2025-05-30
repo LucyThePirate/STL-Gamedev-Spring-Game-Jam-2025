@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var player_2_texture: Texture2D
+@export var player_2_ghost_spawn_texture: Texture2D
 
 var player_parent: Player
 var is_visual_flipped: bool = false
@@ -14,9 +15,27 @@ func initialize(player: Player):
 	if player_parent.player_id == 2:
 		for child in find_children_in_group(self, "PolygonTexture", true):
 			child.texture = player_2_texture
+		$GhostSpawn.texture = player_2_ghost_spawn_texture
 	# Connect with player's signals for damage/death animation
 	player_parent.damaged.connect(_on_player_damaged)
 	player_parent.died.connect(_on_player_died)
+
+
+func set_ghost_spawn_position(new_position: Vector2):
+	$GhostSpawn.show()
+	$GhostSpawn.global_position = new_position
+
+
+func set_ghost_spawn_visible(is_visible: bool):
+	$GhostSpawn.visible = is_visible
+	$GhostSpawnParticles.emitting = is_visible
+	$GhostSpawnAppearParticles.emitting = !is_visible
+	$Body.visible = !is_visible
+	$Wing.visible = !is_visible
+
+
+func is_ghost_spawn_visible() -> bool:
+	return $GhostSpawn.visible
 
 
 func _process(delta: float) -> void:
