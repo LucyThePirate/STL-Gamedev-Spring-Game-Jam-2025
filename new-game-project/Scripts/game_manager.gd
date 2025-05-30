@@ -2,6 +2,7 @@ class_name GameManager
 extends Node2D
 
 @export var map: PackedScene
+@export var main_menu: PackedScene
 @onready var round_timer: Timer = $RoundTimer
 
 @onready var initial_countdown_timer: Timer = $CountdownTimer
@@ -11,7 +12,9 @@ extends Node2D
 @onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
-@onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/RoundResults
+@onready
+var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
+@onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
 
 @export var player_scene: PackedScene
 
@@ -96,6 +99,7 @@ func start_countdown():
 	initial_countdown_timer.start()
 	is_counting_down = true
 	spawn_players()
+	get_tree().call_group("player", "start_countdown")
 	count_ghosts()
 
 
@@ -131,6 +135,7 @@ func end_game():
 		% [scores["Cardinals"], scores["Blue Jays"]]
 	)
 	end_of_round_results.show()
+	new_game_button.show()
 
 
 func _on_player_died(player_id):
@@ -154,3 +159,8 @@ func _on_round_timer_timeout() -> void:
 
 func _on_end_of_round_timer_timeout() -> void:
 	start_countdown()
+
+
+func _on_new_game_button_pressed() -> void:
+	print("newgame loading")
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

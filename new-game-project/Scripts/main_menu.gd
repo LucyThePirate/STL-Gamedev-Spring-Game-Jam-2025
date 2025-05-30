@@ -7,6 +7,8 @@ extends Control
 @onready var main_menu: Control = $MainMenu
 @onready var level_select: Control = $LevelSelect
 @onready var controls: Control = $Controls
+@onready var options: Control = $Options
+@onready var credits: Control = $Credits
 @onready
 var level_1_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level1/Level1Button
 @onready
@@ -25,6 +27,8 @@ func _ready() -> void:
 	main_menu.show()
 	level_select.hide()
 	controls.hide()
+	options.hide()
+	credits.hide()
 	level_1_button.set_meta("level_path", prototype_map)
 	round_length_selector.set_item_metadata(0, 5)
 	round_length_selector.set_item_metadata(1, 10)
@@ -82,3 +86,23 @@ func _on_round_length_selector_item_selected(index: int) -> void:
 
 func _on_spin_box_value_changed(value: float) -> void:
 	selected_num_of_rounds = value
+
+
+func _on_credits_button_pressed() -> void:
+	credits.show()
+	main_menu.hide()
+
+
+func _on_credits_back_button_pressed() -> void:
+	credits.hide()
+	main_menu.show()
+
+
+func _on_options_back_button_pressed() -> void:
+	options.hide()
+	main_menu.show()
+
+
+func _on_options_button_pressed() -> void:
+	options.show()
+	main_menu.hide()
