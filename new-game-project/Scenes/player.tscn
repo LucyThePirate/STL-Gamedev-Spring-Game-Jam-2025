@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlaljyl5f6dcs"]
+[gd_scene load_steps=12 format=3 uid="uid://dlaljyl5f6dcs"]
 
 [ext_resource type="Script" uid="uid://c8c125djpobfs" path="res://Scripts/player.gd" id="1_bgcco"]
 [ext_resource type="Texture2D" uid="uid://c26uonwkmnyhm" path="res://icon.svg" id="2_7lbki"]
 [ext_resource type="PackedScene" uid="uid://dsqnkao5geyne" path="res://Scenes/laser.tscn" id="2_fkybt"]
 [ext_resource type="PackedScene" uid="uid://c8kh3conableh" path="res://Scenes/player_visual.tscn" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://ds5l4vmy1gxlv" path="res://Scenes/replayer.tscn" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://7s3kxekgdr5k" path="res://Assets/SFX/Player_Laser_Fire_01.wav" id="6_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://bx45jf2it1ls2" path="res://Assets/SFX/Player_Laser_Fire_02.wav" id="7_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://bjv8h75irb6f" path="res://Assets/SFX/Player_Laser_Fire_03.wav" id="8_gymyn"]
+[ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="9_pu2lt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ff1n"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ukyrk"]
+streams_count = 4
+stream_0/stream = ExtResource("6_f1ek2")
+stream_1/stream = ExtResource("7_tx1dd")
+stream_2/stream = ExtResource("8_gymyn")
+stream_3/stream = ExtResource("9_pu2lt")
 
 [node name="Player 1" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_bgcco")
@@ -34,5 +45,11 @@ scale = Vector2(0.100338, 0.100338)
 
 [node name="Replayer" parent="." node_paths=PackedStringArray("recorded_objects") instance=ExtResource("5_fkybt")]
 recorded_objects = [NodePath("..")]
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="LaserFire" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_ukyrk")
+bus = &"SFX"
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

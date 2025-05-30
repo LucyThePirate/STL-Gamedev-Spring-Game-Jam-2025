@@ -1,8 +1,15 @@
-[gd_scene load_steps=39 format=3 uid="uid://c8kh3conableh"]
+[gd_scene load_steps=47 format=3 uid="uid://c8kh3conableh"]
 
 [ext_resource type="Texture2D" uid="uid://dou6ufyarl55x" path="res://Assets/Textures/CardinalBird.png" id="1_2a23h"]
 [ext_resource type="Script" uid="uid://bt6cj6rkyay6r" path="res://Scripts/player_visual.gd" id="1_32qxw"]
 [ext_resource type="Texture2D" uid="uid://2i7fy5epldji" path="res://Assets/Textures/BlueJayBird.png" id="2_w7e3i"]
+[ext_resource type="AudioStream" uid="uid://csgrg7okg7ry7" path="res://Assets/SFX/Player_Footstep_01.wav" id="4_rqs2t"]
+[ext_resource type="AudioStream" uid="uid://ddt8ijfltc6jj" path="res://Assets/SFX/Player_Footstep_02.wav" id="5_7csea"]
+[ext_resource type="AudioStream" uid="uid://b24df4hhsvjis" path="res://Assets/SFX/Player_Footstep_03.wav" id="6_wm62m"]
+[ext_resource type="AudioStream" uid="uid://dfwxx64qhffvn" path="res://Assets/SFX/Player_Footstep_04.wav" id="7_qvhd5"]
+[ext_resource type="AudioStream" uid="uid://dasaachhj2hwm" path="res://Assets/SFX/Player_Footstep_05.wav" id="8_rt2nq"]
+[ext_resource type="AudioStream" uid="uid://bf87abjt5ub6m" path="res://Assets/SFX/Player_Footstep_06.wav" id="9_wayi6"]
+[ext_resource type="AudioStream" uid="uid://b8hkrdtuiowl3" path="res://Assets/SFX/Player_Footstep_07.wav" id="10_wcee1"]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_2a23h"]
 resource_local_to_scene = true
@@ -1435,6 +1442,18 @@ tracks/50/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vl4jp"]
 resource_name = "ShootFire"
@@ -1847,6 +1866,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(1, 0.92), Vector2(1, 1), Vector2(1, 0.92), Vector2(1, 1), Vector2(1, 0.92)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7e3i"]
 _data = {
@@ -1906,7 +1937,7 @@ fadeout_time = 0.1
 fadein_time = 0.1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_32qxw"]
-graph_offset = Vector2(247.937, 270.894)
+graph_offset = Vector2(-355.693, -19.7348)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_brxta")
 nodes/Animation/position = Vector2(-200, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3u00l")
@@ -1963,6 +1994,16 @@ scale_max = 4.0
 scale_curve = SubResource("CurveTexture_n1ntf")
 color = Color(0.999829, 0.312547, 0.248264, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dsbi7"]
+streams_count = 7
+stream_0/stream = ExtResource("4_rqs2t")
+stream_1/stream = ExtResource("5_7csea")
+stream_2/stream = ExtResource("6_wm62m")
+stream_3/stream = ExtResource("7_qvhd5")
+stream_4/stream = ExtResource("8_rt2nq")
+stream_5/stream = ExtResource("9_wayi6")
+stream_6/stream = ExtResource("10_wcee1")
+
 [node name="PlayerVisual" type="Node2D"]
 script = ExtResource("1_32qxw")
 player_2_texture = ExtResource("2_w7e3i")
@@ -1976,6 +2017,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegLeft" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(-55, 100)
+scale = Vector2(0.999965, 0.999965)
 rest = Transform2D(1, 0, 0, 1, -55, 100)
 editor_settings/show_bone_gizmo = false
 
@@ -2022,6 +2064,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegRight" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(13, 126)
+scale = Vector2(0.999958, 0.999958)
 rest = Transform2D(1, 0, 0, 1, 13, 126)
 editor_settings/show_bone_gizmo = false
 
@@ -2117,7 +2160,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2126,7 +2169,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999833, 0.999833)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2140,7 +2183,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF1" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-40, -27)
-scale = Vector2(0.999953, 0.999953)
+scale = Vector2(0.999912, 0.999912)
 rest = Transform2D(1, 0, 0, 1, -40, -27)
 auto_calculate_length_and_angle = false
 length = 97.478
@@ -2149,7 +2192,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF2" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-20, -23)
-scale = Vector2(0.999953, 0.999953)
+scale = Vector2(0.99991, 0.99991)
 rest = Transform2D(1, 0, 0, 1, -20, -23)
 auto_calculate_length_and_angle = false
 length = 106.531
@@ -2158,7 +2201,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF3" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(25, -15)
-scale = Vector2(0.999953, 0.999953)
+scale = Vector2(0.999913, 0.999913)
 rest = Transform2D(1, 0, 0, 1, 25, -15)
 auto_calculate_length_and_angle = false
 length = 102.004
@@ -2172,7 +2215,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF1" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(0, -27)
-scale = Vector2(0.999905, 0.999905)
+scale = Vector2(0.99988, 0.99988)
 rest = Transform2D(1, 0, 0, 1, 0, -27)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2181,7 +2224,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF2" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(20, -17)
-scale = Vector2(0.999905, 0.999905)
+scale = Vector2(0.999885, 0.999885)
 rest = Transform2D(1, 0, 0, 1, 20, -17)
 auto_calculate_length_and_angle = false
 length = 160.919
@@ -2190,7 +2233,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF3" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(26, 7)
-scale = Vector2(0.999905, 0.999905)
+scale = Vector2(0.999877, 0.999877)
 rest = Transform2D(1, 0, 0, 1, 26, 7)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2522,3 +2565,7 @@ parameters/ShotWindup/request = 0
 visible = false
 position = Vector2(-127, 40)
 process_material = SubResource("ParticleProcessMaterial_w7e3i")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dsbi7")
+bus = &"SFX"
