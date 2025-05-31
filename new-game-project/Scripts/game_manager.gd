@@ -122,7 +122,7 @@ func end_round():
 		elif 1 in dead_players:
 			end_of_round_results.text = "Blue Jays Win!"
 			scores["Blue Jays"] += 1
-			announcer_tie_audio.play()
+			#announcer_tie_audio.play()
 			announcer_blue_kills_audio.play()
 		elif 2 in dead_players:
 			end_of_round_results.text = "Cardinals Win!"
