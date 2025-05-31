@@ -13,6 +13,7 @@ config_version=5
 config/name="Spring Game Jam 2025"
 run/main_scene="uid://b0p5grjmpkj1u"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/image="uid://dxcwj6nxdaw3s"
 config/icon="res://icon.svg"
 
 [autoload]

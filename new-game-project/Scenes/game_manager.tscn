@@ -51,7 +51,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="EndOfRoundTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -116,7 +116,10 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="RoundResults" type="RichTextLabel" parent="CanvasLayer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="RoundResults" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -134,6 +137,11 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NewGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "New Game"
+
 [node name="CountdownLabel" type="Label" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -145,11 +153,6 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("5_fgdfb")
 theme_override_font_sizes/font_size = 40
 text = "5"
-
-[node name="NewGameButton" type="Button" parent="CanvasLayer/CenterContainer"]
-visible = false
-layout_mode = 2
-text = "New Game"
 
 [node name="SFX" type="Node2D" parent="."]
 
@@ -169,4 +172,4 @@ stream = SubResource("AudioStreamRandomizer_iav25")
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
 [connection signal="timeout" from="EndOfRoundTimer" to="." method="_on_end_of_round_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/CenterContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

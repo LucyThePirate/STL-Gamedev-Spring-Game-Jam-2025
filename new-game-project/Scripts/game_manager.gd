@@ -12,8 +12,9 @@ extends Node2D
 @onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
-@onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/RoundResults
-@onready var new_game_button: Button = $CanvasLayer/CenterContainer/NewGameButton
+@onready
+var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
+@onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
 
 #AUDIO
 @onready var announcer_countdown_audio: AudioStreamPlayer2D = $SFX/AnnouncerCountdown
@@ -101,6 +102,8 @@ func setup_round_timer():
 
 
 func start_countdown():
+	initial_countdown_label.show()
+	end_of_round_results.hide()
 	initial_countdown_timer.start()
 	is_counting_down = true
 	spawn_players()
@@ -129,12 +132,8 @@ func end_round():
 			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
 		# turn previous round's players into ghosts
 		get_tree().call_group("player", "end_round")
-		current_round += 1
 		end_of_round_results.show()
-		if current_round > num_of_rounds:
-			end_game()
-		else:
-			end_of_round_timer.start()
+		end_of_round_timer.start()
 
 
 func end_game():
@@ -168,7 +167,11 @@ func _on_round_timer_timeout() -> void:
 
 
 func _on_end_of_round_timer_timeout() -> void:
-	start_countdown()
+	current_round += 1
+	if current_round > num_of_rounds:
+		end_game()
+	else:
+		start_countdown()
 
 
 func _on_new_game_button_pressed() -> void:

@@ -147,3 +147,7 @@ func _on_options_button_pressed() -> void:
 	options.show()
 	main_menu.hide()
 	title_graphic.hide()
+
+
+func _on_audio_stream_player_finished() -> void:
+	$FireAmbience.play()
