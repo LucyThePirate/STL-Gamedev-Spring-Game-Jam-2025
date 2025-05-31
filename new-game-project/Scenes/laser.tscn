@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsqnkao5geyne"]
+[gd_scene load_steps=13 format=3 uid="uid://dsqnkao5geyne"]
 
 [ext_resource type="Script" uid="uid://b8fs881nrd4t4" path="res://Scripts/laser.gd" id="1_mou6w"]
 [ext_resource type="Shader" uid="uid://dcf8xtmughgev" path="res://Assets/Shaders/laser.gdshader" id="1_r1bh0"]
+[ext_resource type="AudioStream" uid="uid://b16thwy4mxc0" path="res://Assets/SFX/Player_Laser_Hit_01.wav" id="3_3pc01"]
+[ext_resource type="AudioStream" uid="uid://7s3kxekgdr5k" path="res://Assets/SFX/Player_Laser_Fire_01.wav" id="4_cnw57"]
+[ext_resource type="AudioStream" uid="uid://bx45jf2it1ls2" path="res://Assets/SFX/Player_Laser_Fire_02.wav" id="5_y5j7k"]
+[ext_resource type="AudioStream" uid="uid://bjv8h75irb6f" path="res://Assets/SFX/Player_Laser_Fire_03.wav" id="6_r1vd4"]
+[ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="7_0l8kr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1bh0"]
 resource_local_to_scene = true
@@ -74,6 +79,13 @@ _data = {
 &"fade": SubResource("Animation_mou6w")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cnw57"]
+streams_count = 4
+stream_0/stream = ExtResource("4_cnw57")
+stream_1/stream = ExtResource("5_y5j7k")
+stream_2/stream = ExtResource("6_r1vd4")
+stream_3/stream = ExtResource("7_0l8kr")
+
 [node name="Laser" type="RayCast2D"]
 script = ExtResource("1_mou6w")
 
@@ -95,5 +107,15 @@ process_callback = 0
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="LaserFire" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_cnw57")
+bus = &"SFX"
+
+[node name="LaserHit" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_3pc01")
+bus = &"SFX"
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

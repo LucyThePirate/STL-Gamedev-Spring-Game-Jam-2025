@@ -16,6 +16,12 @@ extends Node2D
 var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
 @onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
 
+#AUDIO
+@onready var announcer_countdown_audio: AudioStreamPlayer2D = $SFX/AnnouncerCountdown
+@onready var announcer_tie_audio: AudioStreamPlayer2D = $SFX/AnnouncerTie
+@onready var announcer_red_kills_audio: AudioStreamPlayer2D = $SFX/AnnouncerRedKills
+@onready var announcer_blue_kills_audio: AudioStreamPlayer2D = $SFX/AnnouncerBlueKills
+
 @export var player_scene: PackedScene
 
 var waiting_for_map: bool = true
@@ -101,6 +107,7 @@ func start_countdown():
 	spawn_players()
 	get_tree().call_group("player", "start_countdown")
 	count_ghosts()
+	announcer_countdown_audio.play()
 
 
 #END ROUND
@@ -109,12 +116,16 @@ func end_round():
 		is_round_running = false
 		if dead_players.size() == 0 or dead_players.size() == 2:
 			end_of_round_results.text = "A tie!"
+			announcer_tie_audio.play()
 		elif 1 in dead_players:
 			end_of_round_results.text = "Blue Jays Win!"
 			scores["Blue Jays"] += 1
+			announcer_tie_audio.play()
+			announcer_blue_kills_audio.play()
 		elif 2 in dead_players:
 			end_of_round_results.text = "Cardinals Win!"
 			scores["Cardinals"] += 1
+			announcer_red_kills_audio.play()
 		else:
 			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
 		# turn previous round's players into ghosts

@@ -1,4 +1,6 @@
 extends RayCast2D
+@onready var laser_hit_audio: AudioStreamPlayer2D = $SFX/LaserHit
+@onready var laser_fire_audio: AudioStreamPlayer2D = $SFX/LaserFire
 
 @export var player_team_id = 1
 @export var damage: int = 5
@@ -11,7 +13,7 @@ var is_dangerous = true
 
 
 func _ready():
-	pass
+	laser_fire_audio.play()
 
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +36,8 @@ func fire(new_player_parent: Player, fire_position: Vector2):
 	target_position = player_parent.facing_direction * max_length
 	$LaserTexture.rotation = player_parent.facing_direction.angle()
 
+	
+
 
 func disable_laser():
 	is_dangerous = false
@@ -48,3 +52,4 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.has_method("get_hit"):
 			if can_hit_own_team or (!can_hit_own_team and body.player_id != player_team_id):
 				body.get_hit(damage)
+				laser_hit_audio.play()
