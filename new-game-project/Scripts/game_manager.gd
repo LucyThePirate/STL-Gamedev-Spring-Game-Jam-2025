@@ -12,9 +12,8 @@ extends Node2D
 @onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
-@onready
-var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
-@onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
+@onready var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/RoundResults
+@onready var new_game_button: Button = $CanvasLayer/CenterContainer/NewGameButton
 
 #AUDIO
 @onready var announcer_countdown_audio: AudioStreamPlayer2D = $SFX/AnnouncerCountdown

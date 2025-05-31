@@ -112,10 +112,8 @@ autostart = true
 
 [node name="LaserFire" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_cnw57")
-bus = &"SFX"
 
 [node name="LaserHit" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("3_3pc01")
-bus = &"SFX"
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

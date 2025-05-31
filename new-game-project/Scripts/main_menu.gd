@@ -15,6 +15,7 @@ extends Control
 @onready var controls: Control = $Controls
 @onready var options: Control = $Options
 @onready var credits: Control = $Credits
+@onready var title_graphic: Sprite2D = $TitleGraphics/Title
 @onready
 var map_lab_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1/MapLabButton
 
@@ -74,12 +75,14 @@ func _ready() -> void:
 #NEW GAME
 func _on_new_game_button_pressed() -> void:
 	main_menu.hide()
+	title_graphic.hide()
 	level_select.show()
 
 
 func _on_level_select_back_button_pressed() -> void:
 	level_select.hide()
 	main_menu.show()
+	title_graphic.show()
 
 
 func handle_level_selection():
@@ -100,11 +103,13 @@ func _on_start_button_pressed() -> void:
 func _on_controls_button_pressed() -> void:
 	controls.show()
 	main_menu.hide()
+	title_graphic.hide()
 
 
 func _on_controls_back_button_pressed() -> void:
 	controls.hide()
 	main_menu.show()
+	title_graphic.show()
 
 
 #QUIT
@@ -123,18 +128,22 @@ func _on_spin_box_value_changed(value: float) -> void:
 func _on_credits_button_pressed() -> void:
 	credits.show()
 	main_menu.hide()
+	title_graphic.hide()
 
 
 func _on_credits_back_button_pressed() -> void:
 	credits.hide()
 	main_menu.show()
+	title_graphic.show()
 
 
 func _on_options_back_button_pressed() -> void:
 	options.hide()
 	main_menu.show()
+	title_graphic.show()
 
 
 func _on_options_button_pressed() -> void:
 	options.show()
 	main_menu.hide()
+	title_graphic.hide()

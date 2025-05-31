@@ -52,6 +52,5 @@ recorded_objects = [NodePath("..")]
 
 [node name="LaserFire" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_ukyrk")
-bus = &"SFX"
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
