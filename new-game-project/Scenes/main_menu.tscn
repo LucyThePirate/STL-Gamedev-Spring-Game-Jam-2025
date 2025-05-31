@@ -1,17 +1,19 @@
-[gd_scene load_steps=55 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=57 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
-[ext_resource type="PackedScene" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
+[ext_resource type="PackedScene" uid="uid://dr5hrjslmsbh3" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
 [ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
-[ext_resource type="PackedScene" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
+[ext_resource type="PackedScene" uid="uid://c33mj51pis1o3" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
 [ext_resource type="Shader" uid="uid://jbos4nsburxq" path="res://Assets/Shaders/fire.gdshader" id="5_cp0ys"]
+[ext_resource type="PackedScene" uid="uid://bj81dju55e07r" path="res://Scenes/map_elevator.tscn" id="5_jr6u5"]
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dol1ecitejj8w" path="res://Assets/Textures/Title.png" id="5_opfnp"]
+[ext_resource type="PackedScene" uid="uid://y105u0qil5yw" path="res://Scenes/map_factory.tscn" id="6_6m47u"]
 [ext_resource type="Shader" uid="uid://qu7gn4w4tnp6" path="res://Assets/Shaders/aura.gdshader" id="6_yhxw7"]
-[ext_resource type="PackedScene" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
-[ext_resource type="PackedScene" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
-[ext_resource type="PackedScene" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
+[ext_resource type="PackedScene" uid="uid://baea1sddgtx7k" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
+[ext_resource type="PackedScene" uid="uid://dv5n7vlkn465l" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
+[ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://dgb8jwcgt8ee0" path="res://Assets/Textures/LevelThumbnails/thumbnail_elevator.png" id="11_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dpm4cja26o620" path="res://Assets/Textures/LevelThumbnails/thumbnail_lab.png" id="11_ujyyl"]
 [ext_resource type="AudioStream" uid="uid://b13ha4ujigl64" path="res://Assets/SFX/363169__samsterbirdies__hammering-on-anvil.ogg" id="12_4nkqq"]
@@ -458,8 +460,8 @@ script = ExtResource("1_28flt")
 ls_buttons = ExtResource("3_1ehe0")
 map_lab = ExtResource("3_n45e2")
 map_hospital = ExtResource("4_opfnp")
-map_elevator = ExtResource("5_cp0ys")
-map_factory = ExtResource("6_yhxw7")
+map_elevator = ExtResource("5_jr6u5")
+map_factory = ExtResource("6_6m47u")
 map_raffles = ExtResource("7_trj04")
 map_residential = ExtResource("8_16hvj")
 map_helipad = ExtResource("9_vr1f0")
