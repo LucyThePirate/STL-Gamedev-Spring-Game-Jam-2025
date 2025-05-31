@@ -1,10 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=30 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
-[ext_resource type="PackedScene" uid="uid://b2dj4v65tlilj" path="res://Scenes/prototype_map.tscn" id="3_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://dr5hrjslmsbh3" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
 [ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://c33mj51pis1o3" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
+[ext_resource type="PackedScene" uid="uid://bj81dju55e07r" path="res://Scenes/map_elevator.tscn" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
+[ext_resource type="PackedScene" uid="uid://y105u0qil5yw" path="res://Scenes/map_factory.tscn" id="6_yhxw7"]
+[ext_resource type="PackedScene" uid="uid://baea1sddgtx7k" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
+[ext_resource type="PackedScene" uid="uid://dv5n7vlkn465l" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
+[ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://dgb8jwcgt8ee0" path="res://Assets/Textures/LevelThumbnails/thumbnail_elevator.png" id="11_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://dpm4cja26o620" path="res://Assets/Textures/LevelThumbnails/thumbnail_lab.png" id="11_ujyyl"]
+[ext_resource type="Texture2D" uid="uid://dhs2vyuh8wqbx" path="res://Assets/Textures/LevelThumbnails/thumbnail_hospital.png" id="12_mkpwh"]
+[ext_resource type="Texture2D" uid="uid://cbek3k1hrgxvi" path="res://Assets/Textures/LevelThumbnails/thumbnail_factory.png" id="14_4nkqq"]
+[ext_resource type="Texture2D" uid="uid://brelllsgb6i5w" path="res://Assets/Textures/LevelThumbnails/thumbnail_raffles.png" id="15_ehtkc"]
+[ext_resource type="Texture2D" uid="uid://byetvux2h4s78" path="res://Assets/Textures/LevelThumbnails/thumbnail_residential.png" id="16_6dk6o"]
+[ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
 
 [sub_resource type="Gradient" id="Gradient_ce3w2"]
 offsets = PackedFloat32Array(0, 0.00550964)
@@ -20,20 +33,11 @@ content_margin_right = 6.0
 content_margin_bottom = 2.0
 texture = SubResource("GradientTexture1D_n45e2")
 
-[sub_resource type="Gradient" id="Gradient_48xlc"]
+[sub_resource type="Gradient" id="Gradient_ujyyl"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ehe0"]
-gradient = SubResource("Gradient_48xlc")
-width = 140
-height = 100
-fill_from = Vector2(0.877301, 0.695705)
-fill_to = Vector2(0.997955, 0.810225)
-
-[sub_resource type="Gradient" id="Gradient_1ehe0"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ce3w2"]
-gradient = SubResource("Gradient_1ehe0")
-width = 140
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mkpwh"]
+gradient = SubResource("Gradient_ujyyl")
+width = 120
 height = 100
 fill_to = Vector2(1, 1)
 
@@ -41,7 +45,15 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_opfnp"]
 gradient = SubResource("Gradient_n45e2")
-width = 140
+width = 120
+height = 100
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_mkpwh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4nkqq"]
+gradient = SubResource("Gradient_mkpwh")
+width = 120
 height = 100
 fill_to = Vector2(1, 1)
 
@@ -49,7 +61,7 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yhxw7"]
 gradient = SubResource("Gradient_cp0ys")
-width = 140
+width = 120
 height = 100
 fill_to = Vector2(1, 1)
 
@@ -62,7 +74,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
 ls_buttons = ExtResource("3_1ehe0")
-prototype_map = ExtResource("3_ce3w2")
+map_lab = ExtResource("3_n45e2")
+map_hospital = ExtResource("4_opfnp")
+map_elevator = ExtResource("5_cp0ys")
+map_factory = ExtResource("6_yhxw7")
+map_raffles = ExtResource("7_trj04")
+map_residential = ExtResource("8_16hvj")
+map_helipad = ExtResource("9_vr1f0")
 game_manager = ExtResource("4_ce3w2")
 
 [node name="TempBackground" type="ColorRect" parent="."]
@@ -115,7 +133,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="LevelSelect" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,55 +173,115 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Back"
 
-[node name="GridContainer" type="GridContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer"]
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Level"
 
-[node name="Level1" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer"]
+[node name="GridContainer" type="GridContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+columns = 2
+
+[node name="Level1" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="Level1Button" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level1"]
+[node name="MapLabButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = SubResource("GradientTexture2D_1ehe0")
-texture_pressed = SubResource("GradientTexture2D_ce3w2")
+texture_normal = ExtResource("11_ujyyl")
+texture_pressed = SubResource("GradientTexture2D_mkpwh")
 
-[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level1"]
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
 layout_mode = 2
-text = "Prototype Room"
+text = "Lab"
 
-[node name="Level2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer"]
+[node name="Level2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="Level2Button" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level2"]
+[node name="MapHospitalButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = SubResource("GradientTexture2D_1ehe0")
+texture_normal = ExtResource("12_mkpwh")
 texture_pressed = SubResource("GradientTexture2D_opfnp")
 
-[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level2"]
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
 layout_mode = 2
-text = "N/A"
+text = "Hospital"
 
-[node name="Level3" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer"]
+[node name="Level3" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="Level3Button" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level3"]
+[node name="MapElevatorButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = SubResource("GradientTexture2D_1ehe0")
+texture_normal = ExtResource("11_t1dhk")
+texture_pressed = SubResource("GradientTexture2D_4nkqq")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
+layout_mode = 2
+text = "Elevator"
+
+[node name="Level4" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapFactoryButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("14_4nkqq")
 texture_pressed = SubResource("GradientTexture2D_yhxw7")
 
-[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level3"]
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
 layout_mode = 2
-text = "N/A"
+text = "Factory"
+
+[node name="Level5" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapRafflesButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("15_ehtkc")
+texture_pressed = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5"]
+layout_mode = 2
+text = "Raffles"
+
+[node name="Level6" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapResidentialButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("16_6dk6o")
+texture_pressed = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
+layout_mode = 2
+text = "Residential"
+
+[node name="Level7" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapHelipadButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("17_jr6u5")
+texture_pressed = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7"]
+layout_mode = 2
+text = "Helipad"
 
 [node name="RoundAmount" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
 layout_mode = 2
@@ -328,6 +405,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BackButton" type="Button" parent="Options"]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 32.0
 offset_right = 97.0
@@ -515,6 +593,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="BackButton" type="Button" parent="Credits"]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 32.0
 offset_right = 97.0

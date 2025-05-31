@@ -32,6 +32,7 @@ enabled=PackedStringArray("res://addons/beautify_code_on_save/plugin.cfg")
 
 player=""
 ghost="ooooOOOOOoooo they are spooky"
+gap=""
 
 [input]
 
@@ -105,3 +106,9 @@ DebugReloadScene={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="gap"
+2d_physics/layer_3="laser"

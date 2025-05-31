@@ -1,7 +1,13 @@
 extends Control
 
 @export var ls_buttons: Resource
-@export var prototype_map: PackedScene
+@export var map_lab: PackedScene
+@export var map_hospital: PackedScene
+@export var map_elevator: PackedScene
+@export var map_factory: PackedScene
+@export var map_raffles: PackedScene
+@export var map_residential: PackedScene
+@export var map_helipad: PackedScene
 @export var game_manager: PackedScene
 
 @onready var main_menu: Control = $MainMenu
@@ -10,7 +16,26 @@ extends Control
 @onready var options: Control = $Options
 @onready var credits: Control = $Credits
 @onready
-var level_1_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/GridContainer/Level1/Level1Button
+var map_lab_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1/MapLabButton
+
+@onready
+var map_hospital_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2/MapHospitalButton
+
+@onready
+var map_elevator_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3/MapElevatorButton
+
+@onready
+var map_raffles_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5/MapRafflesButton
+
+@onready
+var map_factory_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4/MapFactoryButton
+
+@onready
+var map_residential_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6/MapResidentialButton
+
+@onready
+var map_helipad_button: TextureButton = $LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7/MapHelipadButton
+
 @onready
 var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector
 
@@ -29,7 +54,14 @@ func _ready() -> void:
 	controls.hide()
 	options.hide()
 	credits.hide()
-	level_1_button.set_meta("level_path", prototype_map)
+	map_lab_button.set_meta("level_path", map_lab)
+	map_hospital_button.set_meta("level_path", map_hospital)
+	map_elevator_button.set_meta("level_path", map_elevator)
+	map_factory_button.set_meta("level_path", map_factory)
+	map_raffles_button.set_meta("level_path", map_raffles)
+	map_residential_button.set_meta("level_path", map_residential)
+	map_helipad_button.set_meta("level_path", map_helipad)
+
 	round_length_selector.set_item_metadata(0, 5)
 	round_length_selector.set_item_metadata(1, 10)
 	round_length_selector.set_item_metadata(2, 30)

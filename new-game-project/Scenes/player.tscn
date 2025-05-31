@@ -9,6 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ff1n"]
 
 [node name="Player 1" type="CharacterBody2D" groups=["player"]]
+collision_mask = 7
 script = ExtResource("1_bgcco")
 bullet_scene = ExtResource("2_fkybt")
 
@@ -18,8 +19,9 @@ scale = Vector2(0.275, 0.275)
 texture = ExtResource("2_7lbki")
 
 [node name="BulletSpawnPosition" type="Marker2D" parent="Sprite2D"]
-position = Vector2(116.364, 0)
-scale = Vector2(3.63636, 3.63636)
+position = Vector2(58.1818, 0)
+rotation = -3.14159
+scale = Vector2(99.7643, -0.878059)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.72, 1.72)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj81dju55e07r"]
+
+[ext_resource type="Texture2D" uid="uid://b6ibjj2mv0p1" path="res://Assets/Textures/Levels/elevator.png" id="1_apo7q"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_apo7q"]
+a = Vector2(0, -4)
+b = Vector2(-60, 230)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_indl2"]
+a = Vector2(281, 223)
+b = Vector2(-60, 230)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7mcyx"]
+a = Vector2(281, 223)
+b = Vector2(245, -3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m35tn"]
+a = Vector2(-2, -1)
+b = Vector2(245, -3)
+
+[node name="MapElevator" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(503, 356)
+scale = Vector2(0.554804, 0.554804)
+texture = ExtResource("1_apo7q")
+
+[node name="Player1Spawn" type="Marker2D" parent="."]
+position = Vector2(424, 300)
+
+[node name="Player2Spawn" type="Marker2D" parent="."]
+position = Vector2(611, 416)
+
+[node name="Collisions" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+position = Vector2(389, 257)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+shape = SubResource("SegmentShape2D_apo7q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+shape = SubResource("SegmentShape2D_indl2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+shape = SubResource("SegmentShape2D_7mcyx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+shape = SubResource("SegmentShape2D_m35tn")
