@@ -2202,7 +2202,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegLeft" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(-55, 100)
-scale = Vector2(0.999921, 0.999921)
+scale = Vector2(0.999917, 0.999917)
 rest = Transform2D(1, 0, 0, 1, -55, 100)
 editor_settings/show_bone_gizmo = false
 
@@ -2254,7 +2254,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegRight" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(13, 126)
-scale = Vector2(0.999912, 0.999912)
+scale = Vector2(0.999907, 0.999907)
 rest = Transform2D(1, 0, 0, 1, 13, 126)
 editor_settings/show_bone_gizmo = false
 
@@ -2355,7 +2355,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999827, 0.999827)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2378,7 +2378,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF1" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-40, -27)
-scale = Vector2(0.999872, 0.999872)
+scale = Vector2(0.999869, 0.999869)
 rest = Transform2D(1, 0, 0, 1, -40, -27)
 auto_calculate_length_and_angle = false
 length = 97.478
@@ -2387,7 +2387,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF2" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-20, -23)
-scale = Vector2(0.999876, 0.999876)
+scale = Vector2(0.999871, 0.999871)
 rest = Transform2D(1, 0, 0, 1, -20, -23)
 auto_calculate_length_and_angle = false
 length = 106.531
@@ -2396,7 +2396,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF3" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(25, -15)
-scale = Vector2(0.999874, 0.999874)
+scale = Vector2(0.999872, 0.999872)
 rest = Transform2D(1, 0, 0, 1, 25, -15)
 auto_calculate_length_and_angle = false
 length = 102.004
@@ -2410,7 +2410,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF1" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(0, -27)
-scale = Vector2(0.999862, 0.999862)
+scale = Vector2(0.99986, 0.99986)
 rest = Transform2D(1, 0, 0, 1, 0, -27)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2419,7 +2419,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF2" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(20, -17)
-scale = Vector2(0.999866, 0.999866)
+scale = Vector2(0.999863, 0.999863)
 rest = Transform2D(1, 0, 0, 1, 20, -17)
 auto_calculate_length_and_angle = false
 length = 160.919
@@ -2428,7 +2428,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF3" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(26, 7)
-scale = Vector2(0.999858, 0.999858)
+scale = Vector2(0.999855, 0.999855)
 rest = Transform2D(1, 0, 0, 1, 26, 7)
 auto_calculate_length_and_angle = false
 length = 142.813

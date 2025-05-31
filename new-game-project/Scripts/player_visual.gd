@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 	if should_be_vanished:
 		vanish_amount = move_toward(vanish_amount, 1, delta * VANISH_SPEED)
 	else:
-		vanish_amount = move_toward(vanish_amount, 0, delta * VANISH_SPEED)
+		vanish_amount = 0
 	animation_tree.set("parameters/Vanish/blend_amount", vanish_amount)
 
 

@@ -25,6 +25,8 @@ func _process(delta) -> void:
 		var lowestY = 0
 		var highestY = 0
 		for n in player_count:
+			if not is_instance_valid(n):
+				continue
 			position_count += n.global_position
 			var nx = n.global_position.x
 			var ny = n.global_position.y

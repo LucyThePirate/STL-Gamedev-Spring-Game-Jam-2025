@@ -31,7 +31,8 @@ var is_shot_cooling: bool = false
 
 var played_count = 0
 
-var seconds_per_round_before_ghost_starts_moving := 1.0
+var seconds_per_round_before_ghost_starts_moving := 1.5
+var max_replays = 9
 
 
 func _ready() -> void:
@@ -114,9 +115,9 @@ func start_countdown():
 		replayer.recording = true
 		replayer.record()
 	if state == States.GHOST:
-		#visual.set_ghost_spawn_position(replayer.get_start_position())
+		global_position = replayer.get_start_position()
 		visual.set_ghost_spawn_visible(true)
-		replayer.play()
+		$GhostStartTimer.start(played_count * seconds_per_round_before_ghost_starts_moving)
 
 
 func start_round():
@@ -126,6 +127,8 @@ func start_round():
 		# begin recording
 	if state == States.GHOST:
 		played_count += 1
+		if max_replays and played_count > max_replays:
+			queue_free()
 		#print(name, "Has played:", played_count)
 		visual.set_ghost_spawn_visible(false)
 
