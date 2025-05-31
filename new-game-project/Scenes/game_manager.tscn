@@ -158,15 +158,18 @@ text = "5"
 
 [node name="AnnouncerRedKills" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_88ybb")
+volume_db = -7.509
 
 [node name="AnnouncerCountdown" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_i4mau")
+volume_db = -8.26
 
 [node name="AnnouncerTie" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("12_5tjy5")
 
 [node name="AnnouncerBlueKills" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_iav25")
+volume_db = -6.758
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]

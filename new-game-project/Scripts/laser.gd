@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 		$LaserTexture.size.x = (get_collision_point() - global_position).length()
 		#target_position = get_collision_point()
 		_on_body_entered(collider)
+	else:
+		$LaserTexture.size.x = max_length
 
 
 func fire(new_player_parent: Player, fire_position: Vector2):
@@ -35,8 +37,6 @@ func fire(new_player_parent: Player, fire_position: Vector2):
 	global_position = fire_position
 	target_position = player_parent.facing_direction * max_length
 	$LaserTexture.rotation = player_parent.facing_direction.angle()
-
-	
 
 
 func disable_laser():
