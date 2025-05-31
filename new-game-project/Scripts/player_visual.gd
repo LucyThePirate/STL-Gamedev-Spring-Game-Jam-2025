@@ -11,6 +11,7 @@ var vanish_amount: float = 0
 var VANISH_SPEED = 0.3
 
 @onready var animation_tree = $AnimationTree
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func initialize(player: Player):
@@ -84,6 +85,7 @@ func _on_player_died(player_id):
 func make_me_spooky():
 	for child in find_children_in_group(self, "PolygonTexture", true):
 		child.self_modulate = Color8(255, 255, 255, 114)
+		audio_stream_player_2d.stop()
 
 
 func vanish(is_vanished: bool):
