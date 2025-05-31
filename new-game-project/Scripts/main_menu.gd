@@ -41,7 +41,7 @@ var map_helipad_button: TextureButton = $LevelSelect/CenterContainer/HBoxContain
 var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector
 
 var selected_map
-var selected_round_length: int = 60
+var selected_round_length: int = 30
 var selected_num_of_rounds: int = 3
 
 
