@@ -1717,6 +1717,62 @@ tracks/9/keys = {
 "values": [Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809)]
 }
 
+[sub_resource type="Animation" id="Animation_wm62m"]
+resource_name = "Unvanish"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059)]
+}
+
+[sub_resource type="Animation" id="Animation_7csea"]
+resource_name = "Vanish"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vl4jp"]
 streams_count = 5
 stream_0/stream = ExtResource("4_rqs2t")
@@ -1922,62 +1978,6 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0, 0.198506)
 }
 tracks/14/use_blend = true
-
-[sub_resource type="Animation" id="Animation_7csea"]
-resource_name = "Vanish"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Wing:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wm62m"]
-resource_name = "Unvanish"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Wing:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.447059)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.447059)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7e3i"]
 _data = {
@@ -2355,7 +2355,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999827, 0.999827)
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2364,7 +2364,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999829, 0.999829)
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
