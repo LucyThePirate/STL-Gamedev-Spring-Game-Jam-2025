@@ -1,9 +1,14 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=30 format=3 uid="uid://b0p5grjmpkj1u"]
+=======
+[gd_scene load_steps=42 format=3 uid="uid://b0p5grjmpkj1u"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://dr5hrjslmsbh3" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
 [ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://c33mj51pis1o3" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
 [ext_resource type="PackedScene" uid="uid://bj81dju55e07r" path="res://Scenes/map_elevator.tscn" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
@@ -18,6 +23,376 @@
 [ext_resource type="Texture2D" uid="uid://brelllsgb6i5w" path="res://Assets/Textures/LevelThumbnails/thumbnail_raffles.png" id="15_ehtkc"]
 [ext_resource type="Texture2D" uid="uid://byetvux2h4s78" path="res://Assets/Textures/LevelThumbnails/thumbnail_residential.png" id="16_6dk6o"]
 [ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
+=======
+[ext_resource type="Shader" uid="uid://jbos4nsburxq" path="res://Assets/Shaders/fire.gdshader" id="5_cp0ys"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
+[ext_resource type="Texture2D" uid="uid://dol1ecitejj8w" path="res://Assets/Textures/Title.png" id="5_opfnp"]
+[ext_resource type="Shader" uid="uid://qu7gn4w4tnp6" path="res://Assets/Shaders/aura.gdshader" id="6_yhxw7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yhxw7"]
+seamless = true
+noise = SubResource("FastNoiseLite_cp0ys")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhxw7"]
+shader = ExtResource("5_cp0ys")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_yhxw7")
+shader_parameter/root_color = Color(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/poster_color = 6.0
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.015, 0.5)
+shader_parameter/fire_aperture = 0.0
+shader_parameter/vignette_radius = 0.352
+shader_parameter/vignette_falloff = 0.326
+shader_parameter/noise_influence = 0.95
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trj04"]
+shader = ExtResource("6_yhxw7")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 5.0
+shader_parameter/speed = 6.052
+shader_parameter/blockSize = 41.354
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.192
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfnp"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(2691.25, -18.9138, 827.483, 699.66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5egv6"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(155.251, 276.062, 682.155, 324.218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtepg"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1540.92, 348.349, 806.577, 348.366)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp0ys"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1239.77, 1683.17, 750.085, 734.392)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(432.402, 1873.76, 231.302, 241.659)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trj04"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(2750.87, 1884.62, 225.572, 250.635)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16hvj"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1882.74, 3002.51, 606.821, 473.616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr1f0"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(576.533, 3005.13, 379.086, 298.214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1dhk"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(3295.25, 3048.53, 237.185, 196.189)
+
+[sub_resource type="Animation" id="Animation_yhxw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(586, -317)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cardinal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-385, 458)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueJay:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1452, 487)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cardinal:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlueJay:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cardinal/Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cardinal/Eye2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlueJay/Eye:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BlueJay/Eye2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_trj04"]
+resource_name = "TitleDown"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(586, -317), Vector2(586, 336), Vector2(586, 253)]
+}
+
+[sub_resource type="Animation" id="Animation_16hvj"]
+resource_name = "Clash"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cardinal:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-385, 458), Vector2(408, 458), Vector2(79, 501.207)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueJay:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1452, 487), Vector2(681, 487), Vector2(980, 513.207)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cardinal:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.592852, 0.0112816]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueJay:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.497669, 0.00557953]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cardinal/Eye:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cardinal/Eye2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlueJay/Eye:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlueJay/Eye2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Title:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.4, 2.7, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(586, -317), Vector2(586, 365), Vector2(586, 261)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr1f0"]
+_data = {
+&"Clash": SubResource("Animation_16hvj"),
+&"RESET": SubResource("Animation_yhxw7"),
+&"TitleDown": SubResource("Animation_trj04")
+}
+
+[sub_resource type="Gradient" id="Gradient_yhxw7"]
+offsets = PackedFloat32Array(0.00327869, 0.993443)
+colors = PackedColorArray(0.807739, 0.449353, 0, 1, 0.772549, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trj04"]
+gradient = SubResource("Gradient_yhxw7")
+
+[sub_resource type="Curve" id="Curve_16hvj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10574, 1), 0.0, 0.0, 0, 0, Vector2(0.78852, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vr1f0"]
+curve = SubResource("Curve_16hvj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t1dhk"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 91.184
+initial_velocity_min = 366.31
+initial_velocity_max = 635.3
+gravity = Vector3(0, 500, 0)
+scale_min = 5.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_vr1f0")
+color = Color(1, 0.835294, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_trj04")
+hue_variation_min = 0.02
+hue_variation_max = 0.1
+>>>>>>> Stashed changes
 
 [sub_resource type="Gradient" id="Gradient_ce3w2"]
 offsets = PackedFloat32Array(0, 0.00550964)
@@ -83,7 +458,17 @@ map_residential = ExtResource("8_16hvj")
 map_helipad = ExtResource("9_vr1f0")
 game_manager = ExtResource("4_ce3w2")
 
+[node name="BaseColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TempBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yhxw7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,6 +476,70 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.207997, 0.275115, 0.382213, 1)
+
+[node name="TitleGraphics" type="Node2D" parent="."]
+position = Vector2(28, 0)
+
+[node name="Title" type="Sprite2D" parent="TitleGraphics"]
+material = SubResource("ShaderMaterial_trj04")
+position = Vector2(586, -317)
+texture = SubResource("AtlasTexture_opfnp")
+
+[node name="Feather" type="Sprite2D" parent="TitleGraphics/Title"]
+show_behind_parent = true
+position = Vector2(-179, 116)
+rotation = 0.230117
+texture = SubResource("AtlasTexture_5egv6")
+
+[node name="Feather2" type="Sprite2D" parent="TitleGraphics/Title"]
+show_behind_parent = true
+position = Vector2(88, 167)
+rotation = -0.139107
+texture = SubResource("AtlasTexture_vtepg")
+
+[node name="Cardinal" type="Sprite2D" parent="TitleGraphics"]
+position = Vector2(-385, 458)
+texture = SubResource("AtlasTexture_cp0ys")
+
+[node name="Eye" type="Sprite2D" parent="TitleGraphics/Cardinal"]
+visible = false
+show_behind_parent = true
+position = Vector2(151, -68)
+texture = SubResource("AtlasTexture_yhxw7")
+
+[node name="Eye2" type="Sprite2D" parent="TitleGraphics/Cardinal"]
+visible = false
+position = Vector2(15, -28)
+texture = SubResource("AtlasTexture_trj04")
+
+[node name="BlueJay" type="Sprite2D" parent="TitleGraphics"]
+position = Vector2(1452, 487)
+texture = SubResource("AtlasTexture_16hvj")
+
+[node name="Eye" type="Sprite2D" parent="TitleGraphics/BlueJay"]
+visible = false
+show_behind_parent = true
+position = Vector2(-175, -90)
+texture = SubResource("AtlasTexture_vr1f0")
+
+[node name="Eye2" type="Sprite2D" parent="TitleGraphics/BlueJay"]
+visible = false
+position = Vector2(-11, -87)
+texture = SubResource("AtlasTexture_t1dhk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleGraphics"]
+libraries = {
+&"": SubResource("AnimationLibrary_vr1f0")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TitleGraphics"]
+position = Vector2(553, 434)
+emitting = false
+amount = 30
+lifetime = 2.43
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_t1dhk")
 
 [node name="MainMenu" type="Control" parent="."]
 visible = false

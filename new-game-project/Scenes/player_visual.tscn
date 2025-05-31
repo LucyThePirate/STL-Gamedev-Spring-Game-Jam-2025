@@ -2206,7 +2206,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2215,7 +2215,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.99983, 0.99983)
+scale = Vector2(0.999841, 0.999841)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2637,3 +2637,5 @@ process_material = SubResource("ParticleProcessMaterial_3u00l")
 [node name="GhostSpawnParticles" type="GPUParticles2D" parent="."]
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_1k6rl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
