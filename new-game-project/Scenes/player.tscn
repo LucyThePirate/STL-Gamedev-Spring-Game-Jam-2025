@@ -53,4 +53,9 @@ recorded_objects = [NodePath("..")]
 [node name="LaserFire" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_ukyrk")
 
+[node name="GhostStartTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="GhostStartTimer" to="." method="_on_ghost_start_timer_timeout"]

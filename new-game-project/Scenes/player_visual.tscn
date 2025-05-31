@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8kh3conableh"]
+[gd_scene load_steps=57 format=3 uid="uid://c8kh3conableh"]
 
 [ext_resource type="Texture2D" uid="uid://dou6ufyarl55x" path="res://Assets/Textures/CardinalBird.png" id="1_2a23h"]
 [ext_resource type="Script" uid="uid://bt6cj6rkyay6r" path="res://Scripts/player_visual.gd" id="1_32qxw"]
@@ -1442,6 +1442,30 @@ tracks/50/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("Wing:modulate")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("Body:modulate")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vl4jp"]
 resource_name = "ShootFire"
@@ -1899,6 +1923,62 @@ tracks/14/keys = {
 }
 tracks/14/use_blend = true
 
+[sub_resource type="Animation" id="Animation_7csea"]
+resource_name = "Vanish"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wm62m"]
+resource_name = "Unvanish"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.447059)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7e3i"]
 _data = {
 &"Blink": SubResource("Animation_w7e3i"),
@@ -1908,6 +1988,8 @@ _data = {
 &"RESET": SubResource("Animation_32qxw"),
 &"ShootFire": SubResource("Animation_vl4jp"),
 &"ShootWindUp": SubResource("Animation_brxta"),
+&"Unvanish": SubResource("Animation_wm62m"),
+&"Vanish": SubResource("Animation_7csea"),
 &"Walking": SubResource("Animation_n1ntf")
 }
 
@@ -1929,6 +2011,9 @@ animation = &"ShootWindUp"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vl4jp"]
 animation = &"ShootFire"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rqs2t"]
+animation = &"Vanish"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_brxta"]
 animation = &"IdleBobbing"
 
@@ -1943,8 +2028,6 @@ fadein_time = 0.5
 fadeout_time = 0.5
 autorestart_delay = 0.0
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_n1ntf"]
-
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_1k6rl"]
 filters = ["Skeleton2D/Body:position"]
 
@@ -1956,8 +2039,10 @@ fadeout_time = 0.1
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_rqs2t"]
 fadein_time = 0.1
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7csea"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_32qxw"]
-graph_offset = Vector2(-437.706, 16.1902)
+graph_offset = Vector2(835.28, 208.901)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_brxta")
 nodes/Animation/position = Vector2(-200, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3u00l")
@@ -1967,19 +2052,19 @@ nodes/Animation/position = Vector2(-200, 40)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_w7e3i")
 "nodes/Animation 4/position" = Vector2(980, 560)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_n1ntf")
-"nodes/Animation 5/position" = Vector2(1060, 740)
+"nodes/Animation 5/position" = Vector2(1220, 660)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_1k6rl")
 "nodes/Animation 6/position" = Vector2(72.6897, 743.907)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_vl4jp")
 "nodes/Animation 7/position" = Vector2(520, 680)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_rqs2t")
+"nodes/Animation 8/position" = Vector2(1620, 440)
 nodes/Blink/node = SubResource("AnimationNodeAdd2_32qxw")
 nodes/Blink/position = Vector2(300, 160)
 nodes/Damaged/node = SubResource("AnimationNodeOneShot_n1ntf")
 nodes/Damaged/position = Vector2(1120, 360)
 nodes/Die/node = SubResource("AnimationNodeOneShot_1k6rl")
 nodes/Die/position = Vector2(1380, 440)
-nodes/DieTimeScale/node = SubResource("AnimationNodeTimeScale_n1ntf")
-nodes/DieTimeScale/position = Vector2(1220, 720)
 nodes/Run/node = SubResource("AnimationNodeAdd2_1k6rl")
 nodes/Run/position = Vector2(100, 180)
 nodes/RunSpeed/node = SubResource("AnimationNodeTimeScale_w7e3i")
@@ -1988,8 +2073,10 @@ nodes/ShotFire/node = SubResource("AnimationNodeOneShot_osou4")
 nodes/ShotFire/position = Vector2(700, 560)
 nodes/ShotWindup/node = SubResource("AnimationNodeOneShot_rqs2t")
 nodes/ShotWindup/position = Vector2(300, 660)
-nodes/output/position = Vector2(1740, 200)
-node_connections = [&"Blink", 0, &"Run", &"Blink", 1, &"Animation 3", &"Damaged", 0, &"ShotFire", &"Damaged", 1, &"Animation 4", &"Die", 0, &"Damaged", &"Die", 1, &"DieTimeScale", &"DieTimeScale", 0, &"Animation 5", &"Run", 0, &"Animation", &"Run", 1, &"RunSpeed", &"RunSpeed", 0, &"Animation 2", &"ShotFire", 0, &"ShotWindup", &"ShotFire", 1, &"Animation 7", &"ShotWindup", 0, &"Blink", &"ShotWindup", 1, &"Animation 6", &"output", 0, &"Die"]
+nodes/Vanish/node = SubResource("AnimationNodeBlend2_7csea")
+nodes/Vanish/position = Vector2(1840, 320)
+nodes/output/position = Vector2(2020, 240)
+node_connections = [&"Blink", 0, &"Run", &"Blink", 1, &"Animation 3", &"Damaged", 0, &"ShotFire", &"Damaged", 1, &"Animation 4", &"Die", 0, &"Damaged", &"Die", 1, &"Animation 5", &"Run", 0, &"Animation", &"Run", 1, &"RunSpeed", &"RunSpeed", 0, &"Animation 2", &"ShotFire", 0, &"ShotWindup", &"ShotFire", 1, &"Animation 7", &"ShotWindup", 0, &"Blink", &"ShotWindup", 1, &"Animation 6", &"Vanish", 0, &"Die", &"Vanish", 1, &"Animation 8", &"output", 0, &"Vanish"]
 
 [sub_resource type="Curve" id="Curve_w7e3i"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0936556, 1), 0.0, 0.0, 0, 0, Vector2(0.770393, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -2109,29 +2196,32 @@ player_2_ghost_spawn_texture = ExtResource("3_1k6rl")
 modification_stack = SubResource("SkeletonModificationStack2D_2a23h")
 
 [node name="Body" type="Bone2D" parent="Skeleton2D"]
+skew = -1.50204e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegLeft" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(-55, 100)
-scale = Vector2(0.999951, 0.999951)
+scale = Vector2(0.999921, 0.999921)
 rest = Transform2D(1, 0, 0, 1, -55, 100)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegLeftThigh" type="Bone2D" parent="Skeleton2D/Body/LegLeft"]
 position = Vector2(-4, 57)
+scale = Vector2(0.999993, 0.999993)
 rest = Transform2D(1, 0, 0, 1, -4, 57)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegLeftAnkle" type="Bone2D" parent="Skeleton2D/Body/LegLeft/LegLeftThigh"]
 position = Vector2(-3, 71)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, -3, 71)
 editor_settings/show_bone_gizmo = false
 
 [node name="LLFrontToe1" type="Bone2D" parent="Skeleton2D/Body/LegLeft/LegLeftThigh/LegLeftAnkle"]
 position = Vector2(-45, -2)
 rotation = 2.66257
-scale = Vector2(1, 1)
+scale = Vector2(0.999993, 0.999993)
 rest = Transform2D(-0.887446, 0.460911, -0.460911, -0.887446, -45, -2)
 auto_calculate_length_and_angle = false
 length = 38.633
@@ -2140,6 +2230,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LLFrontToe2" type="Bone2D" parent="Skeleton2D/Body/LegLeft/LegLeftThigh/LegLeftAnkle"]
 position = Vector2(-43, 6)
+scale = Vector2(0.999967, 0.999967)
 rest = Transform2D(1, 0, 0, 1, -43, 6)
 auto_calculate_length_and_angle = false
 length = 44.6542
@@ -2148,6 +2239,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LLFrontToe3" type="Bone2D" parent="Skeleton2D/Body/LegLeft/LegLeftThigh/LegLeftAnkle"]
 position = Vector2(-38, 15)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, -38, 15)
 auto_calculate_length_and_angle = false
 length = 44.6542
@@ -2156,29 +2248,32 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LLBackToe" type="Bone2D" parent="Skeleton2D/Body/LegLeft/LegLeftThigh/LegLeftAnkle"]
 position = Vector2(34, -2)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 34, -2)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegRight" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(13, 126)
-scale = Vector2(0.999945, 0.999945)
+scale = Vector2(0.999912, 0.999912)
 rest = Transform2D(1, 0, 0, 1, 13, 126)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegRightThigh" type="Bone2D" parent="Skeleton2D/Body/LegRight"]
 position = Vector2(-4, 57)
+scale = Vector2(0.999994, 0.999994)
 rest = Transform2D(1, 0, 0, 1, -4, 57)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegRightAnkle" type="Bone2D" parent="Skeleton2D/Body/LegRight/LegRightThigh"]
 position = Vector2(-3, 71)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, -3, 71)
 editor_settings/show_bone_gizmo = false
 
 [node name="LRFrontToe1" type="Bone2D" parent="Skeleton2D/Body/LegRight/LegRightThigh/LegRightAnkle"]
 position = Vector2(-45, -2)
 rotation = 2.66257
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.887446, 0.460911, -0.460911, -0.887446, -45, -2)
 auto_calculate_length_and_angle = false
 length = 38.633
@@ -2187,6 +2282,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LRFrontToe2" type="Bone2D" parent="Skeleton2D/Body/LegRight/LegRightThigh/LegRightAnkle"]
 position = Vector2(-43, 6)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, -43, 6)
 auto_calculate_length_and_angle = false
 length = 44.6542
@@ -2195,6 +2291,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LRFrontToe3" type="Bone2D" parent="Skeleton2D/Body/LegRight/LegRightThigh/LegRightAnkle"]
 position = Vector2(-38, 15)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, -38, 15)
 auto_calculate_length_and_angle = false
 length = 44.6542
@@ -2203,6 +2300,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LRBackToe" type="Bone2D" parent="Skeleton2D/Body/LegRight/LegRightThigh/LegRightAnkle"]
 position = Vector2(34, -2)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 34, -2)
 editor_settings/show_bone_gizmo = false
 
@@ -2257,7 +2355,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999826, 0.999826)
+scale = Vector2(0.999827, 0.999827)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2266,7 +2364,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999841, 0.999841)
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2280,7 +2378,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF1" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-40, -27)
-scale = Vector2(0.999895, 0.999895)
+scale = Vector2(0.999872, 0.999872)
 rest = Transform2D(1, 0, 0, 1, -40, -27)
 auto_calculate_length_and_angle = false
 length = 97.478
@@ -2289,7 +2387,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF2" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-20, -23)
-scale = Vector2(0.999895, 0.999895)
+scale = Vector2(0.999876, 0.999876)
 rest = Transform2D(1, 0, 0, 1, -20, -23)
 auto_calculate_length_and_angle = false
 length = 106.531
@@ -2298,7 +2396,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF3" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(25, -15)
-scale = Vector2(0.999897, 0.999897)
+scale = Vector2(0.999874, 0.999874)
 rest = Transform2D(1, 0, 0, 1, 25, -15)
 auto_calculate_length_and_angle = false
 length = 102.004
@@ -2312,7 +2410,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF1" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(0, -27)
-scale = Vector2(0.999873, 0.999873)
+scale = Vector2(0.999862, 0.999862)
 rest = Transform2D(1, 0, 0, 1, 0, -27)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2321,7 +2419,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF2" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(20, -17)
-scale = Vector2(0.999878, 0.999878)
+scale = Vector2(0.999866, 0.999866)
 rest = Transform2D(1, 0, 0, 1, 20, -17)
 auto_calculate_length_and_angle = false
 length = 160.919
@@ -2330,7 +2428,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF3" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(26, 7)
-scale = Vector2(0.999867, 0.999867)
+scale = Vector2(0.999858, 0.999858)
 rest = Transform2D(1, 0, 0, 1, 26, 7)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2646,17 +2744,17 @@ parameters/Damaged/active = false
 parameters/Damaged/internal_active = false
 parameters/Damaged/request = 0
 parameters/Die/active = false
-parameters/Die/internal_active = 0
+parameters/Die/internal_active = false
 parameters/Die/request = 0
-parameters/DieTimeScale/scale = false
 parameters/Run/add_amount = -1
 parameters/RunSpeed/scale = false
-parameters/ShotFire/active = false
+parameters/ShotFire/active = 0.0
 parameters/ShotFire/internal_active = false
 parameters/ShotFire/request = 0
 parameters/ShotWindup/active = 0.0
 parameters/ShotWindup/internal_active = false
 parameters/ShotWindup/request = 0
+parameters/Vanish/blend_amount = 0.0
 
 [node name="LaserCharging" type="GPUParticles2D" parent="."]
 visible = false

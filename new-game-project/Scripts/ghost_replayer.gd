@@ -42,6 +42,7 @@ func play():
 		#var tween = create_tween()
 		for ro in recorded_objects:  #NOT calling the size of the the array, but the objects themselves
 			if f == 0:
+				ro.vanish(false)
 				ro.global_position = recording_data[f][ro.name]["position"]
 				ro.set_facing_direction(recording_data[f][ro.name]["rotation"])
 				ro.velocity = recording_data[f][ro.name]["velocity"]
@@ -61,6 +62,7 @@ func play():
 		# Turn off shooting/movement at end of recording
 		ro.is_shooting = false
 		ro.velocity = Vector2.ZERO
+		ro.vanish(true)
 	#frames = 0
 	#THIS RESETS THE RECORDING DATA - need some way to save it for our game
 	#recording_data = {}

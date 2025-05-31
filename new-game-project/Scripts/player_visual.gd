@@ -5,6 +5,10 @@ extends Node2D
 
 var player_parent: Player
 var is_visual_flipped: bool = false
+var should_be_vanished: bool = false
+var vanish_amount: float = 0
+
+var VANISH_SPEED = 0.3
 
 @onready var animation_tree = $AnimationTree
 
@@ -59,6 +63,13 @@ func _process(delta: float) -> void:
 		animation_tree.set("parameters/RunSpeed/scale", 0.0)
 		animation_tree.set("parameters/Run/add_amount", 0.0)
 
+	# Control player ghost vanishing
+	if should_be_vanished:
+		vanish_amount = move_toward(vanish_amount, 1, delta * VANISH_SPEED)
+	else:
+		vanish_amount = move_toward(vanish_amount, 0, delta * VANISH_SPEED)
+	animation_tree.set("parameters/Vanish/blend_amount", vanish_amount)
+
 
 func _on_player_damaged(health_remaining):
 	print("hit! Health left:", health_remaining)
@@ -73,6 +84,10 @@ func _on_player_died(player_id):
 func make_me_spooky():
 	for child in find_children_in_group(self, "PolygonTexture", true):
 		child.self_modulate = Color8(255, 255, 255, 114)
+
+
+func vanish(is_vanished: bool):
+	should_be_vanished = is_vanished
 
 
 func _pause_animations():

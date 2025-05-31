@@ -31,6 +31,8 @@ var is_shot_cooling: bool = false
 
 var played_count = 0
 
+var seconds_per_round_before_ghost_starts_moving := 1.0
+
 
 func _ready() -> void:
 	visual.initialize(self)
@@ -139,3 +141,11 @@ func end_round():
 		replayer.recording = false
 		replayer.record()
 		is_shooting = false
+
+
+func vanish(is_vanished: bool):
+	visual.vanish(is_vanished)
+
+
+func _on_ghost_start_timer_timeout() -> void:
+	replayer.play()

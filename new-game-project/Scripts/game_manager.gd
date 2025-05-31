@@ -129,7 +129,7 @@ func end_round():
 			scores["Cardinals"] += 1
 			announcer_red_kills_audio.play()
 		else:
-			end_of_round_results.text = "Not even god knows what happened! I'm confused!"
+			end_of_round_results.text = "Not even godz knows what happened! I'm confused!"
 		# turn previous round's players into ghosts
 		get_tree().call_group("player", "end_round")
 		end_of_round_results.show()
