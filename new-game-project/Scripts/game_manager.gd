@@ -9,6 +9,7 @@ extends Node2D
 @onready var initial_countdown_label: Label = $CanvasLayer/CenterContainer/CountdownLabel
 
 @onready var round_number_label: Label = $CanvasLayer/UI/HBoxContainer/RoundNumberLabel
+@onready var current_score: RichTextLabel = $CanvasLayer/UI/HBoxContainer/CurrentScore
 @onready var time_left_label: Label = $CanvasLayer/UI/HBoxContainer/TimeLeftLabel
 
 @onready var end_of_round_timer: Timer = $EndOfRoundTimer
@@ -43,6 +44,7 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	start_countdown()
 	print(round_length)
+	$MainTheme.play()
 
 
 func _process(delta: float) -> void:
@@ -131,6 +133,10 @@ func end_round():
 		else:
 			end_of_round_results.text = "Not even godz knows what happened! I'm confused!"
 		# turn previous round's players into ghosts
+		current_score.text = (
+			"[color=CRIMSON]%s[/color] - [color=ROYAL_BLUE]%s[/color]"
+			% [scores["Cardinals"], scores["Blue Jays"]]
+		)
 		get_tree().call_group("player", "end_round")
 		end_of_round_results.show()
 		end_of_round_timer.start()
@@ -138,6 +144,8 @@ func end_round():
 
 func end_game():
 	round_number_label.hide()
+	$MainTheme/AnimationPlayer.play("FadeOutMusic")
+	current_score.hide()
 	time_left_label.hide()
 	end_of_round_results.text = (
 		"[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]And that's game![/rainbow][/wave]\nScores:\n[color=CRIMSON]Cardinals: %s[/color]\n[color=ROYAL_BLUE]Blue Jays: %s[/color]"
@@ -177,3 +185,11 @@ func _on_end_of_round_timer_timeout() -> void:
 func _on_new_game_button_pressed() -> void:
 	print("newgame loading")
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+func _on_main_theme_finished() -> void:
+	$MainTheme.play(3)
+
+
+func _on_city_ambiance_finished() -> void:
+	$CityAmbiance.play()

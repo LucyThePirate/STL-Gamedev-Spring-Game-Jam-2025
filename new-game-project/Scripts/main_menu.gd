@@ -77,12 +77,16 @@ func _on_new_game_button_pressed() -> void:
 	main_menu.hide()
 	title_graphic.hide()
 	level_select.show()
+	$LevelSelectMusic.play()
+	$TitleMusic.stop()
 
 
 func _on_level_select_back_button_pressed() -> void:
 	level_select.hide()
 	main_menu.show()
 	title_graphic.show()
+	$LevelSelectMusic.stop()
+	$TitleMusic.play()
 
 
 func handle_level_selection():
@@ -151,3 +155,11 @@ func _on_options_button_pressed() -> void:
 
 func _on_audio_stream_player_finished() -> void:
 	$FireAmbience.play()
+
+
+func _on_title_music_finished() -> void:
+	$TitleMusic.play()
+
+
+func _on_level_select_music_finished() -> void:
+	$LevelSelectMusic.play()

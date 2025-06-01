@@ -29,6 +29,7 @@ func record():
 			"rotation": cur_obj.get_facing_direction(),
 			"velocity": cur_obj.velocity,
 			"is_shooting": cur_obj.is_shooting
+			#"health": cur_obj.health
 		}
 	frames += 1
 
@@ -52,6 +53,7 @@ func play():
 				ro.set_facing_direction(recording_data[f][ro.name]["rotation"])
 				ro.velocity = recording_data[f][ro.name]["velocity"]
 				ro.is_shooting = recording_data[f][ro.name]["is_shooting"]
+				#ro.health = recording_data[f][ro.name]["health"]
 				#print(recording_data)
 			else:  #if not initial frame, transition smoothly to intended position
 				var tween = create_tween()
@@ -63,6 +65,7 @@ func play():
 				ro.set_facing_direction(recording_data[f][ro.name]["rotation"])
 				ro.velocity = recording_data[f][ro.name]["velocity"]
 				ro.is_shooting = recording_data[f][ro.name]["is_shooting"]
+				#ro.health = recording_data[f][ro.name]["health"]
 				#ro.velocity = ro.global_position - recording_data[f][ro.name]["position"]
 		await get_tree().create_timer(0.1).timeout  #let tween finish before moving on to next frame
 		#get_node(.)
