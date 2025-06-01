@@ -42,7 +42,7 @@ var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxConta
 
 var selected_map
 var selected_round_length: int = 30
-var selected_num_of_rounds: int = 3
+var selected_num_of_rounds: int = 9
 
 
 func _process(delta: float) -> void:

@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://bd33rudvrpluj" path="res://Scripts/camera_zoom.gd" id="1_omgnx"]
 
 [node name="Camera2D" type="Camera2D"]
+position_smoothing_enabled = true
 script = ExtResource("1_omgnx")
