@@ -1,0 +1,1403 @@
+[gd_scene load_steps=66 format=3 uid="uid://b0p5grjmpkj1u"]
+
+[ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://dr5hrjslmsbh3" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
+[ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://c33mj51pis1o3" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
+[ext_resource type="Shader" uid="uid://jbos4nsburxq" path="res://Assets/Shaders/fire.gdshader" id="5_cp0ys"]
+[ext_resource type="PackedScene" uid="uid://bj81dju55e07r" path="res://Scenes/map_elevator.tscn" id="5_jr6u5"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
+[ext_resource type="Texture2D" uid="uid://dol1ecitejj8w" path="res://Assets/Textures/Title.png" id="5_opfnp"]
+[ext_resource type="PackedScene" uid="uid://y105u0qil5yw" path="res://Scenes/map_factory.tscn" id="6_6m47u"]
+[ext_resource type="Shader" uid="uid://qu7gn4w4tnp6" path="res://Assets/Shaders/aura.gdshader" id="6_yhxw7"]
+[ext_resource type="PackedScene" uid="uid://baea1sddgtx7k" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
+[ext_resource type="PackedScene" uid="uid://dv5n7vlkn465l" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
+[ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
+[ext_resource type="AudioStream" uid="uid://b13ha4ujigl64" path="res://Assets/SFX/363169__samsterbirdies__hammering-on-anvil.ogg" id="12_4nkqq"]
+[ext_resource type="Texture2D" uid="uid://brelllsgb6i5w" path="res://Assets/Textures/LevelThumbnails/thumbnail_raffles.png" id="15_ehtkc"]
+[ext_resource type="Texture2D" uid="uid://dj6jwgbuqc3a4" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail.jpg" id="15_xcoo4"]
+[ext_resource type="Texture2D" uid="uid://g4agml6bijsc" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail_bright.jpg" id="16_jw7lb"]
+[ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
+[ext_resource type="Texture2D" uid="uid://b6ta1e3v0iseo" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail.jpg" id="18_jw7lb"]
+[ext_resource type="Texture2D" uid="uid://be5odr34llrat" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail_bright.jpg" id="19_6vfk8"]
+[ext_resource type="Texture2D" uid="uid://estr0wxvql4l" path="res://Assets/Textures/LevelThumbnails/elevator_thumbnail.jpg" id="20_1xund"]
+[ext_resource type="AudioStream" uid="uid://dr4h6kj6cn3hf" path="res://Assets/SFX/650574__soundofsong__fire-crackling-loop.wav" id="21_ehtkc"]
+[ext_resource type="Texture2D" uid="uid://br4k33wxpi7qd" path="res://Assets/Textures/LevelThumbnails/elevator_thumbnai_bright.jpg" id="21_msuys"]
+[ext_resource type="Texture2D" uid="uid://dq0vo5k24l6m4" path="res://Assets/Textures/LevelThumbnails/factory_thumbnail.jpg" id="22_msuys"]
+[ext_resource type="Texture2D" uid="uid://tslca1pb4t1y" path="res://Assets/Textures/LevelThumbnails/factory_thumbnail_bright.jpg" id="23_aylim"]
+[ext_resource type="AudioStream" uid="uid://cl2ly08hsbguv" path="res://Assets/SFX/Announcer_Countdown_01.wav" id="23_ne6ao"]
+[ext_resource type="AudioStream" uid="uid://7s3kxekgdr5k" path="res://Assets/SFX/Player_Laser_Fire_01.wav" id="23_xcoo4"]
+[ext_resource type="AudioStream" uid="uid://cs0snyp6jbwp4" path="res://Assets/Music/StlGameJam25 MainMenu1.wav" id="24_6m47u"]
+[ext_resource type="AudioStream" uid="uid://bx45jf2it1ls2" path="res://Assets/SFX/Player_Laser_Fire_02.wav" id="24_jw7lb"]
+[ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="24_tt8ml"]
+[ext_resource type="AudioStream" uid="uid://bjv8h75irb6f" path="res://Assets/SFX/Player_Laser_Fire_03.wav" id="25_6vfk8"]
+[ext_resource type="AudioStream" uid="uid://drsxutkttfl44" path="res://Assets/Music/STLGameJam25 LevelSelect1.wav" id="25_84iac"]
+[ext_resource type="Texture2D" uid="uid://bclewtrsye0ud" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail.jpg" id="25_aylim"]
+[ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="26_1xund"]
+[ext_resource type="Texture2D" uid="uid://c6ioutx5in4mr" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail_bright.jpg" id="26_y82t1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yhxw7"]
+seamless = true
+noise = SubResource("FastNoiseLite_cp0ys")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhxw7"]
+shader = ExtResource("5_cp0ys")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_yhxw7")
+shader_parameter/root_color = Color(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/poster_color = 6.0
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.015, 0.5)
+shader_parameter/fire_aperture = 0.0
+shader_parameter/vignette_radius = 0.352
+shader_parameter/vignette_falloff = 0.326
+shader_parameter/noise_influence = 0.95
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trj04"]
+shader = ExtResource("6_yhxw7")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 5.0
+shader_parameter/speed = 6.052
+shader_parameter/blockSize = 41.354
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.192
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfnp"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(2691.25, -18.9138, 827.483, 699.66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5egv6"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(155.251, 276.062, 682.155, 324.218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtepg"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1540.92, 348.349, 806.577, 348.366)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp0ys"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1239.77, 1683.17, 750.085, 734.392)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(432.402, 1873.76, 231.302, 241.659)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trj04"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(2750.87, 1884.62, 225.572, 250.635)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16hvj"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(1882.74, 3002.51, 606.821, 473.616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr1f0"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(576.533, 3005.13, 379.086, 298.214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1dhk"]
+atlas = ExtResource("5_opfnp")
+region = Rect2(3295.25, 3048.53, 237.185, 196.189)
+
+[sub_resource type="Animation" id="Animation_16hvj"]
+resource_name = "Clash"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cardinal:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-385, 458), Vector2(408, 458), Vector2(79, 501.207)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueJay:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1452, 487), Vector2(681, 487), Vector2(980, 513.207)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cardinal:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.592852, 0.0112816]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueJay:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.497669, 0.00557953]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cardinal/Eye:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cardinal/Eye2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlueJay/Eye:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlueJay/Eye2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Title:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.4, 2.7, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(586, -317), Vector2(586, 365), Vector2(586, 261)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_4nkqq")
+}],
+"times": PackedFloat32Array(0.9)
+}
+tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../TitleMusic:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-50.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yhxw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(586, -317)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cardinal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-385, 458)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueJay:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1452, 487)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cardinal:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlueJay:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cardinal/Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cardinal/Eye2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlueJay/Eye:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BlueJay/Eye2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../TitleMusic:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-50.0]
+}
+
+[sub_resource type="Animation" id="Animation_trj04"]
+resource_name = "TitleDown"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(586, -317), Vector2(586, 336), Vector2(586, 253)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr1f0"]
+_data = {
+&"Clash": SubResource("Animation_16hvj"),
+&"RESET": SubResource("Animation_yhxw7"),
+&"TitleDown": SubResource("Animation_trj04")
+}
+
+[sub_resource type="Gradient" id="Gradient_yhxw7"]
+offsets = PackedFloat32Array(0.00327869, 0.993443)
+colors = PackedColorArray(0.807739, 0.449353, 0, 1, 0.772549, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trj04"]
+gradient = SubResource("Gradient_yhxw7")
+
+[sub_resource type="Curve" id="Curve_16hvj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10574, 1), 0.0, 0.0, 0, 0, Vector2(0.78852, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vr1f0"]
+curve = SubResource("Curve_16hvj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t1dhk"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 91.184
+initial_velocity_min = 366.31
+initial_velocity_max = 635.3
+gravity = Vector3(0, 500, 0)
+scale_min = 5.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_vr1f0")
+color = Color(1, 0.835294, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_trj04")
+hue_variation_min = 0.02
+hue_variation_max = 0.1
+
+[sub_resource type="Gradient" id="Gradient_ce3w2"]
+offsets = PackedFloat32Array(0, 0.00550964)
+colors = PackedColorArray(0, 0, 0, 1, 0.141176, 0.168627, 0.211765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n45e2"]
+gradient = SubResource("Gradient_ce3w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+texture = SubResource("GradientTexture1D_n45e2")
+
+[sub_resource type="Gradient" id="Gradient_cp0ys"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhxw7"]
+gradient = SubResource("Gradient_cp0ys")
+width = 120
+height = 100
+fill_to = Vector2(1, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_msuys"]
+streams_count = 4
+stream_0/stream = ExtResource("23_xcoo4")
+stream_1/stream = ExtResource("24_jw7lb")
+stream_2/stream = ExtResource("25_6vfk8")
+stream_3/stream = ExtResource("26_1xund")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fmarx"]
+streams_count = 2
+stream_0/stream = ExtResource("23_ne6ao")
+stream_1/stream = ExtResource("24_tt8ml")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+ls_buttons = ExtResource("3_1ehe0")
+map_lab = ExtResource("3_n45e2")
+map_hospital = ExtResource("4_opfnp")
+map_elevator = ExtResource("5_jr6u5")
+map_factory = ExtResource("6_6m47u")
+map_raffles = ExtResource("7_trj04")
+map_residential = ExtResource("8_16hvj")
+map_helipad = ExtResource("9_vr1f0")
+game_manager = ExtResource("4_ce3w2")
+
+[node name="BaseColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TempBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yhxw7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.207997, 0.275115, 0.382213, 1)
+
+[node name="TitleGraphics" type="Node2D" parent="."]
+position = Vector2(28, 0)
+
+[node name="Title" type="Sprite2D" parent="TitleGraphics"]
+material = SubResource("ShaderMaterial_trj04")
+position = Vector2(586, -317)
+texture = SubResource("AtlasTexture_opfnp")
+
+[node name="Feather" type="Sprite2D" parent="TitleGraphics/Title"]
+show_behind_parent = true
+position = Vector2(-179, 116)
+rotation = 0.230117
+texture = SubResource("AtlasTexture_5egv6")
+
+[node name="Feather2" type="Sprite2D" parent="TitleGraphics/Title"]
+show_behind_parent = true
+position = Vector2(88, 167)
+rotation = -0.139107
+texture = SubResource("AtlasTexture_vtepg")
+
+[node name="Cardinal" type="Sprite2D" parent="TitleGraphics"]
+position = Vector2(-385, 458)
+texture = SubResource("AtlasTexture_cp0ys")
+
+[node name="Eye" type="Sprite2D" parent="TitleGraphics/Cardinal"]
+visible = false
+show_behind_parent = true
+position = Vector2(151, -68)
+texture = SubResource("AtlasTexture_yhxw7")
+
+[node name="Eye2" type="Sprite2D" parent="TitleGraphics/Cardinal"]
+visible = false
+position = Vector2(15, -28)
+texture = SubResource("AtlasTexture_trj04")
+
+[node name="BlueJay" type="Sprite2D" parent="TitleGraphics"]
+position = Vector2(1452, 487)
+texture = SubResource("AtlasTexture_16hvj")
+
+[node name="Eye" type="Sprite2D" parent="TitleGraphics/BlueJay"]
+visible = false
+show_behind_parent = true
+position = Vector2(-175, -90)
+texture = SubResource("AtlasTexture_vr1f0")
+
+[node name="Eye2" type="Sprite2D" parent="TitleGraphics/BlueJay"]
+visible = false
+position = Vector2(-11, -87)
+texture = SubResource("AtlasTexture_t1dhk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleGraphics"]
+libraries = {
+&"": SubResource("AnimationLibrary_vr1f0")
+}
+autoplay = "Clash"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TitleGraphics"]
+position = Vector2(553, 434)
+emitting = false
+amount = 30
+lifetime = 2.43
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.77
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_t1dhk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TitleGraphics"]
+volume_db = -9.244
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="EntranceButtons" type="HBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
+layout_mode = 2
+text = "Play"
+
+[node name="ControlsButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
+layout_mode = 2
+text = "Controls"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
+layout_mode = 2
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
+layout_mode = 2
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LevelSelect" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 130
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_opfnp")
+text = "Start"
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15.82)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+text = "Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
+text = "Level"
+
+[node name="GridContainer" type="GridContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+columns = 2
+
+[node name="Level1" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapLabButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
+custom_minimum_size = Vector2(147, 100)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("15_xcoo4")
+texture_pressed = ExtResource("16_jw7lb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Lab"
+
+[node name="Level2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapHospitalButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
+custom_minimum_size = Vector2(147, 100)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("18_jw7lb")
+texture_pressed = ExtResource("19_6vfk8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Helipad"
+
+[node name="Level3" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapElevatorButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
+custom_minimum_size = Vector2(147, 100)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("20_1xund")
+texture_pressed = ExtResource("21_msuys")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Elevator"
+
+[node name="Level4" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapFactoryButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
+custom_minimum_size = Vector2(147, 100)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("22_msuys")
+texture_pressed = ExtResource("23_aylim")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Factory"
+
+[node name="Level5" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MapRafflesButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("15_ehtkc")
+texture_pressed = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5"]
+layout_mode = 2
+text = "Raffles"
+
+[node name="Level6" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="MapResidentialButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
+custom_minimum_size = Vector2(147, 100)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("25_aylim")
+texture_pressed = ExtResource("26_y82t1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Residential"
+
+[node name="Level7" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MapHelipadButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_1ehe0")
+texture_normal = ExtResource("17_jr6u5")
+texture_pressed = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7"]
+layout_mode = 2
+text = "Helipad"
+
+[node name="RoundAmount" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/RoundAmount"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
+text = "Rounds"
+
+[node name="SpinBox" type="SpinBox" parent="LevelSelect/CenterContainer/HBoxContainer/RoundAmount"]
+layout_mode = 2
+min_value = 1.0
+value = 9.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="RoundLength" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/RoundLength"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
+text = "Round Length"
+
+[node name="RoundLengthSelector" type="OptionButton" parent="LevelSelect/CenterContainer/HBoxContainer/RoundLength"]
+layout_mode = 2
+size_flags_vertical = 0
+selected = 2
+item_count = 5
+popup/item_0/text = "5 seconds"
+popup/item_0/id = 0
+popup/item_1/text = "10 seconds"
+popup/item_1/id = 1
+popup/item_2/text = "30 seconds"
+popup/item_2/id = 2
+popup/item_3/text = "1 minute"
+popup/item_3/id = 3
+popup/item_4/text = "5 minutes"
+popup/item_4/id = 4
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="HBoxContainer" parent="Controls/CenterContainer"]
+layout_mode = 2
+
+[node name="Player1" type="VBoxContainer" parent="Controls/CenterContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Player 1"
+
+[node name="Movement" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+text = "Move: WASD"
+
+[node name="Shoot" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+text = "Shoot: V"
+
+[node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+text = "Be Annoying: E"
+
+[node name="Equipment2" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+text = "Pause: ESCAPE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Player1" type="VBoxContainer" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Controller"
+
+[node name="Movement" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Move: Left stick"
+
+[node name="Shoot" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Shoot: Bottom face button"
+
+[node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Be Annoying: Top face button"
+
+[node name="Pause" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Pause: Start button"
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/CenterContainer/CenterContainer"]
+custom_minimum_size = Vector2(68.645, 0)
+layout_mode = 2
+
+[node name="Player2" type="VBoxContainer" parent="Controls/CenterContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Player 2"
+
+[node name="Movement" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+text = "Move: IJKL"
+
+[node name="Shoot" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+text = "Shoot: /"
+
+[node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+text = "Be Annoying: ENTER"
+
+[node name="Pause" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+text = "Pause: ESCAPE"
+
+[node name="Button" type="Button" parent="Controls"]
+layout_mode = 2
+offset_left = 31.0
+offset_top = 32.0
+offset_right = 97.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 25
+text = "Back"
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Options/CenterContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(600, 316.905)
+layout_mode = 2
+color = Color(0.278431, 0.278431, 0.278431, 0.568627)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="UIDesignIsMyPassion" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]UI Design is my passion[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Master Volume
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="MasterVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "SFX Volume     "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="SFX" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="SFXTest" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+stream = SubResource("AudioStreamRandomizer_msuys")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Music   Volume
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="MusicVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Ambience          
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="AmbienceVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Announcer       "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="AnnouncerVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="AnnouncerTest" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+stream = SubResource("AudioStreamRandomizer_fmarx")
+bus = &"Announcer"
+
+[node name="BackButton" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 32.0
+offset_right = 97.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 25
+text = "Back"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="HBoxContainer" parent="Credits/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Left Column" type="VBoxContainer" parent="Credits/CenterContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Miniscule" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]Colin Schulte (miniscule)[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="text" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Programmer
+	- Camera Zooming
+	- Controller Support
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits/CenterContainer/CenterContainer/Left Column"]
+layout_mode = 2
+theme_override_constants/margin_top = 45
+
+[node name="Walpang" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]Walpang[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="text2" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Programmer
+	- Ghosts
+	- Player Movement
+Sound Design
+Music
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits/CenterContainer/CenterContainer"]
+custom_minimum_size = Vector2(68.645, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 110
+
+[node name="Left Column2" type="VBoxContainer" parent="Credits/CenterContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Dorivy" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]Dorivy
+[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="text" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Programmer
+	- Game Manager
+Environment Art
+Level Design"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits/CenterContainer/CenterContainer/Left Column2"]
+layout_mode = 2
+theme_override_constants/margin_top = 45
+
+[node name="Lucy The Pirate" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]Lucy the Pirate
+[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="text2" type="RichTextLabel" parent="Credits/CenterContainer/CenterContainer/Left Column2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Programmer
+	- Laser
+	- Ghosts
+Character Art
+Voice Acting
+This font!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="BackButton" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 32.0
+offset_right = 97.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 25
+text = "Back"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]Team minidorwalucy the ivysculepangpirate[/rainbow][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="FireAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ehtkc")
+volume_db = -4.5
+pitch_scale = 0.95
+autoplay = true
+bus = &"Reverb"
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_6m47u")
+volume_db = -50.0
+autoplay = true
+bus = &"Music"
+
+[node name="LevelSelectMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_84iac")
+bus = &"Music"
+
+[connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer/BackButton" to="." method="_on_level_select_back_button_pressed"]
+[connection signal="value_changed" from="LevelSelect/CenterContainer/HBoxContainer/RoundAmount/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="item_selected" from="LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector" to="." method="_on_round_length_selector_item_selected"]
+[connection signal="pressed" from="Controls/Button" to="." method="_on_controls_back_button_pressed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer3/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer5/AmbienceVolume" to="." method="_on_ambience_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer4/AnnouncerVolume" to="." method="_on_announcer_volume_value_changed"]
+[connection signal="pressed" from="Options/BackButton" to="." method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="Credits/BackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="finished" from="FireAmbience" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="TitleMusic" to="." method="_on_title_music_finished"]
+[connection signal="finished" from="LevelSelectMusic" to="." method="_on_level_select_music_finished"]

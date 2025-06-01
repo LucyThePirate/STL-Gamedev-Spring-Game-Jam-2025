@@ -1,0 +1,311 @@
+[gd_scene load_steps=21 format=3 uid="uid://3k43mtbqb03q"]
+
+[ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
+[ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://3i2kg7knjo0r" path="res://Scenes/camera_2d.tscn" id="3_sq00h"]
+[ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_fgdfb"]
+[ext_resource type="AudioStream" uid="uid://cl2ly08hsbguv" path="res://Assets/SFX/Announcer_Countdown_01.wav" id="6_71d4j"]
+[ext_resource type="AudioStream" uid="uid://xmfoqxu10qkt" path="res://Assets/SFX/Announcer_RedKills_01.wav" id="6_e6ru4"]
+[ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="7_efn8y"]
+[ext_resource type="AudioStream" uid="uid://b210kqrnf8ex5" path="res://Assets/SFX/Announcer_Kill_01.wav" id="7_sm5re"]
+[ext_resource type="AudioStream" uid="uid://sbosv8cbcfj4" path="res://Assets/SFX/Announcer_Kill_02.wav" id="8_hjqsb"]
+[ext_resource type="AudioStream" uid="uid://d3nn1bv5udngl" path="res://Assets/SFX/Announcer_Kill_03.wav" id="9_y8n5u"]
+[ext_resource type="AudioStream" uid="uid://h2tnn63h4uw5" path="res://Assets/SFX/Announcer_Tie_01.wav" id="12_5tjy5"]
+[ext_resource type="AudioStream" uid="uid://cu5pkxhwd5svg" path="res://Assets/SFX/Announcer_BlueKills_01.wav" id="13_iu5vk"]
+[ext_resource type="AudioStream" uid="uid://128hbq33hb0e" path="res://Assets/Music/CHIL City Place large crowd music birds and activity from a rooftop.wav" id="13_sm5re"]
+[ext_resource type="AudioStream" uid="uid://do8wx2ucnnk00" path="res://Assets/Music/StlGameJam25 Theme2.wav" id="14_hjqsb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_88ybb"]
+streams_count = 4
+stream_0/stream = ExtResource("6_e6ru4")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("7_sm5re")
+stream_2/stream = ExtResource("8_hjqsb")
+stream_3/stream = ExtResource("9_y8n5u")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i4mau"]
+streams_count = 2
+stream_0/stream = ExtResource("6_71d4j")
+stream_1/stream = ExtResource("7_efn8y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iav25"]
+streams_count = 4
+stream_0/stream = ExtResource("7_sm5re")
+stream_1/stream = ExtResource("8_hjqsb")
+stream_2/stream = ExtResource("9_y8n5u")
+stream_3/stream = ExtResource("13_iu5vk")
+stream_3/weight = 2.0
+
+[sub_resource type="Animation" id="Animation_sm5re"]
+resource_name = "FadeOutMusic"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-10.0, -50.0]
+}
+
+[sub_resource type="Animation" id="Animation_hjqsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8n5u"]
+_data = {
+&"FadeOutMusic": SubResource("Animation_sm5re"),
+&"RESET": SubResource("Animation_hjqsb")
+}
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_oj352")
+player_scene = ExtResource("2_e5fcp")
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("gameManager") instance=ExtResource("3_sq00h")]
+position = Vector2(576, 324)
+zoom = Vector2(1.09, 1.09)
+gameManager = NodePath("..")
+
+[node name="RoundTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="EndOfRoundTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00868056
+anchor_right = 0.0078125
+offset_left = 500.0
+offset_top = 5.0
+offset_right = 648.0
+offset_bottom = 28.0
+grow_horizontal = 2
+pivot_offset = Vector2(74, 0)
+
+[node name="RoundNumberLabel" type="Label" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_fgdfb")
+theme_override_font_sizes/font_size = 21
+text = "Round: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.71
+theme_override_constants/margin_left = 20
+
+[node name="CurrentScore" type="RichTextLabel" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("5_fgdfb")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[color=CRIMSON]0[/color] - [color=ROYAL_BLUE]0[/color]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.71
+theme_override_constants/margin_left = 20
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_fgdfb")
+theme_override_font_sizes/font_size = 21
+text = "Time Left: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RoundResults" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("5_fgdfb")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "This is where the round results will go, like \"Cardinals win!\""
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RematchButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Rematch"
+
+[node name="NewGameButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Main Menu"
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("5_fgdfb")
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="PauseContainer" type="CenterContainer" parent="CanvasLayer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PausedText" type="RichTextLabel" parent="CanvasLayer/PauseContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.486275)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("5_fgdfb")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Paused"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RematchButton" type="Button" parent="CanvasLayer/PauseContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rematch"
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/PauseContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="AnnouncerRedKills" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_88ybb")
+bus = &"Announcer"
+
+[node name="AnnouncerCountdown" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_i4mau")
+bus = &"Announcer"
+
+[node name="AnnouncerTie" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_5tjy5")
+bus = &"Announcer"
+
+[node name="AnnouncerBlueKills" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_iav25")
+bus = &"Announcer"
+
+[node name="CityAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sm5re")
+autoplay = true
+bus = &"Ambiance"
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_hjqsb")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainTheme"]
+libraries = {
+&"": SubResource("AnimationLibrary_y8n5u")
+}
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="EndOfRoundTimer" to="." method="_on_end_of_round_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/RematchButton" to="." method="_on_rematch_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/RematchButton" to="." method="_on_rematch_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/MenuButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="finished" from="CityAmbiance" to="." method="_on_city_ambiance_finished"]
+[connection signal="finished" from="MainTheme" to="." method="_on_main_theme_finished"]

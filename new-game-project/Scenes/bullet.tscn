@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfqn3f82e5yoj"]
+
+[ext_resource type="Script" uid="uid://fqmo1ou78qm5" path="res://Scripts/bullet.gd" id="1_mkf8s"]
+[ext_resource type="AudioStream" uid="uid://b16thwy4mxc0" path="res://Assets/SFX/Player_Laser_Hit_01.wav" id="2_oduel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(12.5, 29.0943)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.145002)
+scale = Vector2(0.64, 0.265)
+shape = SubResource("RectangleShape2D_y25gk")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.247059, 0.219608, 0.192157, 1)
+polygon = PackedVector2Array(-3, 3, 3, 3, 3, -3, -3, -3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oduel")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
