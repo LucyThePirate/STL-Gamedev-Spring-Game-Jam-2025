@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=66 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
@@ -14,15 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://baea1sddgtx7k" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
 [ext_resource type="PackedScene" uid="uid://dv5n7vlkn465l" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
 [ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
-[ext_resource type="Texture2D" uid="uid://dgb8jwcgt8ee0" path="res://Assets/Textures/LevelThumbnails/thumbnail_elevator.png" id="11_t1dhk"]
-[ext_resource type="Texture2D" uid="uid://dpm4cja26o620" path="res://Assets/Textures/LevelThumbnails/thumbnail_lab.png" id="11_ujyyl"]
 [ext_resource type="AudioStream" uid="uid://b13ha4ujigl64" path="res://Assets/SFX/363169__samsterbirdies__hammering-on-anvil.ogg" id="12_4nkqq"]
-[ext_resource type="Texture2D" uid="uid://dhs2vyuh8wqbx" path="res://Assets/Textures/LevelThumbnails/thumbnail_hospital.png" id="12_mkpwh"]
-[ext_resource type="Texture2D" uid="uid://cbek3k1hrgxvi" path="res://Assets/Textures/LevelThumbnails/thumbnail_factory.png" id="14_4nkqq"]
 [ext_resource type="Texture2D" uid="uid://brelllsgb6i5w" path="res://Assets/Textures/LevelThumbnails/thumbnail_raffles.png" id="15_ehtkc"]
-[ext_resource type="Texture2D" uid="uid://byetvux2h4s78" path="res://Assets/Textures/LevelThumbnails/thumbnail_residential.png" id="16_6dk6o"]
+[ext_resource type="Texture2D" uid="uid://dj6jwgbuqc3a4" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail.jpg" id="15_xcoo4"]
+[ext_resource type="Texture2D" uid="uid://g4agml6bijsc" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail_bright.jpg" id="16_jw7lb"]
 [ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
+[ext_resource type="Texture2D" uid="uid://b6ta1e3v0iseo" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail.jpg" id="18_jw7lb"]
+[ext_resource type="Texture2D" uid="uid://be5odr34llrat" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail_bright.jpg" id="19_6vfk8"]
+[ext_resource type="Texture2D" uid="uid://estr0wxvql4l" path="res://Assets/Textures/LevelThumbnails/elevator_thumbnail.jpg" id="20_1xund"]
 [ext_resource type="AudioStream" uid="uid://dr4h6kj6cn3hf" path="res://Assets/SFX/650574__soundofsong__fire-crackling-loop.wav" id="21_ehtkc"]
+[ext_resource type="Texture2D" uid="uid://br4k33wxpi7qd" path="res://Assets/Textures/LevelThumbnails/elevator_thumbnai_bright.jpg" id="21_msuys"]
+[ext_resource type="Texture2D" uid="uid://dq0vo5k24l6m4" path="res://Assets/Textures/LevelThumbnails/factory_thumbnail.jpg" id="22_msuys"]
+[ext_resource type="Texture2D" uid="uid://tslca1pb4t1y" path="res://Assets/Textures/LevelThumbnails/factory_thumbnail_bright.jpg" id="23_aylim"]
 [ext_resource type="AudioStream" uid="uid://cl2ly08hsbguv" path="res://Assets/SFX/Announcer_Countdown_01.wav" id="23_ne6ao"]
 [ext_resource type="AudioStream" uid="uid://7s3kxekgdr5k" path="res://Assets/SFX/Player_Laser_Fire_01.wav" id="23_xcoo4"]
 [ext_resource type="AudioStream" uid="uid://cs0snyp6jbwp4" path="res://Assets/Music/StlGameJam25 MainMenu1.wav" id="24_6m47u"]
@@ -30,7 +33,9 @@
 [ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="24_tt8ml"]
 [ext_resource type="AudioStream" uid="uid://bjv8h75irb6f" path="res://Assets/SFX/Player_Laser_Fire_03.wav" id="25_6vfk8"]
 [ext_resource type="AudioStream" uid="uid://drsxutkttfl44" path="res://Assets/Music/STLGameJam25 LevelSelect1.wav" id="25_84iac"]
+[ext_resource type="Texture2D" uid="uid://bclewtrsye0ud" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail.jpg" id="25_aylim"]
 [ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="26_1xund"]
+[ext_resource type="Texture2D" uid="uid://c6ioutx5in4mr" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail_bright.jpg" id="26_y82t1"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
 
@@ -449,30 +454,6 @@ content_margin_right = 6.0
 content_margin_bottom = 2.0
 texture = SubResource("GradientTexture1D_n45e2")
 
-[sub_resource type="Gradient" id="Gradient_ujyyl"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mkpwh"]
-gradient = SubResource("Gradient_ujyyl")
-width = 120
-height = 100
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_n45e2"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_opfnp"]
-gradient = SubResource("Gradient_n45e2")
-width = 120
-height = 100
-fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_mkpwh"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4nkqq"]
-gradient = SubResource("Gradient_mkpwh")
-width = 120
-height = 100
-fill_to = Vector2(1, 1)
-
 [sub_resource type="Gradient" id="Gradient_cp0ys"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yhxw7"]
@@ -698,59 +679,80 @@ columns = 2
 layout_mode = 2
 
 [node name="MapLabButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
+custom_minimum_size = Vector2(147, 100)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = ExtResource("11_ujyyl")
-texture_pressed = SubResource("GradientTexture2D_mkpwh")
+texture_normal = ExtResource("15_xcoo4")
+texture_pressed = ExtResource("16_jw7lb")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level1"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
 text = "Lab"
 
 [node name="Level2" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
 [node name="MapHospitalButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
+custom_minimum_size = Vector2(147, 100)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = ExtResource("12_mkpwh")
-texture_pressed = SubResource("GradientTexture2D_opfnp")
+texture_normal = ExtResource("18_jw7lb")
+texture_pressed = ExtResource("19_6vfk8")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level2"]
 layout_mode = 2
-text = "Hospital"
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
+text = "Helipad"
 
 [node name="Level3" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
 [node name="MapElevatorButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
+custom_minimum_size = Vector2(147, 100)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = ExtResource("11_t1dhk")
-texture_pressed = SubResource("GradientTexture2D_4nkqq")
+texture_normal = ExtResource("20_1xund")
+texture_pressed = ExtResource("21_msuys")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level3"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
 text = "Elevator"
 
 [node name="Level4" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 
 [node name="MapFactoryButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
+custom_minimum_size = Vector2(147, 100)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = ExtResource("14_4nkqq")
-texture_pressed = SubResource("GradientTexture2D_yhxw7")
+texture_normal = ExtResource("22_msuys")
+texture_pressed = ExtResource("23_aylim")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level4"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
 text = "Factory"
 
 [node name="Level5" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MapRafflesButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level5"]
@@ -768,17 +770,21 @@ text = "Raffles"
 layout_mode = 2
 
 [node name="MapResidentialButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
+custom_minimum_size = Vector2(147, 100)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_1ehe0")
-texture_normal = ExtResource("16_6dk6o")
-texture_pressed = SubResource("GradientTexture2D_yhxw7")
+texture_normal = ExtResource("25_aylim")
+texture_pressed = ExtResource("26_y82t1")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
 layout_mode = 2
 text = "Residential"
 
 [node name="Level7" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MapHelipadButton" type="TextureButton" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level7"]

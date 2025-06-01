@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj81dju55e07r"]
+[gd_scene load_steps=6 format=3 uid="uid://bj81dju55e07r"]
 
-[ext_resource type="Texture2D" uid="uid://b6ibjj2mv0p1" path="res://Assets/Textures/Levels/elevator.png" id="1_apo7q"]
 [ext_resource type="Texture2D" uid="uid://dnqsld5lhnkvu" path="res://Assets/Textures/Levels/elevator_fin.png" id="2_indl2"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_apo7q"]
@@ -20,12 +19,6 @@ a = Vector2(-2, -1)
 b = Vector2(245, -3)
 
 [node name="MapElevator" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(503, 356)
-scale = Vector2(0.554804, 0.554804)
-texture = ExtResource("1_apo7q")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(504, 324)
