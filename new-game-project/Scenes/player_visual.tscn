@@ -522,7 +522,7 @@ tracks/32/keys = {
 tracks/33/type = "audio"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("AudioStreamPlayer2D")
+tracks/33/path = NodePath("DeathSound")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
@@ -1765,6 +1765,166 @@ tracks/9/keys = {
 "values": [Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809)]
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45feu"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("10_rt2nq")
+stream_1/stream = ExtResource("11_wayi6")
+stream_2/stream = ExtResource("12_wcee1")
+stream_3/stream = ExtResource("13_dsbi7")
+
+[sub_resource type="Animation" id="Animation_qvhd5"]
+resource_name = "Taunt"
+length = 1.0685
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Wing1:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.67323, 0.0, -1.67323, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/Face/BeakLower:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.29489, 0.0, -1.29489, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Face/BeakUpper:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.922947, 0.0, 0.922947, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/HeadFeathers/HF1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Body/HeadFeathers/HF2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Body/HeadFeathers/HF3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/Body/TailFeathers/TF1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton2D/Body/TailFeathers/TF2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton2D/Body/TailFeathers/TF3:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton2D/Body:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809), Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809), Vector2(1, 1), Vector2(1, 0.92)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton2D/Body:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.103698, 0.0, 0.171714, 0.0]
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AudioStreamPlayer2D")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_45feu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
+
 [sub_resource type="Animation" id="Animation_wm62m"]
 resource_name = "Unvanish"
 step = 0.1
@@ -2027,166 +2187,6 @@ tracks/14/keys = {
 }
 tracks/14/use_blend = true
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45feu"]
-random_pitch = 1.1
-streams_count = 4
-stream_0/stream = ExtResource("10_rt2nq")
-stream_1/stream = ExtResource("11_wayi6")
-stream_2/stream = ExtResource("12_wcee1")
-stream_3/stream = ExtResource("13_dsbi7")
-
-[sub_resource type="Animation" id="Animation_qvhd5"]
-resource_name = "Taunt"
-length = 1.0685
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton2D/Body/Wing1:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.67323, 0.0, -1.67323, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton2D/Body/Face/BeakLower:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.29489, 0.0, -1.29489, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton2D/Body/Face/BeakUpper:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.922947, 0.0, 0.922947, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton2D/Body/HeadFeathers/HF1:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Skeleton2D/Body/HeadFeathers/HF2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton2D/Body/HeadFeathers/HF3:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.3677, 0.0, 0.3677, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Skeleton2D/Body/TailFeathers/TF1:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Skeleton2D/Body/TailFeathers/TF2:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Skeleton2D/Body/TailFeathers/TF3:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.447576, 0.0, -0.447576, 0.0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Skeleton2D/Body:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809), Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809), Vector2(1, 1), Vector2(1, 0.92)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Skeleton2D/Body:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.103698, 0.0, 0.171714, 0.0]
-}
-tracks/11/type = "audio"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("AudioStreamPlayer2D")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_45feu")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/11/use_blend = true
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7e3i"]
 _data = {
 &"Blink": SubResource("Animation_w7e3i"),
@@ -2414,13 +2414,13 @@ player_2_ghost_spawn_texture = ExtResource("3_1k6rl")
 modification_stack = SubResource("SkeletonModificationStack2D_2a23h")
 
 [node name="Body" type="Bone2D" parent="Skeleton2D"]
-skew = -6.67572e-05
+skew = -8.14199e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegLeft" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(-55, 100)
-scale = Vector2(0.999866, 0.999866)
+scale = Vector2(0.999858, 0.999858)
 rest = Transform2D(1, 0, 0, 1, -55, 100)
 editor_settings/show_bone_gizmo = false
 
@@ -2472,7 +2472,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegRight" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(13, 126)
-scale = Vector2(0.999861, 0.999861)
+scale = Vector2(0.999856, 0.999856)
 rest = Transform2D(1, 0, 0, 1, 13, 126)
 editor_settings/show_bone_gizmo = false
 
@@ -2573,7 +2573,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakUpper" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-48, 59)
-scale = Vector2(0.999829, 0.999829)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, -48, 59)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2582,7 +2582,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999836, 0.999836)
+scale = Vector2(0.999833, 0.999833)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2596,7 +2596,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF1" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-40, -27)
-scale = Vector2(0.999846, 0.999846)
+scale = Vector2(0.999841, 0.999841)
 rest = Transform2D(1, 0, 0, 1, -40, -27)
 auto_calculate_length_and_angle = false
 length = 97.478
@@ -2605,7 +2605,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF2" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-20, -23)
-scale = Vector2(0.999842, 0.999842)
+scale = Vector2(0.999839, 0.999839)
 rest = Transform2D(1, 0, 0, 1, -20, -23)
 auto_calculate_length_and_angle = false
 length = 106.531
@@ -2614,7 +2614,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF3" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(25, -15)
-scale = Vector2(0.999844, 0.999844)
+scale = Vector2(0.999842, 0.999842)
 rest = Transform2D(1, 0, 0, 1, 25, -15)
 auto_calculate_length_and_angle = false
 length = 102.004
@@ -2628,7 +2628,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF1" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(0, -27)
-scale = Vector2(0.999849, 0.999849)
+scale = Vector2(0.99985, 0.99985)
 rest = Transform2D(1, 0, 0, 1, 0, -27)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2637,7 +2637,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF2" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(20, -17)
-scale = Vector2(0.999853, 0.999853)
+scale = Vector2(0.999855, 0.999855)
 rest = Transform2D(1, 0, 0, 1, 20, -17)
 auto_calculate_length_and_angle = false
 length = 160.919
@@ -2646,7 +2646,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF3" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(26, 7)
-scale = Vector2(0.99985, 0.99985)
+scale = Vector2(0.999847, 0.999847)
 rest = Transform2D(1, 0, 0, 1, 26, 7)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -3007,6 +3007,8 @@ process_material = SubResource("ParticleProcessMaterial_3u00l")
 [node name="GhostSpawnParticles" type="GPUParticles2D" parent="."]
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_1k6rl")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"

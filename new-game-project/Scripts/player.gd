@@ -144,8 +144,8 @@ func end_round():
 	#if state == States.DEAD:
 	velocity = Vector2.ZERO
 	if not is_in_group("ghost"):
-		if state == States.DEAD:
-			visual.make_me_spooky()
+		#if state == States.DEAD:
+		#visual.make_me_spooky()
 		state = States.GHOST
 		add_to_group("ghost")
 		$CollisionShape2D.set_deferred("disabled", true)
