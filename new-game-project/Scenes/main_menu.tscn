@@ -582,6 +582,7 @@ process_material = SubResource("ParticleProcessMaterial_t1dhk")
 volume_db = -9.244
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -595,7 +596,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
+offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -623,6 +624,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="LevelSelect" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -668,7 +670,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
 text = "Level"
 
 [node name="GridContainer" type="GridContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2"]
@@ -781,6 +786,8 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer/Level6"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 20
 text = "Residential"
 
 [node name="Level7" type="VBoxContainer" parent="LevelSelect/CenterContainer/HBoxContainer/VBoxContainer2/GridContainer"]
@@ -803,7 +810,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/RoundAmount"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
 text = "Rounds"
 
 [node name="SpinBox" type="SpinBox" parent="LevelSelect/CenterContainer/HBoxContainer/RoundAmount"]
@@ -819,7 +828,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="LevelSelect/CenterContainer/HBoxContainer/RoundLength"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 30
 text = "Round Length"
 
 [node name="RoundLengthSelector" type="OptionButton" parent="LevelSelect/CenterContainer/HBoxContainer/RoundLength"]
@@ -839,7 +850,6 @@ popup/item_4/text = "5 minutes"
 popup/item_4/id = 4
 
 [node name="Controls" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -878,6 +888,38 @@ text = "Shoot: V"
 layout_mode = 2
 text = "Be Annoying: E"
 
+[node name="Equipment2" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+text = "Pause: ESCAPE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Player1" type="VBoxContainer" parent="Controls/CenterContainer/CenterContainer/Player1"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Controller"
+
+[node name="Movement" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Move: Left stick"
+
+[node name="Shoot" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Shoot: Bottom face button"
+
+[node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Be Annoying: Top face button"
+
+[node name="Pause" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1/Player1"]
+layout_mode = 2
+text = "Pause: Start button"
+
 [node name="MarginContainer" type="MarginContainer" parent="Controls/CenterContainer/CenterContainer"]
 custom_minimum_size = Vector2(68.645, 0)
 layout_mode = 2
@@ -902,6 +944,10 @@ text = "Shoot: /"
 layout_mode = 2
 text = "Be Annoying: ENTER"
 
+[node name="Pause" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
+layout_mode = 2
+text = "Pause: ESCAPE"
+
 [node name="Button" type="Button" parent="Controls"]
 layout_mode = 2
 offset_left = 31.0
@@ -912,6 +958,7 @@ theme_override_font_sizes/font_size = 25
 text = "Back"
 
 [node name="Options" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

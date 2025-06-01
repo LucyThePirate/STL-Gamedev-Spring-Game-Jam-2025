@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
 		if !is_shooting and move_direction != Vector2.ZERO:
 			facing_direction = move_direction.normalized()
 			$Sprite2D.rotation = facing_direction.angle()
-			
-		
 
 		if Input.is_action_pressed("Shoot P%s" % [player_id]):
 			if !is_shooting:
@@ -126,7 +124,8 @@ func start_countdown():
 		visual.make_me_spooky()
 		global_position = replayer.get_start_position()
 		visual.set_ghost_spawn_visible(true)
-		$GhostStartTimer.start(played_count * seconds_per_round_before_ghost_starts_moving)
+		#$GhostStartTimer.start(played_count * seconds_per_round_before_ghost_starts_moving)
+		replayer.play()
 
 
 func start_round():
