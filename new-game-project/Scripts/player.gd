@@ -153,6 +153,8 @@ func end_round():
 		replayer.recording = false
 		replayer.record()
 		is_shooting = false
+	else:
+		replayer.stopping = true
 
 
 func vanish(is_vanished: bool):
