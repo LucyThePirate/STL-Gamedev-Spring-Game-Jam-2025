@@ -16,6 +16,7 @@ extends Node2D
 @onready
 var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxContainer/RoundResults
 @onready var new_game_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/NewGameButton
+@onready var rematch_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/RematchButton
 
 #AUDIO
 @onready var announcer_countdown_audio: AudioStreamPlayer2D = $SFX/AnnouncerCountdown
@@ -24,6 +25,8 @@ var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxConta
 @onready var announcer_blue_kills_audio: AudioStreamPlayer2D = $SFX/AnnouncerBlueKills
 
 @export var player_scene: PackedScene
+
+@onready var pause_menu: VBoxContainer = $CanvasLayer/PauseContainer/VBoxContainer
 
 var waiting_for_map: bool = true
 var round_length: int
@@ -51,6 +54,14 @@ func _process(delta: float) -> void:
 	if waiting_for_map and Globals.selected_map:
 		waiting_for_map = false
 		setup_game()
+
+	if Input.is_action_pressed("Pause"):
+			if !get_tree().paused:
+				pause_menu.show()
+				get_tree().paused = true
+			else:
+				pause_menu.hide()
+				get_tree().paused = false
 
 	initial_countdown_label.text = String.num(initial_countdown_timer.time_left, 0)
 	time_left_label.text = "Time remaining: " + String.num(round_timer.time_left, 0)
@@ -152,6 +163,7 @@ func end_game():
 		% [scores["Cardinals"], scores["Blue Jays"]]
 	)
 	end_of_round_results.show()
+	rematch_button.show()
 	new_game_button.show()
 
 
@@ -183,8 +195,17 @@ func _on_end_of_round_timer_timeout() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
-	print("newgame loading")
+	#print("newgame loading")
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func _on_rematch_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	pause_menu.hide()
 
 
 func _on_main_theme_finished() -> void:

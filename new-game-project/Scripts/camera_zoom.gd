@@ -20,10 +20,11 @@ func _process(delta) -> void:
 	if player_count.size() > 0:
 		#self.global_position = (player1.global_position + player2.global_position) * 0.5
 		var position_count: Vector2
-		var lowestX = 0
-		var highestX = 0
-		var lowestY = 0
-		var highestY = 0
+		var lowestX = 1000.0
+		var highestX = -1000.0
+		var lowestY = 1000.0
+		var highestY = -1000.0
+		var counter = 0
 		for n in player_count:
 			if not is_instance_valid(n):
 				continue
@@ -32,15 +33,23 @@ func _process(delta) -> void:
 			var ny = n.global_position.y
 			if nx <= lowestX:
 				lowestX = nx
-			elif nx >= highestX:
+			if nx >= highestX:
 				highestX = nx
 			if ny <= lowestY:
 				lowestY = ny
-			elif ny >= highestY:
+			if ny >= highestY:
 				highestY = ny
+			print("P" + str(counter) + " (" + str(n.global_position.x) + ", "+ str(n.global_position.y) + ")")
+			counter += 1
 		#self.global_position = position_count / player_count.size()
-		self.global_position.x = lowestX + highestX / 2
-		self.global_position.y = lowestY + highestY / 2
+		print("lowX: " + str(lowestX))
+		print("hiX: " + str(highestX))
+		print("lowY: " + str(lowestY))
+		print("hiY: " + str(lowestY))
+		self.global_position.x = (lowestX + highestX) / 2
+		self.global_position.y = (lowestY + highestY) / 2
+		
+		print("Cam: ()" + str(self.global_position.x) + ", " + str(self.global_position.y) + ")")
 
 		#var zoom_factor1 = abs(player2.global_position.x-player1.global_position.x)/(1152-100)
 		var zoom_factor1 = abs(lowestX - highestX) / (1152 - 100)

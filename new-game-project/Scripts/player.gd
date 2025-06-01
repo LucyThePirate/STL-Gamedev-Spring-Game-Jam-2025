@@ -46,6 +46,8 @@ func _physics_process(delta: float) -> void:
 		if !is_shooting and move_direction != Vector2.ZERO:
 			facing_direction = move_direction.normalized()
 			$Sprite2D.rotation = facing_direction.angle()
+			
+		
 
 		if Input.is_action_pressed("Shoot P%s" % [player_id]):
 			if !is_shooting:
