@@ -1,6 +1,6 @@
 [gd_scene load_steps=116 format=3 uid="uid://y105u0qil5yw"]
 
-[ext_resource type="Texture2D" uid="uid://fpoovk5gwfyh" path="res://Assets/Textures/Levels/factory_fin.png" id="1_r7tdn"]
+[ext_resource type="Texture2D" uid="uid://cnnqe20naign0" path="res://Assets/Textures/Levels/factory_fin2.png" id="1_r7tdn"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r7tdn"]
 a = Vector2(3, 4)
