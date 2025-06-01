@@ -163,3 +163,32 @@ func _on_title_music_finished() -> void:
 
 func _on_level_select_music_finished() -> void:
 	$LevelSelectMusic.play()
+
+
+func _on_master_volume_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(bus, value)
+
+
+func _on_ambience_volume_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Ambience")
+	AudioServer.set_bus_volume_db(bus, value)
+	bus = AudioServer.get_bus_index("Reverb")
+	AudioServer.set_bus_volume_db(bus, value)
+
+
+func _on_sfx_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(bus, value)
+	$Options/CenterContainer/VBoxContainer/HBoxContainer2/SFXTest.play()
+
+
+func _on_music_volume_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus, value)
+
+
+func _on_announcer_volume_value_changed(value: float) -> void:
+	var bus = AudioServer.get_bus_index("Announcer")
+	AudioServer.set_bus_volume_db(bus, value)
+	$Options/CenterContainer/VBoxContainer/HBoxContainer4/AnnouncerTest.play()

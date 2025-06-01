@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=67 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
@@ -23,8 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://byetvux2h4s78" path="res://Assets/Textures/LevelThumbnails/thumbnail_residential.png" id="16_6dk6o"]
 [ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
 [ext_resource type="AudioStream" uid="uid://dr4h6kj6cn3hf" path="res://Assets/SFX/650574__soundofsong__fire-crackling-loop.wav" id="21_ehtkc"]
+[ext_resource type="AudioStream" uid="uid://cl2ly08hsbguv" path="res://Assets/SFX/Announcer_Countdown_01.wav" id="23_ne6ao"]
+[ext_resource type="AudioStream" uid="uid://7s3kxekgdr5k" path="res://Assets/SFX/Player_Laser_Fire_01.wav" id="23_xcoo4"]
 [ext_resource type="AudioStream" uid="uid://cs0snyp6jbwp4" path="res://Assets/Music/StlGameJam25 MainMenu1.wav" id="24_6m47u"]
+[ext_resource type="AudioStream" uid="uid://bx45jf2it1ls2" path="res://Assets/SFX/Player_Laser_Fire_02.wav" id="24_jw7lb"]
+[ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="24_tt8ml"]
+[ext_resource type="AudioStream" uid="uid://bjv8h75irb6f" path="res://Assets/SFX/Player_Laser_Fire_03.wav" id="25_6vfk8"]
 [ext_resource type="AudioStream" uid="uid://drsxutkttfl44" path="res://Assets/Music/STLGameJam25 LevelSelect1.wav" id="25_84iac"]
+[ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="26_1xund"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
 
@@ -475,6 +481,18 @@ width = 120
 height = 100
 fill_to = Vector2(1, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_msuys"]
+streams_count = 4
+stream_0/stream = ExtResource("23_xcoo4")
+stream_1/stream = ExtResource("24_jw7lb")
+stream_2/stream = ExtResource("25_6vfk8")
+stream_3/stream = ExtResource("26_1xund")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fmarx"]
+streams_count = 2
+stream_0/stream = ExtResource("23_ne6ao")
+stream_1/stream = ExtResource("24_tt8ml")
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -888,7 +906,6 @@ theme_override_font_sizes/font_size = 25
 text = "Back"
 
 [node name="Options" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -901,18 +918,19 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -171.5
-offset_right = 171.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Options/CenterContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(600, 316.905)
+layout_mode = 2
+color = Color(0.278431, 0.278431, 0.278431, 0.568627)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/CenterContainer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/HBoxContainer"]
+[node name="UIDesignIsMyPassion" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -922,13 +940,167 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_fonts/normal_font = ExtResource("5_n45e2")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]sorry nothing[/rainbow][/tornado]"
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]UI Design is my passion[/rainbow][/tornado]"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Options/CenterContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Master Volume
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="MasterVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "SFX Volume     "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="SFX" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="SFXTest" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer2"]
+stream = SubResource("AudioStreamRandomizer_msuys")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Music   Volume
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="MusicVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Ambience          
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="AmbienceVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Announcer       "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="AnnouncerVolume" type="HSlider" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(229.885, 39.115)
+layout_mode = 2
+min_value = -50.0
+max_value = 50.0
+
+[node name="AnnouncerTest" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/HBoxContainer4"]
+stream = SubResource("AudioStreamRandomizer_fmarx")
+bus = &"Announcer"
 
 [node name="BackButton" type="Button" parent="Options"]
 layout_mode = 0
@@ -1166,6 +1338,11 @@ bus = &"Music"
 [connection signal="value_changed" from="LevelSelect/CenterContainer/HBoxContainer/RoundAmount/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="item_selected" from="LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector" to="." method="_on_round_length_selector_item_selected"]
 [connection signal="pressed" from="Controls/Button" to="." method="_on_controls_back_button_pressed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer2/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer3/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer5/AmbienceVolume" to="." method="_on_ambience_volume_value_changed"]
+[connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer4/AnnouncerVolume" to="." method="_on_announcer_volume_value_changed"]
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_options_back_button_pressed"]
 [connection signal="pressed" from="Credits/BackButton" to="." method="_on_credits_back_button_pressed"]
 [connection signal="finished" from="FireAmbience" to="." method="_on_audio_stream_player_finished"]
