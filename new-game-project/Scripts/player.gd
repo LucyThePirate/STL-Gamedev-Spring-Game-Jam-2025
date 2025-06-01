@@ -4,6 +4,8 @@ class_name Player
 
 signal damaged(health_left)
 signal died(player_id)
+signal shot
+signal taunted
 
 @export var player_id = 1
 
@@ -52,6 +54,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			is_shooting = false
 
+		if Input.is_action_just_pressed("Taunt P%s" % [player_id]):
+			taunted.emit()
+
 		var playerInput = get_input()
 		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
 		move_and_slide()
@@ -93,6 +98,7 @@ func shoot():
 		var bullet = bullet_scene.instantiate()
 		bullet.fire(self, bullet_spawn_pos.global_position)
 		get_tree().current_scene.add_child(bullet)
+		shot.emit()
 
 
 func _on_shot_timer_timeout() -> void:
@@ -100,7 +106,7 @@ func _on_shot_timer_timeout() -> void:
 
 
 func get_hit(damage):
-	if state == States.DEAD:
+	if state in [States.DEAD, States.ROUND_START]:
 		return
 	health -= damage
 	if health > 0:
@@ -115,6 +121,7 @@ func start_countdown():
 		replayer.recording = true
 		replayer.record()
 	if state == States.GHOST:
+		visual.make_me_spooky()
 		global_position = replayer.get_start_position()
 		visual.set_ghost_spawn_visible(true)
 		$GhostStartTimer.start(played_count * seconds_per_round_before_ghost_starts_moving)
@@ -135,9 +142,11 @@ func start_round():
 
 func end_round():
 	#if state == States.DEAD:
+	velocity = Vector2.ZERO
 	if not is_in_group("ghost"):
+		if state == States.DEAD:
+			visual.make_me_spooky()
 		state = States.GHOST
-		visual.make_me_spooky()
 		add_to_group("ghost")
 		$CollisionShape2D.set_deferred("disabled", true)
 		# stop recording and playback

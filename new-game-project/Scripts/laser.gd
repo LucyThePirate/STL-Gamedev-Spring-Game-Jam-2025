@@ -3,7 +3,7 @@ extends RayCast2D
 @onready var laser_fire_audio: AudioStreamPlayer2D = $SFX/LaserFire
 
 @export var player_team_id = 1
-@export var damage: int = 5
+@export var damage: int = 25
 @export var can_hit_own_team := false
 
 var direction: Vector2
@@ -53,3 +53,4 @@ func _on_body_entered(body: Node2D) -> void:
 			if can_hit_own_team or (!can_hit_own_team and body.player_id != player_team_id):
 				body.get_hit(damage)
 				laser_hit_audio.play()
+				disable_laser()

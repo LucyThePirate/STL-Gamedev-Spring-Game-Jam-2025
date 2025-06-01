@@ -24,6 +24,8 @@ func initialize(player: Player):
 	# Connect with player's signals for damage/death animation
 	player_parent.damaged.connect(_on_player_damaged)
 	player_parent.died.connect(_on_player_died)
+	player_parent.shot.connect(_on_player_shot)
+	player_parent.taunted.connect(_on_player_taunted)
 
 
 func set_ghost_spawn_position(new_position: Vector2):
@@ -75,6 +77,15 @@ func _process(delta: float) -> void:
 func _on_player_damaged(health_remaining):
 	print("hit! Health left:", health_remaining)
 	animation_tree.set("parameters/Damaged/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	if health_remaining <= 75:
+		$Body/TailFeathers/d6.hide()
+		$Body/HeadFeathers/d9.hide()
+	if health_remaining <= 50:
+		$Body/TailFeathers/d7.hide()
+		$Body/HeadFeathers/d10.hide()
+	if health_remaining <= 25:
+		$Body/TailFeathers/d8.hide()
+		$Body/HeadFeathers/d11.hide()
 
 
 func _on_player_died(player_id):
@@ -82,10 +93,24 @@ func _on_player_died(player_id):
 	animation_tree.set("parameters/Die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 
+func _on_player_shot():
+	animation_tree.set("parameters/ShotFire/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func _on_player_taunted():
+	animation_tree.set("parameters/Taunt/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
 func make_me_spooky():
+	$Body/TailFeathers/d6.show()
+	$Body/HeadFeathers/d9.show()
+	$Body/TailFeathers/d7.show()
+	$Body/HeadFeathers/d10.show()
+	$Body/TailFeathers/d8.show()
+	$Body/HeadFeathers/d11.show()
 	for child in find_children_in_group(self, "PolygonTexture", true):
 		child.self_modulate = Color8(255, 255, 255, 114)
-		audio_stream_player_2d.stop()
+	audio_stream_player_2d.stop()
 
 
 func vanish(is_vanished: bool):

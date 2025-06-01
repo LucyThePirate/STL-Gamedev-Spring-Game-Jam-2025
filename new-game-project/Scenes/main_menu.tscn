@@ -1,19 +1,19 @@
-[gd_scene load_steps=57 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=59 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
-[ext_resource type="PackedScene" uid="uid://dr5hrjslmsbh3" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
+[ext_resource type="PackedScene" path="res://Scenes/map_lab.tscn" id="3_n45e2"]
 [ext_resource type="PackedScene" uid="uid://3k43mtbqb03q" path="res://Scenes/game_manager.tscn" id="4_ce3w2"]
-[ext_resource type="PackedScene" uid="uid://c33mj51pis1o3" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
+[ext_resource type="PackedScene" path="res://Scenes/map_hospital.tscn" id="4_opfnp"]
 [ext_resource type="Shader" uid="uid://jbos4nsburxq" path="res://Assets/Shaders/fire.gdshader" id="5_cp0ys"]
-[ext_resource type="PackedScene" uid="uid://bj81dju55e07r" path="res://Scenes/map_elevator.tscn" id="5_jr6u5"]
+[ext_resource type="PackedScene" path="res://Scenes/map_elevator.tscn" id="5_jr6u5"]
 [ext_resource type="FontFile" uid="uid://b4e7d31oc5tyi" path="res://Assets/Fonts/Permanentmarker-Regular.ttf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dol1ecitejj8w" path="res://Assets/Textures/Title.png" id="5_opfnp"]
-[ext_resource type="PackedScene" uid="uid://y105u0qil5yw" path="res://Scenes/map_factory.tscn" id="6_6m47u"]
+[ext_resource type="PackedScene" path="res://Scenes/map_factory.tscn" id="6_6m47u"]
 [ext_resource type="Shader" uid="uid://qu7gn4w4tnp6" path="res://Assets/Shaders/aura.gdshader" id="6_yhxw7"]
-[ext_resource type="PackedScene" uid="uid://baea1sddgtx7k" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
-[ext_resource type="PackedScene" uid="uid://dv5n7vlkn465l" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
-[ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
+[ext_resource type="PackedScene" path="res://Scenes/map_raffles.tscn" id="7_trj04"]
+[ext_resource type="PackedScene" path="res://Scenes/map_residential.tscn" id="8_16hvj"]
+[ext_resource type="PackedScene" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://dgb8jwcgt8ee0" path="res://Assets/Textures/LevelThumbnails/thumbnail_elevator.png" id="11_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dpm4cja26o620" path="res://Assets/Textures/LevelThumbnails/thumbnail_lab.png" id="11_ujyyl"]
 [ext_resource type="AudioStream" uid="uid://b13ha4ujigl64" path="res://Assets/SFX/363169__samsterbirdies__hammering-on-anvil.ogg" id="12_4nkqq"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://byetvux2h4s78" path="res://Assets/Textures/LevelThumbnails/thumbnail_residential.png" id="16_6dk6o"]
 [ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
 [ext_resource type="AudioStream" uid="uid://dr4h6kj6cn3hf" path="res://Assets/SFX/650574__soundofsong__fire-crackling-loop.wav" id="21_ehtkc"]
+[ext_resource type="AudioStream" uid="uid://cs0snyp6jbwp4" path="res://Assets/Music/StlGameJam25 MainMenu1.wav" id="24_6m47u"]
+[ext_resource type="AudioStream" uid="uid://drsxutkttfl44" path="res://Assets/Music/STLGameJam25 LevelSelect1.wav" id="25_84iac"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
 
@@ -227,6 +229,18 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0.9)
 }
 tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../TitleMusic:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-50.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_yhxw7"]
 length = 0.001
@@ -349,6 +363,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../TitleMusic:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-50.0]
 }
 
 [sub_resource type="Animation" id="Animation_trj04"]
@@ -598,7 +624,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="LevelSelect" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -826,9 +851,8 @@ layout_mode = 2
 text = "Shoot: V"
 
 [node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player1"]
-visible = false
 layout_mode = 2
-text = "Use Equipment: E"
+text = "Be Annoying: E"
 
 [node name="MarginContainer" type="MarginContainer" parent="Controls/CenterContainer/CenterContainer"]
 custom_minimum_size = Vector2(68.645, 0)
@@ -851,9 +875,8 @@ layout_mode = 2
 text = "Shoot: /"
 
 [node name="Equipment" type="Label" parent="Controls/CenterContainer/CenterContainer/Player2"]
-visible = false
 layout_mode = 2
-text = "Use Equipment: ENTER"
+text = "Be Annoying: ENTER"
 
 [node name="Button" type="Button" parent="Controls"]
 layout_mode = 2
@@ -865,10 +888,46 @@ theme_override_font_sizes/font_size = 25
 text = "Back"
 
 [node name="Options" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -171.5
+offset_right = 171.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/normal_font = ExtResource("5_n45e2")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[tornado radius=5.0 freq=1.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=.5]sorry nothing[/rainbow][/tornado]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Options/CenterContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="BackButton" type="Button" parent="Options"]
 layout_mode = 0
@@ -878,11 +937,6 @@ offset_right = 97.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 25
 text = "Back"
-
-[node name="CenterContainer" type="CenterContainer" parent="Options"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Credits" type="Control" parent="."]
 visible = false
@@ -1091,6 +1145,16 @@ pitch_scale = 0.95
 autoplay = true
 bus = &"Reverb"
 
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_6m47u")
+volume_db = -50.0
+autoplay = true
+bus = &"Music"
+
+[node name="LevelSelectMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_84iac")
+bus = &"Music"
+
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/OptionsButton" to="." method="_on_options_button_pressed"]
@@ -1104,3 +1168,5 @@ bus = &"Reverb"
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_options_back_button_pressed"]
 [connection signal="pressed" from="Credits/BackButton" to="." method="_on_credits_back_button_pressed"]
 [connection signal="finished" from="FireAmbience" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="TitleMusic" to="." method="_on_title_music_finished"]
+[connection signal="finished" from="LevelSelectMusic" to="." method="_on_level_select_music_finished"]
