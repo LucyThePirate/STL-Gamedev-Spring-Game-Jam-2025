@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://tvv6nm4sqcsm"]
+
+[ext_resource type="Script" uid="uid://bk8rt1hm7omo4" path="res://Scripts/ghost_replayer.gd" id="1_108wt"]
+
+[node name="Ghost" type="CharacterBody2D"]
+script = ExtResource("1_108wt")
+
+[node name="Delay" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1

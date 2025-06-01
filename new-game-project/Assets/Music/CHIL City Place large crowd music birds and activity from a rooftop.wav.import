@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://128hbq33hb0e"
+path="res://.godot/imported/CHIL City Place large crowd music birds and activity from a rooftop.wav-d69b54ddd0e0fcca459d8ed5648948c6.sample"
+
+[deps]
+
+source_file="res://Assets/Music/CHIL City Place large crowd music birds and activity from a rooftop.wav"
+dest_files=["res://.godot/imported/CHIL City Place large crowd music birds and activity from a rooftop.wav-d69b54ddd0e0fcca459d8ed5648948c6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2dj4v65tlilj"]
+
+[ext_resource type="PackedScene" uid="uid://q7uddcbmnklw" path="res://Scenes/obstacle_box.tscn" id="1_w7t2a"]
+
+[node name="PrototypeMap" type="Node2D"]
+
+[node name="FloorColor" type="ColorRect" parent="."]
+z_index = -2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.686
+offset_top = 45.5647
+offset_right = 97.686
+offset_bottom = 85.5647
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(26.0094, 13.7616)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.515867, 0.515867, 0.515867, 1)
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="ObstacleBox" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(56, 319)
+rotation = 1.5708
+scale = Vector2(13.9782, 0.272839)
+
+[node name="ObstacleBox2" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(1097, 319)
+rotation = 1.5708
+scale = Vector2(13.9782, 0.272839)
+
+[node name="ObstacleBox3" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(576.565, 596.016)
+scale = Vector2(26.298, 0.272)
+
+[node name="ObstacleBox4" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(577, 45.0001)
+scale = Vector2(26.2582, 0.272839)
+
+[node name="ObstacleBox5" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(706, 368)
+rotation = 1.5708
+scale = Vector2(1.41834, 1.36245)
+
+[node name="ObstacleBox6" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(411, 230)
+rotation = 1.5708
+scale = Vector2(1.41834, 1.36245)
+
+[node name="ObstacleBox7" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(484, 230)
+rotation = 1.5708
+scale = Vector2(1.41834, 1.36245)
+
+[node name="ObstacleBox8" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(519, 521)
+rotation = 1.5708
+scale = Vector2(3.6842, 0.491982)
+
+[node name="ObstacleBox9" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(605, 133)
+rotation = 1.5708
+scale = Vector2(4.5242, 0.491982)
+
+[node name="ObstacleBox10" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(789.639, 390.702)
+scale = Vector2(3.3146, 0.28255)
+
+[node name="ObstacleBox11" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(320.181, 252.737)
+scale = Vector2(3.3146, 0.28255)
+
+[node name="ObstacleBox12" parent="Obstacles" instance=ExtResource("1_w7t2a")]
+position = Vector2(320.181, 252.737)
+scale = Vector2(3.3146, 0.28255)
+
+[node name="Player1Spawn" type="Marker2D" parent="."]
+position = Vector2(126, 117)
+
+[node name="Player2Spawn" type="Marker2D" parent="."]
+position = Vector2(974, 498)
