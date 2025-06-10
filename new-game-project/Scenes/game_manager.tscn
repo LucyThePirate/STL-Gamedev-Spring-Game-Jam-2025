@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3k43mtbqb03q"]
+[gd_scene load_steps=39 format=3 uid="uid://3k43mtbqb03q"]
 
 [ext_resource type="Script" uid="uid://rotuh2tt2ax1" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://dlaljyl5f6dcs" path="res://Scenes/player.tscn" id="2_e5fcp"]
@@ -9,19 +9,35 @@
 [ext_resource type="AudioStream" uid="uid://dmmpqwprxyq6b" path="res://Assets/SFX/Announcer_Countdown_02.wav" id="7_efn8y"]
 [ext_resource type="AudioStream" uid="uid://b210kqrnf8ex5" path="res://Assets/SFX/Announcer_Kill_01.wav" id="7_sm5re"]
 [ext_resource type="AudioStream" uid="uid://sbosv8cbcfj4" path="res://Assets/SFX/Announcer_Kill_02.wav" id="8_hjqsb"]
+[ext_resource type="AudioStream" uid="uid://ctqpija0f80s6" path="res://Assets/SFX/Announcer_Outtake_01.wav" id="9_hjqsb"]
 [ext_resource type="AudioStream" uid="uid://d3nn1bv5udngl" path="res://Assets/SFX/Announcer_Kill_03.wav" id="9_y8n5u"]
+[ext_resource type="AudioStream" uid="uid://dwe038ncwega6" path="res://Assets/SFX/Announcer_RedKills_02.wav" id="10_iav25"]
 [ext_resource type="AudioStream" uid="uid://h2tnn63h4uw5" path="res://Assets/SFX/Announcer_Tie_01.wav" id="12_5tjy5"]
 [ext_resource type="AudioStream" uid="uid://cu5pkxhwd5svg" path="res://Assets/SFX/Announcer_BlueKills_01.wav" id="13_iu5vk"]
 [ext_resource type="AudioStream" uid="uid://128hbq33hb0e" path="res://Assets/Music/CHIL City Place large crowd music birds and activity from a rooftop.wav" id="13_sm5re"]
 [ext_resource type="AudioStream" uid="uid://do8wx2ucnnk00" path="res://Assets/Music/StlGameJam25 Theme2.wav" id="14_hjqsb"]
+[ext_resource type="AudioStream" uid="uid://bwcv276n1p1lk" path="res://Assets/SFX/Announcer_BlueKills_02.wav" id="15_fuy7q"]
+[ext_resource type="AudioStream" uid="uid://cgfu3cet1wpyq" path="res://Assets/SFX/Announcer_Start_Game_01.wav" id="16_uj5f7"]
+[ext_resource type="AudioStream" uid="uid://ct15goy6gr855" path="res://Assets/SFX/Announcer_Start_Game_02.wav" id="17_v2ahw"]
+[ext_resource type="AudioStream" uid="uid://b0mn03os0ouk8" path="res://Assets/SFX/Announcer_Start_Game_03.wav" id="18_mivtr"]
+[ext_resource type="AudioStream" uid="uid://cpuykjgfyfj20" path="res://Assets/SFX/Announcer_Finished_Game_01.wav" id="19_gdqbl"]
+[ext_resource type="AudioStream" uid="uid://d25eulig52bgp" path="res://Assets/SFX/Announcer_Finished_Game_02.wav" id="20_a2qng"]
+[ext_resource type="AudioStream" uid="uid://5r0vajbj3cx7" path="res://Assets/SFX/Announcer_Red_Wins_01.wav" id="21_ip8e4"]
+[ext_resource type="AudioStream" uid="uid://csvqowcebiyuu" path="res://Assets/SFX/Announcer_Red_Wins_02.wav" id="22_oehii"]
+[ext_resource type="AudioStream" uid="uid://dqdpfw6jwp12q" path="res://Assets/SFX/Announcer_Blue_Wins_01.wav" id="23_w6arl"]
+[ext_resource type="AudioStream" uid="uid://cjkdhvgfbi7np" path="res://Assets/SFX/Announcer_Blue_Wins_02.wav" id="24_28qnn"]
+[ext_resource type="AudioStream" uid="uid://0xg0dpsbptvt" path="res://Assets/SFX/Announcer_BothKill_01.wav" id="25_dpafx"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_88ybb"]
-streams_count = 4
+streams_count = 6
 stream_0/stream = ExtResource("6_e6ru4")
 stream_0/weight = 2.0
 stream_1/stream = ExtResource("7_sm5re")
 stream_2/stream = ExtResource("8_hjqsb")
 stream_3/stream = ExtResource("9_y8n5u")
+stream_4/stream = ExtResource("9_hjqsb")
+stream_4/weight = 0.2
+stream_5/stream = ExtResource("10_iav25")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i4mau"]
 streams_count = 2
@@ -29,12 +45,40 @@ stream_0/stream = ExtResource("6_71d4j")
 stream_1/stream = ExtResource("7_efn8y")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iav25"]
-streams_count = 4
+streams_count = 6
 stream_0/stream = ExtResource("7_sm5re")
 stream_1/stream = ExtResource("8_hjqsb")
 stream_2/stream = ExtResource("9_y8n5u")
 stream_3/stream = ExtResource("13_iu5vk")
 stream_3/weight = 2.0
+stream_4/stream = ExtResource("9_hjqsb")
+stream_4/weight = 0.2
+stream_5/stream = ExtResource("15_fuy7q")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yanw6"]
+streams_count = 3
+stream_0/stream = ExtResource("16_uj5f7")
+stream_1/stream = ExtResource("17_v2ahw")
+stream_2/stream = ExtResource("18_mivtr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kfhv3"]
+streams_count = 2
+stream_0/stream = ExtResource("19_gdqbl")
+stream_1/stream = ExtResource("20_a2qng")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1d54o"]
+streams_count = 2
+stream_0/stream = ExtResource("21_ip8e4")
+stream_1/stream = ExtResource("22_oehii")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ablp3"]
+streams_count = 2
+stream_0/stream = ExtResource("23_w6arl")
+stream_1/stream = ExtResource("24_28qnn")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r0ypc"]
+streams_count = 1
+stream_0/stream = ExtResource("25_dpafx")
 
 [sub_resource type="Animation" id="Animation_sm5re"]
 resource_name = "FadeOutMusic"
@@ -264,20 +308,40 @@ text = "Main Menu"
 
 [node name="SFX" type="Node2D" parent="."]
 
-[node name="AnnouncerRedKills" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="AnnouncerRedKills" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_88ybb")
 bus = &"Announcer"
 
-[node name="AnnouncerCountdown" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="AnnouncerCountdown" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_i4mau")
 bus = &"Announcer"
 
-[node name="AnnouncerTie" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="AnnouncerTie" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("12_5tjy5")
 bus = &"Announcer"
 
-[node name="AnnouncerBlueKills" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="AnnouncerBlueKills" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_iav25")
+bus = &"Announcer"
+
+[node name="AnnouncerStartGame" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_yanw6")
+bus = &"Announcer"
+
+[node name="AnnouncerEndGame" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_kfhv3")
+bus = &"Announcer"
+
+[node name="AnnouncerRedWins" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_1d54o")
+bus = &"Announcer"
+
+[node name="AnnouncerBlueWins" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_ablp3")
+bus = &"Announcer"
+
+[node name="AnnouncerNobodyWins" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_r0ypc")
 bus = &"Announcer"
 
 [node name="CityAmbiance" type="AudioStreamPlayer" parent="."]
@@ -304,5 +368,3 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/RematchButton" to="." method="_on_rematch_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseContainer/VBoxContainer/MenuButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="finished" from="CityAmbiance" to="." method="_on_city_ambiance_finished"]
-[connection signal="finished" from="MainTheme" to="." method="_on_main_theme_finished"]

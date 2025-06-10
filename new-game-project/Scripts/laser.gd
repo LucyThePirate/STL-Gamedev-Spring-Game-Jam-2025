@@ -1,6 +1,7 @@
 extends RayCast2D
 @onready var laser_hit_audio: AudioStreamPlayer2D = $SFX/LaserHit
 @onready var laser_fire_audio: AudioStreamPlayer2D = $SFX/LaserFire
+@onready var ghost_laser_fire_audio: AudioStreamPlayer2D = $SFX/GhostLaserFire
 
 @export var player_team_id = 1
 @export var damage: int = 25
@@ -11,7 +12,9 @@ var player_parent: Player
 var max_length := 1000
 var is_dangerous = true
 var time_laser_was_shot: float
-var TELEGRAPH_TIME := 1.5
+const TELEGRAPH_TIME := 1.5
+const MAX_ROUNDS_ACTIVE = 9
+var current_round = 0
 
 
 func _ready():
@@ -19,11 +22,11 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	if not is_dangerous:
-		return
 	if is_colliding():
-		var collider = get_collider()
 		$LaserTexture.size.x = (get_collision_point() - global_position).length()
+		if not is_dangerous:
+			return
+		var collider = get_collider()
 		#target_position = get_collision_point()
 		_on_body_entered(collider)
 	else:
@@ -62,16 +65,25 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_respawn_timer_timeout() -> void:
-	laser_fire_audio.play()
+	ghost_laser_fire_audio.play()
 	$DespawnTimer.start()
 	$AnimationPlayer.play("fade")
 	is_dangerous = true
 
 
-func start_new_round():
+func start_countdown():
 	is_dangerous = false
 	$RespawnTimer.start(time_laser_was_shot)
 	$TelegraphTimer.start(time_laser_was_shot - TELEGRAPH_TIME)
+
+
+func end_round():
+	$RespawnTimer.stop()
+	$TelegraphTimer.stop()
+	$AnimationPlayer.play("fade")
+	current_round += 1
+	if current_round > MAX_ROUNDS_ACTIVE:
+		queue_free()
 
 
 func _on_telegraph_timer_timeout() -> void:

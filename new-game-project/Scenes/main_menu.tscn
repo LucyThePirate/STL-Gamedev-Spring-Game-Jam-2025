@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://b0p5grjmpkj1u"]
+[gd_scene load_steps=75 format=3 uid="uid://b0p5grjmpkj1u"]
 
 [ext_resource type="Script" uid="uid://dlb044x67s2cb" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="ButtonGroup" uid="uid://cefxtylrijm1c" path="res://Scenes/level_select_buttons.tres" id="3_1ehe0"]
@@ -16,9 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://21by7p567r3x" path="res://Scenes/map_helipad.tscn" id="9_vr1f0"]
 [ext_resource type="AudioStream" uid="uid://b13ha4ujigl64" path="res://Assets/SFX/363169__samsterbirdies__hammering-on-anvil.ogg" id="12_4nkqq"]
 [ext_resource type="Texture2D" uid="uid://brelllsgb6i5w" path="res://Assets/Textures/LevelThumbnails/thumbnail_raffles.png" id="15_ehtkc"]
+[ext_resource type="AudioStream" uid="uid://dltclwtyrff8j" path="res://Assets/SFX/Announcer_Goodbye_01.wav" id="15_ko05x"]
 [ext_resource type="Texture2D" uid="uid://dj6jwgbuqc3a4" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail.jpg" id="15_xcoo4"]
+[ext_resource type="AudioStream" uid="uid://b6e1y8deg6tgm" path="res://Assets/SFX/Announcer_Goodbye_02.wav" id="16_43km2"]
 [ext_resource type="Texture2D" uid="uid://g4agml6bijsc" path="res://Assets/Textures/LevelThumbnails/lab_thumbnail_bright.jpg" id="16_jw7lb"]
+[ext_resource type="AudioStream" uid="uid://6dxc1ihqoa4y" path="res://Assets/SFX/Announcer_Goodbye_03.wav" id="17_3533h"]
 [ext_resource type="Texture2D" uid="uid://cgf40d0q0o4fn" path="res://Assets/Textures/LevelThumbnails/thumbnail_helipad1.png" id="17_jr6u5"]
+[ext_resource type="AudioStream" uid="uid://betgq30a34oc2" path="res://Assets/SFX/Announcer_Goodbye_04.wav" id="18_dp8uv"]
 [ext_resource type="Texture2D" uid="uid://b6ta1e3v0iseo" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail.jpg" id="18_jw7lb"]
 [ext_resource type="Texture2D" uid="uid://be5odr34llrat" path="res://Assets/Textures/LevelThumbnails/heli_thumbnail_bright.jpg" id="19_6vfk8"]
 [ext_resource type="Texture2D" uid="uid://estr0wxvql4l" path="res://Assets/Textures/LevelThumbnails/elevator_thumbnail.jpg" id="20_1xund"]
@@ -36,6 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://bclewtrsye0ud" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail.jpg" id="25_aylim"]
 [ext_resource type="AudioStream" uid="uid://c4erbgyecm7qx" path="res://Assets/SFX/Player_Laser_Fire_04.wav" id="26_1xund"]
 [ext_resource type="Texture2D" uid="uid://c6ioutx5in4mr" path="res://Assets/Textures/LevelThumbnails/residential_thumbnail_bright.jpg" id="26_y82t1"]
+[ext_resource type="AudioStream" uid="uid://bbyguapdvjpao" path="res://Assets/SFX/Announcer_Welcome_01.wav" id="41_dp8uv"]
+[ext_resource type="AudioStream" uid="uid://dhepp10bjvhm3" path="res://Assets/SFX/Announcer_Welcome_02.wav" id="42_uu0lx"]
+[ext_resource type="AudioStream" uid="uid://cnv7a6le1mdkg" path="res://Assets/SFX/Announcer_Welcome_03.wav" id="43_ujm45"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cp0ys"]
 
@@ -440,6 +447,13 @@ color_initial_ramp = SubResource("GradientTexture1D_trj04")
 hue_variation_min = 0.02
 hue_variation_max = 0.1
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uu0lx"]
+streams_count = 4
+stream_0/stream = ExtResource("15_ko05x")
+stream_1/stream = ExtResource("16_43km2")
+stream_2/stream = ExtResource("17_3533h")
+stream_3/stream = ExtResource("18_dp8uv")
+
 [sub_resource type="Gradient" id="Gradient_ce3w2"]
 offsets = PackedFloat32Array(0, 0.00550964)
 colors = PackedColorArray(0, 0, 0, 1, 0.141176, 0.168627, 0.211765, 1)
@@ -473,6 +487,12 @@ stream_3/stream = ExtResource("26_1xund")
 streams_count = 2
 stream_0/stream = ExtResource("23_ne6ao")
 stream_1/stream = ExtResource("24_tt8ml")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aj2v6"]
+streams_count = 3
+stream_0/stream = ExtResource("41_dp8uv")
+stream_1/stream = ExtResource("42_uu0lx")
+stream_2/stream = ExtResource("43_ujm45")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -622,6 +642,10 @@ text = "Credits"
 [node name="QuitButton" type="Button" parent="MainMenu/CenterContainer/EntranceButtons"]
 layout_mode = 2
 text = "Quit"
+
+[node name="AnnouncerGoodbye" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/EntranceButtons/QuitButton"]
+stream = SubResource("AudioStreamRandomizer_uu0lx")
+bus = &"Announcer"
 
 [node name="LevelSelect" type="Control" parent="."]
 visible = false
@@ -1381,6 +1405,10 @@ bus = &"Music"
 stream = ExtResource("25_84iac")
 bus = &"Music"
 
+[node name="AnnouncerWelcome" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_aj2v6")
+bus = &"Announcer"
+
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/EntranceButtons/OptionsButton" to="." method="_on_options_button_pressed"]
@@ -1398,6 +1426,3 @@ bus = &"Music"
 [connection signal="value_changed" from="Options/CenterContainer/VBoxContainer/HBoxContainer4/AnnouncerVolume" to="." method="_on_announcer_volume_value_changed"]
 [connection signal="pressed" from="Options/BackButton" to="." method="_on_options_back_button_pressed"]
 [connection signal="pressed" from="Credits/BackButton" to="." method="_on_credits_back_button_pressed"]
-[connection signal="finished" from="FireAmbience" to="." method="_on_audio_stream_player_finished"]
-[connection signal="finished" from="TitleMusic" to="." method="_on_title_music_finished"]
-[connection signal="finished" from="LevelSelectMusic" to="." method="_on_level_select_music_finished"]

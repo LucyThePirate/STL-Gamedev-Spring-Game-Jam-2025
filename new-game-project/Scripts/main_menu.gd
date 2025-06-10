@@ -40,6 +40,10 @@ var map_helipad_button: TextureButton = $LevelSelect/CenterContainer/HBoxContain
 @onready
 var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector
 
+@onready
+var announcer_goodbye: AudioStreamPlayer = $MainMenu/CenterContainer/EntranceButtons/QuitButton/AnnouncerGoodbye
+@onready var announcer_welcome: AudioStreamPlayer = $AnnouncerWelcome
+
 var selected_map
 var selected_round_length: int = 30
 var selected_num_of_rounds: int = 9
@@ -50,6 +54,7 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	announcer_welcome.play()
 	main_menu.show()
 	level_select.hide()
 	controls.hide()
@@ -118,6 +123,10 @@ func _on_controls_back_button_pressed() -> void:
 
 #QUIT
 func _on_quit_button_pressed() -> void:
+	announcer_welcome.stop()
+	announcer_goodbye.play()
+	await announcer_goodbye.finished
+	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 
 
@@ -151,18 +160,6 @@ func _on_options_button_pressed() -> void:
 	options.show()
 	main_menu.hide()
 	title_graphic.hide()
-
-
-func _on_audio_stream_player_finished() -> void:
-	$FireAmbience.play()
-
-
-func _on_title_music_finished() -> void:
-	$TitleMusic.play()
-
-
-func _on_level_select_music_finished() -> void:
-	$LevelSelectMusic.play()
 
 
 func _on_master_volume_value_changed(value: float) -> void:
