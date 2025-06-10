@@ -10,6 +10,8 @@ var direction: Vector2
 var player_parent: Player
 var max_length := 1000
 var is_dangerous = true
+var time_laser_was_shot: float
+var TELEGRAPH_TIME := 1.5
 
 
 func _ready():
@@ -28,7 +30,8 @@ func _physics_process(delta: float) -> void:
 		$LaserTexture.size.x = max_length
 
 
-func fire(new_player_parent: Player, fire_position: Vector2):
+func fire(new_player_parent: Player, fire_position: Vector2, time_shot: float):
+	time_laser_was_shot = time_shot
 	player_parent = new_player_parent
 	player_team_id = player_parent.player_id
 	add_exception(player_parent)
@@ -39,12 +42,14 @@ func fire(new_player_parent: Player, fire_position: Vector2):
 	$LaserTexture.rotation = player_parent.facing_direction.angle()
 
 
-func disable_laser():
-	is_dangerous = false
+func set_laser_dangerous(set_danger = false):
+	is_dangerous = set_danger
 
 
 func _on_despawn_timer_timeout() -> void:
-	queue_free()
+	#queue_free()
+	is_dangerous = false
+	hide()
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -53,4 +58,25 @@ func _on_body_entered(body: Node2D) -> void:
 			if can_hit_own_team or (!can_hit_own_team and body.player_id != player_team_id):
 				body.get_hit(damage)
 				laser_hit_audio.play()
-				disable_laser()
+				set_laser_dangerous(false)
+
+
+func _on_respawn_timer_timeout() -> void:
+	laser_fire_audio.play()
+	$DespawnTimer.start()
+	$AnimationPlayer.play("fade")
+	is_dangerous = true
+
+
+func start_new_round():
+	is_dangerous = false
+	$RespawnTimer.start(time_laser_was_shot)
+	$TelegraphTimer.start(time_laser_was_shot - TELEGRAPH_TIME)
+
+
+func _on_telegraph_timer_timeout() -> void:
+	show()
+	if player_parent.player_id == 1:
+		$AnimationPlayer.play("telegraph_red")
+	else:
+		$AnimationPlayer.play("telegraph_blue")

@@ -36,6 +36,8 @@ var played_count = 0
 var seconds_per_round_before_ghost_starts_moving := 1.5
 var max_replays = 9
 
+var time_spent_alive := 0.0
+
 
 func _ready() -> void:
 	visual.initialize(self)
@@ -43,6 +45,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if state == States.IDLE or state == States.ROUND_START:
+		time_spent_alive += delta
+
 		if !is_shooting and move_direction != Vector2.ZERO:
 			facing_direction = move_direction.normalized()
 			$Sprite2D.rotation = facing_direction.angle()
@@ -89,14 +93,14 @@ func set_facing_direction(direction: Vector2):
 
 
 func shoot():
-	if not is_shot_cooling and state in [States.IDLE, States.GHOST]:
+	if not is_shot_cooling and state in [States.IDLE]:
 		if state == States.GHOST and visual.is_ghost_spawn_visible():
 			# Round hasn't started yet, don't let ghost player shoot
 			return
 		is_shot_cooling = true
 		shot_timer.start()
 		var bullet = bullet_scene.instantiate()
-		bullet.fire(self, bullet_spawn_pos.global_position)
+		bullet.fire(self, bullet_spawn_pos.global_position, time_spent_alive)
 		get_tree().current_scene.add_child(bullet)
 		shot.emit()
 

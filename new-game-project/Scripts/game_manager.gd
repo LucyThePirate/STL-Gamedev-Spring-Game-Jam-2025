@@ -56,12 +56,12 @@ func _process(delta: float) -> void:
 		setup_game()
 
 	if Input.is_action_pressed("Pause"):
-			if !get_tree().paused:
-				pause_menu.show()
-				get_tree().paused = true
-			else:
-				pause_menu.hide()
-				get_tree().paused = false
+		if !get_tree().paused:
+			pause_menu.show()
+			get_tree().paused = true
+		else:
+			pause_menu.hide()
+			get_tree().paused = false
 
 	initial_countdown_label.text = String.num(initial_countdown_timer.time_left, 0)
 	time_left_label.text = "Time remaining: " + String.num(round_timer.time_left, 0)
@@ -121,6 +121,7 @@ func start_countdown():
 	is_counting_down = true
 	spawn_players()
 	get_tree().call_group("player", "start_countdown")
+	get_tree().call_group("laser", "start_new_round")
 	count_ghosts()
 	announcer_countdown_audio.play()
 
@@ -199,10 +200,12 @@ func _on_new_game_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
+
 func _on_rematch_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	
+
+
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	pause_menu.hide()

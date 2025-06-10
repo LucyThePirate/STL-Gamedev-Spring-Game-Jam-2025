@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsqnkao5geyne"]
+[gd_scene load_steps=15 format=3 uid="uid://dsqnkao5geyne"]
 
 [ext_resource type="Script" uid="uid://b8fs881nrd4t4" path="res://Scripts/laser.gd" id="1_mou6w"]
 [ext_resource type="Shader" uid="uid://dcf8xtmughgev" path="res://Assets/Shaders/laser.gdshader" id="1_r1bh0"]
@@ -21,7 +21,7 @@ shader_parameter/outline_thickness = 0.068
 shader_parameter/beam_difference = 0.0
 shader_parameter/glow = 0.0
 shader_parameter/outline_glow = 0.0
-shader_parameter/color = Color(0.91, 1, 1, 1)
+shader_parameter/color = Color(0.909804, 1, 1, 1)
 shader_parameter/outline_color = Color(1, 0, 0.0784314, 1)
 shader_parameter/progress = 1.0
 shader_parameter/y_offset = 0.0
@@ -37,6 +37,66 @@ tracks/0/path = NodePath("LaserTexture:material:shader_parameter/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserTexture:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.909804, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserTexture:material:shader_parameter/outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.0784314, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserTexture:material:shader_parameter/outline_thickness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.068]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserTexture:material:shader_parameter/thickness")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.036]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserTexture:material:shader_parameter/speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -68,15 +128,193 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.233333),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"disable_laser"
+"args": [false],
+"method": &"set_laser_dangerous"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_cnw57"]
+resource_name = "telegraph_red"
+length = 1.5
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserTexture:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.909804, 1, 1, 0.282353), Color(0.909804, 1, 1, 0.694118), Color(0.909804, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserTexture:material:shader_parameter/outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.0784314, 0.219608), Color(1, 0, 0.0784314, 0.678431), Color(1, 0, 0.0784314, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserTexture:material:shader_parameter/outline_thickness")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.1, 0.054, 0.068]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserTexture:material:shader_parameter/thickness")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.036]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserTexture:material:shader_parameter/speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LaserTexture:material:shader_parameter/progress")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_y5j7k"]
+resource_name = "telegraph_blue"
+length = 1.5
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserTexture:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.909804, 1, 1, 0.282353), Color(0.909804, 1, 1, 0.694118), Color(0.909804, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserTexture:material:shader_parameter/outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.113725, 0.54902, 1, 0.219608), Color(0.113725, 0.54902, 1, 0.678431), Color(0.113725, 0.54902, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserTexture:material:shader_parameter/outline_thickness")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.1, 0.054, 0.068]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserTexture:material:shader_parameter/thickness")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.036]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserTexture:material:shader_parameter/speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LaserTexture:material:shader_parameter/progress")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8ure"]
 _data = {
 &"RESET": SubResource("Animation_3pc01"),
-&"fade": SubResource("Animation_mou6w")
+&"fade": SubResource("Animation_mou6w"),
+&"telegraph_blue": SubResource("Animation_y5j7k"),
+&"telegraph_red": SubResource("Animation_cnw57")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cnw57"]
@@ -86,7 +324,7 @@ stream_1/stream = ExtResource("5_y5j7k")
 stream_2/stream = ExtResource("6_r1vd4")
 stream_3/stream = ExtResource("7_0l8kr")
 
-[node name="Laser" type="RayCast2D"]
+[node name="Laser" type="RayCast2D" groups=["laser"]]
 script = ExtResource("1_mou6w")
 can_hit_own_team = true
 
@@ -121,4 +359,14 @@ stream = ExtResource("3_3pc01")
 volume_db = -5.0
 bus = &"SFX"
 
+[node name="RespawnTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="TelegraphTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="TelegraphTimer" to="." method="_on_telegraph_timer_timeout"]
