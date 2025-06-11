@@ -5,7 +5,7 @@ class_name Player
 signal damaged(health_left)
 signal died(player_id)
 signal shot
-signal taunted
+signal taunted(pitch)
 
 @export var player_id = 1
 
@@ -47,7 +47,10 @@ func _physics_process(delta: float) -> void:
 	if state == States.IDLE or state == States.ROUND_START:
 		time_spent_alive += delta
 
-		if !is_shooting and move_direction != Vector2.ZERO:
+		if (
+			(!is_shooting and !Input.is_action_pressed("Strafe P%s" % [player_id]))
+			and move_direction != Vector2.ZERO
+		):
 			facing_direction = move_direction.normalized()
 			$Sprite2D.rotation = facing_direction.angle()
 
@@ -59,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			is_shooting = false
 
 		if Input.is_action_just_pressed("Taunt P%s" % [player_id]):
-			taunted.emit()
+			taunted.emit(Input.get_action_strength("Taunt Pitch P%s" % [player_id]))
 
 		var playerInput = get_input()
 		velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
@@ -151,6 +154,7 @@ func end_round():
 	if not is_in_group("ghost"):
 		#if state == States.DEAD:
 		#visual.make_me_spooky()
+		$Sprite2D.hide()
 		state = States.GHOST
 		add_to_group("ghost")
 		$CollisionShape2D.set_deferred("disabled", true)

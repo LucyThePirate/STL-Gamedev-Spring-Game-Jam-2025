@@ -80,7 +80,11 @@ func start_countdown():
 func end_round():
 	$RespawnTimer.stop()
 	$TelegraphTimer.stop()
-	$AnimationPlayer.play("fade")
+	if $AnimationPlayer.current_animation.contains("telegraph"):
+		print("telegraph'd")
+		$AnimationPlayer.play("fade")
+		pass
+	is_dangerous = false
 	current_round += 1
 	if current_round > MAX_ROUNDS_ACTIVE:
 		queue_free()
