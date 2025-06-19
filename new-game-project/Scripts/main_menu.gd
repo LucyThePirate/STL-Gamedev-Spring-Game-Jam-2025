@@ -40,6 +40,10 @@ var map_helipad_button: TextureButton = $LevelSelect/CenterContainer/HBoxContain
 @onready
 var round_length_selector: OptionButton = $LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector
 
+@onready
+var announcer_goodbye: AudioStreamPlayer = $MainMenu/CenterContainer/EntranceButtons/QuitButton/AnnouncerGoodbye
+@onready var announcer_welcome: AudioStreamPlayer = $AnnouncerWelcome
+
 var selected_map
 var selected_round_length: int = 30
 var selected_num_of_rounds: int = 9
@@ -50,6 +54,7 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	announcer_welcome.play()
 	main_menu.show()
 	level_select.hide()
 	controls.hide()
@@ -74,6 +79,7 @@ func _ready() -> void:
 
 #NEW GAME
 func _on_new_game_button_pressed() -> void:
+	$UiLevelSelectStart01.play()
 	main_menu.hide()
 	title_graphic.hide()
 	level_select.show()
@@ -87,20 +93,25 @@ func _on_level_select_back_button_pressed() -> void:
 	title_graphic.show()
 	$LevelSelectMusic.stop()
 	$TitleMusic.play()
+	$UiLevelSelectBack01.play()
 
 
 func handle_level_selection():
-	selected_map = ls_buttons.get_pressed_button()
+	if selected_map != ls_buttons.get_pressed_button():
+		$LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector/UIGeneric.play()
+		selected_map = ls_buttons.get_pressed_button()
 
 
 func _on_start_button_pressed() -> void:
 	if selected_map:
+		$UiMainMenuStart01.play()
+		await get_tree().create_timer(1).timeout
 		Globals.selected_map = selected_map.get_meta("level_path")
 		Globals.selected_round_length = selected_round_length
 		Globals.selected_num_of_rounds = selected_num_of_rounds
 		get_tree().change_scene_to_packed(game_manager)
 	else:
-		pass
+		$LevelSelect/CenterContainer/HBoxContainer/VBoxContainer/StartButton/error.play()
 
 
 #CONTROLS
@@ -108,24 +119,42 @@ func _on_controls_button_pressed() -> void:
 	controls.show()
 	main_menu.hide()
 	title_graphic.hide()
+	$UiLevelSelectStart01.play()
 
 
 func _on_controls_back_button_pressed() -> void:
 	controls.hide()
 	main_menu.show()
 	title_graphic.show()
+	$UiLevelSelectBack01.play()
 
 
 #QUIT
 func _on_quit_button_pressed() -> void:
+	$UiLevelSelectStart01.play()
+	announcer_welcome.stop()
+	announcer_goodbye.play()
+	await announcer_goodbye.finished
+	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
 
 
 func _on_round_length_selector_item_selected(index: int) -> void:
 	selected_round_length = round_length_selector.get_item_metadata(index)
+	$LevelSelect/CenterContainer/HBoxContainer/RoundLength/RoundLengthSelector/UIGeneric.play()
 
 
 func _on_spin_box_value_changed(value: float) -> void:
+	if value > selected_num_of_rounds:
+		(
+			$LevelSelect/CenterContainer/HBoxContainer/RoundAmount/SpinBox/UiLevelSelectTickerUp01
+			. play()
+		)
+	else:
+		(
+			$LevelSelect/CenterContainer/HBoxContainer/RoundAmount/SpinBox/UiLevelSelectTickerDown01
+			. play()
+		)
 	selected_num_of_rounds = value
 
 
@@ -133,36 +162,28 @@ func _on_credits_button_pressed() -> void:
 	credits.show()
 	main_menu.hide()
 	title_graphic.hide()
+	$UiLevelSelectStart01.play()
 
 
 func _on_credits_back_button_pressed() -> void:
 	credits.hide()
 	main_menu.show()
 	title_graphic.show()
+	$UiLevelSelectBack01.play()
 
 
 func _on_options_back_button_pressed() -> void:
 	options.hide()
 	main_menu.show()
 	title_graphic.show()
+	$UiLevelSelectBack01.play()
 
 
 func _on_options_button_pressed() -> void:
 	options.show()
 	main_menu.hide()
 	title_graphic.hide()
-
-
-func _on_audio_stream_player_finished() -> void:
-	$FireAmbience.play()
-
-
-func _on_title_music_finished() -> void:
-	$TitleMusic.play()
-
-
-func _on_level_select_music_finished() -> void:
-	$LevelSelectMusic.play()
+	$UiLevelSelectStart01.play()
 
 
 func _on_master_volume_value_changed(value: float) -> void:

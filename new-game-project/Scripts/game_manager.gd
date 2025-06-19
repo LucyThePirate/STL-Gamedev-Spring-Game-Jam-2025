@@ -19,10 +19,15 @@ var end_of_round_results: RichTextLabel = $CanvasLayer/CenterContainer/VBoxConta
 @onready var rematch_button: Button = $CanvasLayer/CenterContainer/VBoxContainer/RematchButton
 
 #AUDIO
-@onready var announcer_countdown_audio: AudioStreamPlayer2D = $SFX/AnnouncerCountdown
-@onready var announcer_tie_audio: AudioStreamPlayer2D = $SFX/AnnouncerTie
-@onready var announcer_red_kills_audio: AudioStreamPlayer2D = $SFX/AnnouncerRedKills
-@onready var announcer_blue_kills_audio: AudioStreamPlayer2D = $SFX/AnnouncerBlueKills
+@onready var announcer_countdown_audio: AudioStreamPlayer = $SFX/AnnouncerCountdown
+@onready var announcer_tie_audio: AudioStreamPlayer = $SFX/AnnouncerTie
+@onready var announcer_red_kills_audio: AudioStreamPlayer = $SFX/AnnouncerRedKills
+@onready var announcer_blue_kills_audio: AudioStreamPlayer = $SFX/AnnouncerBlueKills
+@onready var announcer_startgame_audio: AudioStreamPlayer = $SFX/AnnouncerStartGame
+@onready var announcer_endgame_audio: AudioStreamPlayer = $SFX/AnnouncerEndGame
+@onready var announcer_red_wins_audio: AudioStreamPlayer = $SFX/AnnouncerRedWins
+@onready var announcer_blue_wins_audio: AudioStreamPlayer = $SFX/AnnouncerBlueWins
+@onready var announcer_nobody_wins_audio: AudioStreamPlayer = $SFX/AnnouncerNobodyWins
 
 @export var player_scene: PackedScene
 
@@ -56,12 +61,12 @@ func _process(delta: float) -> void:
 		setup_game()
 
 	if Input.is_action_pressed("Pause"):
-			if !get_tree().paused:
-				pause_menu.show()
-				get_tree().paused = true
-			else:
-				pause_menu.hide()
-				get_tree().paused = false
+		if !get_tree().paused:
+			pause_menu.show()
+			get_tree().paused = true
+		else:
+			pause_menu.hide()
+			get_tree().paused = false
 
 	initial_countdown_label.text = String.num(initial_countdown_timer.time_left, 0)
 	time_left_label.text = "Time remaining: " + String.num(round_timer.time_left, 0)
@@ -121,8 +126,12 @@ func start_countdown():
 	is_counting_down = true
 	spawn_players()
 	get_tree().call_group("player", "start_countdown")
+	get_tree().call_group("laser", "start_countdown")
 	count_ghosts()
-	announcer_countdown_audio.play()
+	if current_round == 1:
+		announcer_startgame_audio.play()
+	else:
+		announcer_countdown_audio.play()
 
 
 #END ROUND
@@ -149,6 +158,7 @@ func end_round():
 			% [scores["Cardinals"], scores["Blue Jays"]]
 		)
 		get_tree().call_group("player", "end_round")
+		get_tree().call_group("laser", "end_round")
 		end_of_round_results.show()
 		end_of_round_timer.start()
 
@@ -156,12 +166,21 @@ func end_round():
 func end_game():
 	round_number_label.hide()
 	$MainTheme/AnimationPlayer.play("FadeOutMusic")
+	announcer_endgame_audio.play()
+	await announcer_endgame_audio.finished
+	await get_tree().create_timer(0.5).timeout
 	current_score.hide()
 	time_left_label.hide()
 	end_of_round_results.text = (
-		"[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]And that's game![/rainbow][/wave]\nScores:\n[color=CRIMSON]Cardinals: %s[/color]\n[color=ROYAL_BLUE]Blue Jays: %s[/color]"
+		"[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]\nAnd that's game![/rainbow][/wave]\nScores:\n[color=CRIMSON]Cardinals: %s[/color]\n[color=ROYAL_BLUE]Blue Jays: %s[/color]"
 		% [scores["Cardinals"], scores["Blue Jays"]]
 	)
+	if scores["Cardinals"] > scores["Blue Jays"]:
+		announcer_red_wins_audio.play()
+	elif scores["Blue Jays"] > scores["Cardinals"]:
+		announcer_blue_wins_audio.play()
+	else:
+		announcer_nobody_wins_audio.play()
 	end_of_round_results.show()
 	rematch_button.show()
 	new_game_button.show()
@@ -199,18 +218,12 @@ func _on_new_game_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
+
 func _on_rematch_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	
+
+
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	pause_menu.hide()
-
-
-func _on_main_theme_finished() -> void:
-	$MainTheme.play(3)
-
-
-func _on_city_ambiance_finished() -> void:
-	$CityAmbiance.play()

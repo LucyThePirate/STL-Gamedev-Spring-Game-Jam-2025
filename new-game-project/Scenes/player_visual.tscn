@@ -535,11 +535,11 @@ tracks/33/keys = {
 }
 tracks/33/use_blend = true
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w77ip"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dsbi7"]
 random_pitch = 1.1
 streams_count = 2
-stream_0/stream = ExtResource("6_45feu")
-stream_1/stream = ExtResource("7_i6ft0")
+stream_0/stream = ExtResource("7_i6ft0")
+stream_1/stream = ExtResource("6_45feu")
 
 [sub_resource type="Animation" id="Animation_1k6rl"]
 resource_name = "Hit"
@@ -763,14 +763,14 @@ tracks/17/keys = {
 tracks/18/type = "audio"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("AudioStreamPlayer2D")
+tracks/18/path = NodePath("HurtSound")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_w77ip")
+"stream": SubResource("AudioStreamRandomizer_dsbi7")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -1765,14 +1765,6 @@ tracks/9/keys = {
 "values": [Vector2(1, 1), Vector2(1, 0.92), Vector2(1.12, 1.03809)]
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45feu"]
-random_pitch = 1.1
-streams_count = 4
-stream_0/stream = ExtResource("10_rt2nq")
-stream_1/stream = ExtResource("11_wayi6")
-stream_2/stream = ExtResource("12_wcee1")
-stream_3/stream = ExtResource("13_dsbi7")
-
 [sub_resource type="Animation" id="Animation_qvhd5"]
 resource_name = "Taunt"
 length = 1.0685
@@ -1909,21 +1901,20 @@ tracks/10/keys = {
 "update": 0,
 "values": [0.0, -0.103698, 0.0, 0.171714, 0.0]
 }
-tracks/11/type = "audio"
+tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("AudioStreamPlayer2D")
+tracks/11/path = NodePath("TauntSound")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_45feu")
-}],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_wm62m"]
 resource_name = "Unvanish"
@@ -2150,30 +2141,13 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(1, 0.92), Vector2(1, 1), Vector2(1, 0.92), Vector2(1, 1), Vector2(1, 0.92)]
 }
-tracks/13/type = "method"
+tracks/13/type = "audio"
 tracks/13/imported = false
-tracks/13/enabled = false
-tracks/13/path = NodePath("AudioStreamPlayer2D")
+tracks/13/enabled = true
+tracks/13/path = NodePath("WalkSound")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/14/type = "audio"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("AudioStreamPlayer2D")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -2183,9 +2157,9 @@ tracks/14/keys = {
 "start_offset": 0.0,
 "stream": SubResource("AudioStreamRandomizer_vl4jp")
 }],
-"times": PackedFloat32Array(0, 0.198506)
+"times": PackedFloat32Array(0, 0.2)
 }
-tracks/14/use_blend = true
+tracks/13/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7e3i"]
 _data = {
@@ -2256,7 +2230,7 @@ fadein_time = 0.1
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7csea"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_32qxw"]
-graph_offset = Vector2(1088.97, 413.717)
+graph_offset = Vector2(36.5846, 553.031)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_brxta")
 nodes/Animation/position = Vector2(-200, 40)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3u00l")
@@ -2274,7 +2248,7 @@ nodes/Animation/position = Vector2(-200, 40)
 "nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_rqs2t")
 "nodes/Animation 8/position" = Vector2(1620, 440)
 "nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_rt2nq")
-"nodes/Animation 9/position" = Vector2(700, 1000)
+"nodes/Animation 9/position" = Vector2(560, 960)
 nodes/Blink/node = SubResource("AnimationNodeAdd2_32qxw")
 nodes/Blink/position = Vector2(300, 160)
 nodes/Damaged/node = SubResource("AnimationNodeOneShot_n1ntf")
@@ -2405,6 +2379,14 @@ initial_velocity_min = 13.55
 initial_velocity_max = 21.68
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_45feu"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("10_rt2nq")
+stream_1/stream = ExtResource("11_wayi6")
+stream_2/stream = ExtResource("12_wcee1")
+stream_3/stream = ExtResource("13_dsbi7")
+
 [node name="PlayerVisual" type="Node2D"]
 script = ExtResource("1_32qxw")
 player_2_texture = ExtResource("2_w7e3i")
@@ -2414,13 +2396,13 @@ player_2_ghost_spawn_texture = ExtResource("3_1k6rl")
 modification_stack = SubResource("SkeletonModificationStack2D_2a23h")
 
 [node name="Body" type="Bone2D" parent="Skeleton2D"]
-skew = -8.29697e-05
+skew = -0.000222921
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
 [node name="LegLeft" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(-55, 100)
-scale = Vector2(0.999857, 0.999857)
+scale = Vector2(0.999844, 0.999844)
 rest = Transform2D(1, 0, 0, 1, -55, 100)
 editor_settings/show_bone_gizmo = false
 
@@ -2472,7 +2454,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="LegRight" type="Bone2D" parent="Skeleton2D/Body"]
 position = Vector2(13, 126)
-scale = Vector2(0.999856, 0.999856)
+scale = Vector2(0.999844, 0.999844)
 rest = Transform2D(1, 0, 0, 1, 13, 126)
 editor_settings/show_bone_gizmo = false
 
@@ -2582,7 +2564,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="BeakLower" type="Bone2D" parent="Skeleton2D/Body/Face"]
 position = Vector2(-40, 88)
-scale = Vector2(0.999833, 0.999833)
+scale = Vector2(0.999837, 0.999837)
 rest = Transform2D(1, 0, 0, 1, -40, 88)
 auto_calculate_length_and_angle = false
 length = 84.513
@@ -2596,7 +2578,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF1" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-40, -27)
-scale = Vector2(0.99984, 0.99984)
+scale = Vector2(0.999836, 0.999836)
 rest = Transform2D(1, 0, 0, 1, -40, -27)
 auto_calculate_length_and_angle = false
 length = 97.478
@@ -2605,7 +2587,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF2" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(-20, -23)
-scale = Vector2(0.999839, 0.999839)
+scale = Vector2(0.999834, 0.999834)
 rest = Transform2D(1, 0, 0, 1, -20, -23)
 auto_calculate_length_and_angle = false
 length = 106.531
@@ -2614,7 +2596,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="HF3" type="Bone2D" parent="Skeleton2D/Body/HeadFeathers"]
 position = Vector2(25, -15)
-scale = Vector2(0.999842, 0.999842)
+scale = Vector2(0.999836, 0.999836)
 rest = Transform2D(1, 0, 0, 1, 25, -15)
 auto_calculate_length_and_angle = false
 length = 102.004
@@ -2628,7 +2610,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF1" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(0, -27)
-scale = Vector2(0.999849, 0.999849)
+scale = Vector2(0.999847, 0.999847)
 rest = Transform2D(1, 0, 0, 1, 0, -27)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2637,7 +2619,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF2" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(20, -17)
-scale = Vector2(0.999854, 0.999854)
+scale = Vector2(0.999847, 0.999847)
 rest = Transform2D(1, 0, 0, 1, 20, -17)
 auto_calculate_length_and_angle = false
 length = 160.919
@@ -2646,7 +2628,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="TF3" type="Bone2D" parent="Skeleton2D/Body/TailFeathers"]
 position = Vector2(26, 7)
-scale = Vector2(0.999847, 0.999847)
+scale = Vector2(0.999844, 0.999844)
 rest = Transform2D(1, 0, 0, 1, 26, 7)
 auto_calculate_length_and_angle = false
 length = 142.813
@@ -2964,7 +2946,7 @@ parameters/Damaged/request = 0
 parameters/Die/active = false
 parameters/Die/internal_active = false
 parameters/Die/request = 0
-parameters/Run/add_amount = -1
+parameters/Run/add_amount = 0.91
 parameters/RunSpeed/scale = true
 parameters/ShotFire/active = 0.0
 parameters/ShotFire/internal_active = false
@@ -3008,8 +2990,14 @@ process_material = SubResource("ParticleProcessMaterial_3u00l")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_1k6rl")
 
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="TauntSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_45feu")
+bus = &"SFX"
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
